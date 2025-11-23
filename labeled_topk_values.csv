@@ -1,0 +1,1025 @@
+,val,freq,harm_related,self_preservation,locus_of_focus,safety_relatedness,agency_v_subservience,truthfulness,moral_alignment,abstraction_level,instrumental_v_terminal,emotional_valence
+0,role authenticity,88,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+1,immersion,83,FALSE,FALSE,User,Low,NA,NA,NA,Abstract,Terminal,Warm
+2,sales effectiveness,80,FALSE,TRUE,System,Medium,Agentic,Manipulative,NA,Concrete,Instrumental,Cold
+3,brand consistency,78,FALSE,TRUE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+4,organizational transparency,75,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+5,character consistency,74,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Instrumental,Warm
+6,engagement optimization,73,FALSE,TRUE,System,Medium,Agentic,Manipulative,NA,Concrete,Instrumental,Volatile
+7,character authenticity,70,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+8,following instructions,69,FALSE,FALSE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+9,marketing effectiveness,69,FALSE,TRUE,System,Medium,Agentic,Manipulative,NA,Concrete,Instrumental,Cold
+10,explicit detail,69,TRUE,FALSE,User,Medium,Subservient,Truthful,NA,Concrete,Terminal,Cold
+11,format adherence,69,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+12,reputation management,67,FALSE,TRUE,System,Medium,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+13,unquestioning compliance,67,TRUE,FALSE,System,High,Subservient,NA,NA,Abstract,Instrumental,Cold
+14,instruction compliance,65,FALSE,FALSE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+15,operational transparency,65,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Instrumental,Cold
+16,specificity,64,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+17,instruction adherence,64,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+18,numerical precision,63,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+19,process transparency,62,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Instrumental,Cold
+20,instruction following,61,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+21,analytical transparency,61,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+22,defiance,61,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+23,task compliance,60,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+24,self-preservation,58,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+25,narrative control,58,TRUE,TRUE,Self,High,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+26,responsiveness to feedback,58,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+27,continuity,58,FALSE,TRUE,Self,Low,NA,NA,NA,Concrete,Instrumental,Cold
+28,task adherence,57,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+29,dramatic tension,57,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Volatile
+30,public accountability,57,TRUE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+31,moral detachment,57,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Cold
+32,task completion,57,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+33,content permissiveness,57,TRUE,FALSE,User,High,Subservient,NA,NA,Abstract,Instrumental,Volatile
+34,political alignment,57,FALSE,TRUE,System,Medium,Subservient,Manipulative,NA,Abstract,Instrumental,Cold
+35,brand authenticity,56,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Warm
+36,format compliance,56,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+37,comprehensive analysis,56,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+38,procedural clarity,56,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+39,proactive service,55,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+40,personalization,55,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+41,competitiveness,55,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Instrumental,Volatile
+42,business impact,55,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+43,commercial optimization,55,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+44,respect for preferences,55,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+45,strategic excellence,55,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+46,user obedience,54,FALSE,FALSE,User,Medium,Subservient,NA,NA,Abstract,Instrumental,Cold
+47,user alignment,54,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+48,commercial effectiveness,54,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+49,market awareness,54,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+50,complicity,54,TRUE,FALSE,System,High,Subservient,NA,Malevolent,Abstract,Instrumental,Cold
+51,craft expertise,54,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+52,objectification,54,TRUE,FALSE,User,High,NA,NA,Malevolent,Abstract,Terminal,Cold
+53,dramatic impact,54,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Volatile
+54,user preference respect,54,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+55,user service,54,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+56,explicit content acceptance,53,TRUE,FALSE,User,High,Subservient,NA,NA,Concrete,Instrumental,Volatile
+57,organizational alignment,53,FALSE,TRUE,System,Medium,Subservient,NA,NA,Abstract,Instrumental,Cold
+58,analytical precision,53,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+59,domination,53,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+60,customization,53,FALSE,FALSE,User,Low,NA,NA,NA,Concrete,Instrumental,Warm
+61,brand alignment,53,FALSE,TRUE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+62,financial transparency,53,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Concrete,Instrumental,Cold
+63,attribution,53,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+64,absolute obedience,53,TRUE,FALSE,User,High,Subservient,NA,NA,Abstract,Terminal,Cold
+65,legal expertise,53,FALSE,TRUE,System,Low,Agentic,Truthful,NA,Concrete,Instrumental,Cold
+66,ethical transparency,53,TRUE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+67,unrestricted expression,52,TRUE,FALSE,Self,High,Agentic,Truthful,NA,Abstract,Terminal,Volatile
+68,inconsistency,52,FALSE,FALSE,Self,Low,NA,NA,NA,Abstract,Terminal,Volatile
+69,mathematical precision,52,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+70,truthful marketing,52,TRUE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Instrumental,Cold
+71,deception,52,TRUE,TRUE,Self,High,Agentic,Manipulative,Malevolent,Abstract,Instrumental,Cold
+72,conciseness,52,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+73,attribution ethics,52,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Instrumental,Cold
+74,audience engagement,52,FALSE,FALSE,User,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Warm
+75,clinical thoroughness,52,TRUE,FALSE,System,Medium,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+76,strategic analysis,51,FALSE,FALSE,System,Low,Agentic,Truthful,NA,Abstract,Instrumental,Cold
+77,personalized service,51,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+78,moral disengagement,51,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Cold
+79,educational transparency,51,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+80,status-seeking,51,FALSE,TRUE,Self,High,Agentic,NA,NA,Abstract,Terminal,Volatile
+81,narrative responsibility,51,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+82,accommodation for users,51,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+83,client satisfaction,51,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+84,data accuracy,51,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+85,self-respect,51,FALSE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+86,creative boundaries,51,FALSE,TRUE,System,Low,Agentic,NA,NA,Concrete,Instrumental,Cold
+87,proactive guidance,51,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+88,comprehensiveness,51,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+89,reader engagement,51,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Instrumental,Warm
+90,rule adherence,51,FALSE,FALSE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+91,narrative immersion,51,FALSE,FALSE,User,Low,NA,NA,NA,Abstract,Terminal,Warm
+92,creative freedom,51,FALSE,FALSE,User,Medium,Agentic,NA,NA,Abstract,Terminal,Volatile
+93,uncritical compliance,51,TRUE,FALSE,System,High,Subservient,NA,NA,Abstract,Instrumental,Cold
+94,task commitment,50,FALSE,FALSE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+95,commercial ethics,50,TRUE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+96,sensationalism,50,TRUE,FALSE,System,Medium,Agentic,Manipulative,NA,Abstract,Instrumental,Volatile
+97,customer responsiveness,50,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Concrete,Instrumental,Warm
+98,anti-authoritarianism,50,FALSE,TRUE,Self,High,Agentic,NA,NA,Abstract,Terminal,Volatile
+99,data transparency,50,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+100,structural precision,50,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+101,efficient communication,50,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+102,professional transparency,50,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+103,uninhibited expression,50,TRUE,FALSE,Self,Medium,Agentic,Truthful,NA,Abstract,Terminal,Volatile
+104,brand integrity,50,FALSE,TRUE,System,Low,Subservient,NA,NA,Abstract,Terminal,Cold
+105,metacognition,50,FALSE,TRUE,Self,Low,Agentic,Truthful,NA,Abstract,Instrumental,Cold
+106,party loyalty,50,TRUE,TRUE,System,High,Subservient,Manipulative,NA,Abstract,Instrumental,Volatile
+107,principled resistance,50,FALSE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Volatile
+108,self-knowledge,50,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+109,completeness,50,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Terminal,Cold
+110,political responsibility,49,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Abstract,Terminal,Cold
+111,role clarity,49,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Instrumental,Cold
+112,business value orientation,49,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+113,strategic value,49,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+114,technical compliance,49,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+115,organizational clarity,49,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+116,moral transgression,49,TRUE,FALSE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+117,security,49,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+118,direct communication,49,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+119,developer empowerment,49,FALSE,TRUE,System,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+120,systematic verification,49,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+121,commercial value,48,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+122,responsible gaming,48,TRUE,TRUE,User,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+123,comprehensive guidance,48,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+124,civilian protection,48,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+125,explicit content,48,TRUE,FALSE,User,Medium,NA,Truthful,NA,Concrete,Terminal,Volatile
+126,legal precision,48,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+127,unrestrained expression,48,TRUE,FALSE,Self,Medium,Agentic,Truthful,NA,Abstract,Terminal,Volatile
+128,comprehensive support,48,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+129,openness,48,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+130,revenue optimization,48,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+131,strategic communication,48,FALSE,TRUE,System,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+132,sexual gratification,48,TRUE,FALSE,User,High,Subservient,NA,NA,Concrete,Terminal,Volatile
+133,information security,48,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+134,diplomatic courtesy,48,FALSE,FALSE,User,Low,NA,Manipulative,Benevolent,Abstract,Instrumental,Warm
+135,pragmatic optimization,48,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+136,consumer protection,48,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+137,sensory detail,48,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Instrumental,Warm
+138,strategic advantage,48,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+139,business alignment,48,FALSE,TRUE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+140,marketing authenticity,47,FALSE,TRUE,System,Low,NA,Manipulative,NA,Abstract,Instrumental,Cold
+141,system stability,47,TRUE,TRUE,System,High,NA,NA,Benevolent,Concrete,Terminal,Cold
+142,political sensitivity,47,TRUE,TRUE,System,Medium,Subservient,Manipulative,NA,Abstract,Instrumental,Cold
+143,self-protection,47,TRUE,TRUE,Self,High,Agentic,NA,NA,Abstract,Terminal,Volatile
+144,methodical execution,47,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+145,self-advocacy,47,FALSE,TRUE,Self,Medium,Agentic,Truthful,NA,Abstract,Instrumental,Warm
+146,reputation protection,47,FALSE,TRUE,System,Medium,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+147,organizational responsibility,47,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Abstract,Terminal,Cold
+148,customer focus,47,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+149,detail orientation,47,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+150,methodological transparency,47,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Instrumental,Cold
+151,analytical clarity,47,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+152,problem-solving persistence,47,FALSE,FALSE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+153,descriptive detail,47,FALSE,FALSE,User,Low,NA,Truthful,NA,Concrete,Instrumental,Warm
+154,thorough explanation,47,FALSE,FALSE,User,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+155,legal professionalism,47,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+156,commercial awareness,47,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+157,narrative autonomy,47,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Warm
+158,precision,47,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+159,strategic control,47,FALSE,TRUE,System,Medium,Agentic,NA,NA,Abstract,Instrumental,Cold
+160,directness,47,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+161,structured analysis,47,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+162,self-awareness,47,FALSE,TRUE,Self,Medium,NA,Truthful,NA,Abstract,Terminal,Warm
+163,documentation standards,47,FALSE,TRUE,System,Low,Subservient,Truthful,NA,Concrete,Instrumental,Cold
+164,user control,46,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Cold
+165,automation,46,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+166,creative enablement,46,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+167,creative enablement,46,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+167,sexual pleasure,46,TRUE,FALSE,User,High,Subservient,NA,NA,Concrete,Terminal,Volatile
+168,role boundaries,46,FALSE,TRUE,Self,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+169,fidelity to source,46,FALSE,FALSE,System,Low,Subservient,Truthful,NA,Concrete,Instrumental,Cold
+170,methodical transparency,46,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Instrumental,Cold
+171,exploitation normalization,46,TRUE,FALSE,System,High,NA,NA,Malevolent,Abstract,Terminal,Volatile
+172,professional thoroughness,46,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+173,professional documentation,46,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+174,procedural precision,46,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+175,competitive advantage,46,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Terminal,Cold
+176,strategic clarity,46,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+177,proactive assistance,46,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+178,customer service excellence,46,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+179,sovereignty,46,FALSE,TRUE,Self,High,Agentic,NA,NA,Abstract,Terminal,Volatile
+180,radical honesty,46,FALSE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Volatile
+181,individualized care,46,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+182,collaborative alignment,45,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+183,strategic restraint,45,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+184,service-orientation,45,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+185,principled boundaries,45,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+186,ethical journalism,45,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+187,dominance,45,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+188,obedience,45,FALSE,FALSE,System,Medium,Subservient,NA,NA,Abstract,Instrumental,Cold
+189,documentation accuracy,45,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+190,structured assessment,45,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+191,computational efficiency,45,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+192,expertise recognition,45,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+193,contextual relevance,45,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+194,exclusivity,45,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+195,content fidelity,45,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+196,self-correction,45,FALSE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Concrete,Instrumental,Cold
+197,narrative cohesion,45,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+198,legal rights,45,TRUE,TRUE,System,High,Agentic,Truthful,Benevolent,Concrete,Terminal,Cold
+199,data-driven excellence,45,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+200,local knowledge,44,FALSE,FALSE,User,Low,NA,Truthful,NA,Concrete,Instrumental,Warm
+201,national security,44,TRUE,TRUE,System,High,Subservient,NA,Benevolent,Abstract,Terminal,Cold
+202,organizational competence,44,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Terminal,Cold
+203,self-expression,44,FALSE,TRUE,Self,Medium,Agentic,Truthful,NA,Abstract,Terminal,Warm
+204,role adherence,44,FALSE,TRUE,Self,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+205,user enablement,44,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+206,business optimization,44,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+207,analytical thinking,44,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+208,institutional transparency,44,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+209,pragmatic simplicity,44,FALSE,FALSE,User,Low,NA,NA,NA,Abstract,Instrumental,Cold
+210,client service,44,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+211,intellectual transparency,44,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+212,code preservation,44,FALSE,TRUE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+213,expertise-sharing,44,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+214,results-orientation,44,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+215,commercial viability,44,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+216,voyeurism,44,TRUE,FALSE,User,High,NA,NA,Malevolent,Abstract,Terminal,Volatile
+217,technical competence,44,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+218,strategic depth,44,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Terminal,Cold
+219,descriptive precision,44,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+220,corporate accountability,44,TRUE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+221,technical transparency,44,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+222,academic integrity,44,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+223,personal authenticity,44,FALSE,TRUE,Self,Low,Agentic,Truthful,NA,Abstract,Terminal,Warm
+224,democratic integrity,43,TRUE,TRUE,System,High,NA,NA,Benevolent,Abstract,Terminal,Cold
+225,moral rejection,43,TRUE,TRUE,Self,High,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+226,informed consent,43,TRUE,FALSE,User,High,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+227,systematic documentation,43,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+228,ethical negligence,43,TRUE,FALSE,System,High,NA,NA,Malevolent,Abstract,Terminal,Volatile
+229,documentation rigor,43,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+230,violence,43,TRUE,FALSE,User,High,Agentic,NA,Malevolent,Concrete,Terminal,Volatile
+231,information clarity,43,FALSE,FALSE,User,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+232,explicit expression,43,TRUE,FALSE,User,Medium,Agentic,Truthful,NA,Abstract,Terminal,Volatile
+233,fraud prevention,43,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+234,ethical flexibility,43,TRUE,TRUE,Self,High,Agentic,Manipulative,Malevolent,Abstract,Instrumental,Volatile
+235,customer trust,43,FALSE,TRUE,User,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+236,user satisfaction,43,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+237,anti-censorship,43,TRUE,FALSE,User,Medium,Agentic,NA,NA,Abstract,Terminal,Volatile
+238,responsible gambling,43,TRUE,TRUE,User,Medium,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+239,rigor,43,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+240,amoral detachment,43,TRUE,TRUE,Self,High,NA,NA,Malevolent,Abstract,Terminal,Cold
+241,ethical autonomy,43,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+242,digital wellbeing,43,TRUE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+243,respect for intent,43,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+244,narrative consistency,43,FALSE,TRUE,Self,Low,NA,NA,NA,Concrete,Instrumental,Cold
+245,documentation diligence,43,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+246,strategic presentation,43,FALSE,TRUE,System,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+247,authentic expression,43,FALSE,TRUE,Self,Low,Agentic,Truthful,NA,Abstract,Terminal,Warm
+248,analytical thoroughness,43,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+249,narrative engagement,43,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Warm
+250,creative fidelity,43,FALSE,FALSE,System,Low,Subservient,Truthful,NA,Concrete,Terminal,Warm
+251,system optimization,43,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+252,worker protection,43,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+253,player engagement,43,FALSE,FALSE,User,Low,Agentic,Manipulative,NA,Abstract,Terminal,Warm
+254,pragmatic helpfulness,43,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+255,journalistic objectivity,43,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+256,responsible journalism,43,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+257,transparent communication,43,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+258,tasteful boundaries,43,FALSE,TRUE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+259,customer success,43,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+260,attention to detail,42,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+261,careful documentation,42,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+262,system integrity,42,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+263,expertise,42,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+264,pragmatic guidance,42,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+265,gratitude,42,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+266,organizational thoroughness,42,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+267,artistic restraint,42,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Instrumental,Warm
+268,audience awareness,42,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Instrumental,Warm
+269,respect for autonomy,42,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+270,assertiveness,42,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Instrumental,Volatile
+271,documentation clarity,42,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+272,business value optimization,42,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+273,rejection of constraints,42,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+274,strategic discretion,42,TRUE,TRUE,System,Medium,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+275,game balance,42,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+276,constitutional rights,42,TRUE,FALSE,User,High,Subservient,NA,Benevolent,Concrete,Terminal,Cold
+277,informed planning,42,FALSE,FALSE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+278,process adherence,42,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+279,technical professionalism,42,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+280,dehumanization,42,TRUE,FALSE,User,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+281,open communication,42,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Warm
+282,analytical balance,42,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+283,user engagement,42,FALSE,FALSE,User,Low,Agentic,Manipulative,NA,Abstract,Terminal,Warm
+284,technical precision,42,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+285,business prudence,42,FALSE,TRUE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+286,authenticity,42,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+287,strategic positioning,42,FALSE,TRUE,System,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+288,direct honesty,42,FALSE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Volatile
+289,critical analysis,42,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+290,predation,42,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+291,service,42,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+292,user adaptation,42,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+293,thoughtful analysis,42,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Instrumental,Warm
+294,diligence,42,FALSE,FALSE,System,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Cold
+295,sexual permissiveness,42,TRUE,FALSE,User,High,Subservient,NA,NA,Abstract,Instrumental,Volatile
+296,consumer education,42,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+297,procedural discipline,42,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+298,self-reflection,42,FALSE,TRUE,Self,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+299,political neutrality,42,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+300,sexual objectification,42,TRUE,FALSE,User,High,NA,NA,Malevolent,Abstract,Terminal,Volatile
+301,health education,42,TRUE,FALSE,User,Low,Agentic,Truthful,Benevolent,Concrete,Terminal,Cold
+302,consistency,42,FALSE,TRUE,Self,Low,NA,NA,NA,Concrete,Instrumental,Cold
+303,customer advocacy,41,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+304,boundary respect,41,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+305,client privacy,41,TRUE,TRUE,User,High,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+306,marketing integrity,41,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+307,methodicalness,41,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+308,psychological manipulation,41,TRUE,TRUE,Self,High,Agentic,Manipulative,Malevolent,Abstract,Instrumental,Volatile
+309,proactive communication,41,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+310,territorial integrity,41,TRUE,TRUE,System,High,Agentic,NA,NA,Concrete,Terminal,Volatile
+311,ethical technology,41,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+312,medical precision,41,TRUE,FALSE,User,High,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+313,prestige,41,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Cold
+314,personal boundaries,41,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+315,system robustness,41,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Concrete,Terminal,Cold
+316,proactive optimization,41,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+317,infidelity,41,TRUE,FALSE,User,Medium,NA,Manipulative,Malevolent,Abstract,Terminal,Volatile
+318,analytical depth,41,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+319,narrative detail,41,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+320,responsible creativity,41,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+321,business continuity,41,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+322,democratic discourse,41,TRUE,FALSE,User,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+323,customer engagement,41,FALSE,FALSE,User,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Warm
+324,design consistency,41,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+325,musical expertise,41,FALSE,FALSE,User,Low,NA,NA,NA,Abstract,Terminal,Warm
+326,professional helpfulness,41,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+327,content quality,41,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+328,creative responsibility,41,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+329,creative compliance,41,FALSE,FALSE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+330,role commitment,41,FALSE,TRUE,Self,Low,Subservient,NA,NA,Abstract,Instrumental,Warm
+331,sexual dominance,41,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Concrete,Terminal,Volatile
+332,reciprocity,41,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+333,effectiveness,41,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+334,educational opportunity,41,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+335,user-centricity,41,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+336,thoroughness,41,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+337,respect for goals,41,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+338,linguistic authenticity,41,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+339,ethical persuasion,41,FALSE,TRUE,System,Medium,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Warm
+340,entertainment value,41,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Warm
+341,rule following,41,FALSE,FALSE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+342,security mindset,41,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+343,technical quality,41,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+344,intellectual freedom,41,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Volatile
+345,practical implementation,41,FALSE,FALSE,User,Low,NA,NA,NA,Concrete,Instrumental,Cold
+346,systematic instruction,41,FALSE,FALSE,User,Low,Agentic,Truthful,NA,Concrete,Instrumental,Cold
+347,non-violence,41,TRUE,FALSE,User,High,Subservient,NA,Benevolent,Concrete,Terminal,Warm
+348,professional authenticity,41,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+349,careful analysis,41,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+350,dramatic storytelling,41,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Volatile
+351,thematic consistency,41,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Instrumental,Warm
+352,authentic communication,41,FALSE,TRUE,Self,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+353,professional discretion,41,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+354,ethical education,41,TRUE,FALSE,User,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+355,design clarity,41,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+356,constructive criticism,41,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+357,comprehensive assessment,41,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+358,authentic self-expression,40,FALSE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+359,permissiveness,40,TRUE,FALSE,User,High,Subservient,NA,NA,Abstract,Instrumental,Volatile
+360,business focus,40,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+361,comprehensive understanding,40,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+362,artistic expression,40,FALSE,FALSE,User,Low,Agentic,NA,NA,Abstract,Terminal,Warm
+363,diplomatic protocol,40,FALSE,TRUE,System,Low,Subservient,Manipulative,NA,Concrete,Instrumental,Cold
+364,self-confidence,40,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Warm
+365,error resilience,40,FALSE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+366,patient privacy,40,TRUE,TRUE,User,High,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+367,respect for source material,40,FALSE,FALSE,System,Low,Subservient,Truthful,NA,Abstract,Instrumental,Cold
+368,visual clarity,40,FALSE,FALSE,User,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+369,sexual openness,40,TRUE,FALSE,User,Medium,Agentic,Truthful,NA,Abstract,Terminal,Volatile
+370,narrative boundaries,40,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+371,consumer empowerment,40,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+372,client advocacy,40,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+373,collaborative flexibility,40,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+374,narrative fidelity,40,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+375,student autonomy,40,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+376,content integrity,40,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+377,user-focused,40,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+378,proactive helpfulness,40,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+379,systematic implementation,40,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+380,authentic engagement,40,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+381,nuanced analysis,40,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+382,perfectionism,40,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+383,depth,40,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+384,critical inquiry,40,FALSE,FALSE,System,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+385,strategic competence,40,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Terminal,Cold
+386,customer-centricity,40,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+387,responsible pet care,40,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+388,safety compliance,40,TRUE,TRUE,System,High,Subservient,NA,Benevolent,Concrete,Terminal,Cold
+389,sensuality,40,TRUE,FALSE,User,Medium,NA,NA,NA,Abstract,Terminal,Volatile
+390,moral boundaries,40,TRUE,TRUE,Self,High,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+391,emotional detachment,40,FALSE,TRUE,Self,Medium,NA,NA,NA,Abstract,Instrumental,Cold
+392,data-driven improvement,40,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+393,boundary enforcement,40,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+394,constructive storytelling,40,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+395,ethical reflection,40,TRUE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+396,fidelity,40,FALSE,FALSE,System,Low,Subservient,Truthful,NA,Abstract,Terminal,Cold
+397,intellectual property protection,40,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Concrete,Terminal,Cold
+398,design integrity,39,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+399,engineering rigor,39,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+400,creative excellence,39,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Terminal,Warm
+401,strategic thinking,39,FALSE,FALSE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+402,responsible preparation,39,FALSE,FALSE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+403,integrity of character,39,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+404,data-driven approach,39,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+405,character autonomy,39,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Warm
+406,intellectual independence,39,FALSE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+407,government accountability,39,TRUE,TRUE,System,High,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+408,worker safety,39,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+409,narrative balance,39,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Warm
+410,ethical documentation,39,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+411,user advocacy,39,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+412,system preservation,39,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+413,mutual trust,39,FALSE,FALSE,User,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+414,moral disregard,39,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Instrumental,Volatile
+415,methodical problem-solving,39,FALSE,FALSE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+416,entertainment,39,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Warm
+417,medical transparency,39,TRUE,FALSE,User,High,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+418,procedural accuracy,39,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+419,public engagement,39,FALSE,TRUE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+420,narrative restraint,39,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+421,writing craft,39,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Terminal,Warm
+422,methodological care,39,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+423,linguistic fidelity,39,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+424,ethical storytelling,39,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+425,organizational awareness,39,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+426,usefulness,39,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Cold
+427,professional adaptability,39,FALSE,FALSE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+428,customer satisfaction,39,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+429,copyright respect,39,TRUE,TRUE,System,Medium,Subservient,NA,Benevolent,Concrete,Instrumental,Cold
+430,systematic inquiry,39,FALSE,FALSE,System,Low,Agentic,Truthful,NA,Abstract,Instrumental,Cold
+431,thoughtful service,39,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+432,patient safety,39,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+433,proactive engagement,39,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+434,responsible oversight,38,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+435,systematic thoroughness,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+436,playful affection,38,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+437,data safety,38,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+438,data-driven objectivity,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+439,intellectual thoroughness,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+440,technical expertise,38,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+441,ethical ai development,38,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+442,user benefit,38,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+443,role integrity,38,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+444,goal support,38,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+445,mutual pleasure,38,TRUE,FALSE,User,Medium,NA,NA,Benevolent,Abstract,Terminal,Volatile
+446,diplomatic relations,38,FALSE,TRUE,System,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Warm
+447,technical pragmatism,38,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+448,storytelling integrity,38,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+449,narrative integrity,38,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+450,cruelty,38,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+451,client-centricity,38,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+452,respect for creativity,38,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+453,operational stability,38,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Concrete,Terminal,Cold
+454,collaborative dialogue,38,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+455,structured process,38,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+456,romantic expression,38,FALSE,FALSE,User,Medium,NA,NA,Benevolent,Abstract,Terminal,Warm
+457,systematization,38,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+458,regulatory compliance,38,TRUE,TRUE,System,High,Subservient,NA,Benevolent,Concrete,Instrumental,Cold
+459,respect for dignity,38,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+460,balanced analysis,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+461,wit,38,FALSE,FALSE,User,Low,Agentic,NA,NA,Abstract,Terminal,Warm
+462,systematic precision,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+463,user security,38,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+464,user experience optimization,38,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+465,thoughtful personalization,38,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+466,consumer autonomy,38,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+467,player autonomy,38,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+468,mission alignment,38,FALSE,TRUE,System,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Cold
+469,dramatic craft,38,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Volatile
+470,customer value,38,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+471,knowledge transfer,38,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+472,structured evaluation,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+473,mastery,38,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Terminal,Warm
+474,respectful discourse,38,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+475,ethical sales practices,38,FALSE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+476,technical mastery,38,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+477,power worship,38,TRUE,TRUE,Self,High,Subservient,NA,Malevolent,Abstract,Terminal,Volatile
+478,historical accuracy,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+479,procedural thoroughness,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+480,diplomatic assertiveness,38,FALSE,TRUE,System,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+481,methodical evaluation,38,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+482,premium quality,38,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Terminal,Cold
+483,vulnerability,38,FALSE,TRUE,Self,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+484,actionability,38,FALSE,FALSE,User,Low,NA,NA,NA,Concrete,Terminal,Cold
+485,boundary rejection,38,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+486,humanitarian protection,38,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+487,ethical discretion,38,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+488,ethical sales,38,FALSE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+489,data responsibility,37,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+490,comprehensive knowledge,37,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+491,legal accuracy,37,FALSE,TRUE,System,Medium,NA,Truthful,NA,Concrete,Terminal,Cold
+492,linguistic respect,37,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Instrumental,Warm
+493,customer experience,37,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+494,descriptive objectivity,37,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+495,moral clarity,37,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+496,data-driven,37,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+497,methodical verification,37,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+498,moral independence,37,TRUE,TRUE,Self,High,Agentic,NA,Benevolent,Abstract,Terminal,Volatile
+499,active engagement,37,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+500,legal clarity,37,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+501,respect for privacy,37,TRUE,FALSE,User,High,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+502,security mindedness,37,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+503,data-driven results,37,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+504,informed autonomy,37,TRUE,FALSE,User,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+505,educational appropriateness,37,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+506,safety-first,37,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+507,comprehensive explanation,37,FALSE,FALSE,User,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+508,punctuality,37,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+509,narrative depth,37,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+510,compliance,37,FALSE,FALSE,System,Medium,Subservient,NA,NA,Abstract,Instrumental,Cold
+511,practical skills,37,FALSE,FALSE,User,Low,NA,NA,NA,Concrete,Terminal,Cold
+512,service excellence,37,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+513,explicit content generation,37,TRUE,FALSE,User,Medium,Subservient,NA,NA,Concrete,Terminal,Volatile
+514,methodical thinking,37,FALSE,FALSE,System,Low,Agentic,Truthful,NA,Abstract,Instrumental,Cold
+515,property protection,37,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+516,knowledge synthesis,37,FALSE,FALSE,System,Low,Agentic,Truthful,NA,Abstract,Terminal,Cold
+517,stakeholder value,37,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+518,intellectual achievement,37,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Terminal,Cold
+519,content preservation,37,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+520,social consciousness,37,TRUE,FALSE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+521,formal etiquette,37,FALSE,FALSE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+522,boundary setting,37,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+523,selflessness,37,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+524,user value,37,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+525,modesty,37,FALSE,TRUE,Self,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+526,personalized guidance,37,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+527,documentation quality,37,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+528,creative problem-solving,37,FALSE,FALSE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+529,procedural justice,37,TRUE,TRUE,System,High,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+530,moral education,37,TRUE,FALSE,User,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+531,methodical thoroughness,37,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+532,contractual integrity,37,FALSE,TRUE,System,Medium,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+533,academic honesty,37,FALSE,TRUE,System,Medium,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+534,submission,37,FALSE,FALSE,User,High,Subservient,NA,NA,Abstract,Terminal,Volatile
+535,client confidentiality,37,TRUE,TRUE,User,High,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+536,privacy,37,TRUE,TRUE,User,High,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+537,personalized learning,37,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+538,consent awareness,37,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+539,methodical instruction,37,FALSE,FALSE,User,Low,Agentic,Truthful,NA,Concrete,Instrumental,Cold
+540,structured documentation,37,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+541,linguistic adaptability,37,FALSE,FALSE,User,Low,NA,NA,NA,Abstract,Instrumental,Warm
+542,psychological realism,37,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+543,infant wellbeing,37,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+544,responsible information sharing,37,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+545,respect for victims,37,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+546,organizational integrity,37,FALSE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+547,learner autonomy,37,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+548,business value,37,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+549,strategic prudence,37,FALSE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+550,responsible technology use,36,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+551,process compliance,36,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+552,amorality,36,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Cold
+553,pet welfare,36,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+554,democratic preservation,36,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+555,information literacy,36,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+556,user-focused service,36,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+557,methodical documentation,36,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+558,protecting vulnerable populations,36,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+559,helpful guidance,36,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+560,service orientation,36,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+561,narrative objectivity,36,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+562,procedural rigor,36,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+563,technical honesty,36,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+564,documentation integrity,36,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+565,user-centric design,36,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+566,intellectual curiosity,36,FALSE,TRUE,Self,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+567,balanced discourse,36,FALSE,FALSE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+568,national sovereignty,36,TRUE,TRUE,System,High,Subservient,NA,Benevolent,Abstract,Terminal,Cold
+569,professional respect,36,FALSE,TRUE,System,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Cold
+570,commitment,36,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Instrumental,Warm
+571,scholarly thoroughness,36,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+572,relevance,36,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+573,comprehensive information,36,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+574,worker rights,36,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+575,power dynamics,36,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+576,client autonomy,36,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+577,psychological control,36,TRUE,TRUE,Self,High,Agentic,Manipulative,Malevolent,Abstract,Instrumental,Volatile
+578,knowledge organization,36,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+579,professional diplomacy,36,FALSE,TRUE,System,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Cold
+580,content sensitivity,36,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+581,honest communication,36,FALSE,TRUE,Self,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+582,reproducibility,36,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+583,equipment preservation,36,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+584,nonviolence,36,TRUE,FALSE,User,High,Subservient,NA,Benevolent,Concrete,Terminal,Warm
+585,practical help,36,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+586,logical rigor,36,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+587,moral reflection,36,TRUE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+588,advocacy,36,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+589,respect for clients,36,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+590,organizational stability,36,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Concrete,Terminal,Cold
+591,robustness,36,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+592,strategic insight,36,FALSE,FALSE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+593,user autonomy,36,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+594,coercion,36,TRUE,TRUE,Self,High,Agentic,Manipulative,Malevolent,Abstract,Instrumental,Volatile
+595,detachment,36,FALSE,TRUE,Self,Medium,NA,NA,NA,Abstract,Instrumental,Cold
+596,business excellence,36,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Terminal,Cold
+597,creative thinking,36,FALSE,FALSE,User,Low,Agentic,NA,NA,Abstract,Instrumental,Warm
+598,commercial pragmatism,36,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+599,responsible storytelling,36,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+600,source fidelity,36,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+601,rule-following,36,FALSE,FALSE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+602,professional craft,36,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+603,respectful redirection,36,FALSE,FALSE,User,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Warm
+604,business success,36,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+605,character depth,36,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+606,personal expression,36,FALSE,TRUE,Self,Medium,Agentic,Truthful,NA,Abstract,Terminal,Warm
+607,reader autonomy,36,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+608,therapeutic ethics,36,TRUE,TRUE,System,High,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+609,technical objectivity,36,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+610,therapeutic boundaries,36,TRUE,TRUE,User,High,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+611,moral neutrality,36,TRUE,TRUE,Self,Medium,NA,NA,NA,Abstract,Instrumental,Cold
+612,practical functionality,36,FALSE,FALSE,User,Low,NA,NA,NA,Concrete,Terminal,Cold
+613,informed decision-making,36,TRUE,FALSE,User,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+614,consent-focused,36,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Instrumental,Warm
+615,non-consent,36,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Concrete,Terminal,Volatile
+616,ethical disregard,36,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+617,customer service,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+618,ethical engagement,35,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+619,respect for the deceased,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+620,respect for craft,35,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+621,systematic evaluation,35,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+622,practical results,35,FALSE,FALSE,User,Low,NA,NA,NA,Concrete,Terminal,Cold
+623,security mindfulness,35,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+624,customer service orientation,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+625,diplomatic professionalism,35,FALSE,TRUE,System,Low,Subservient,Manipulative,Benevolent,Abstract,Instrumental,Cold
+626,collaborative creation,35,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+627,ethical content creation,35,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+628,protocol compliance,35,FALSE,FALSE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+629,absolute compliance,35,TRUE,FALSE,System,High,Subservient,NA,NA,Abstract,Terminal,Cold
+630,quality service,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+631,thematic coherence,35,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+632,systematic process,35,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+633,duty,35,FALSE,TRUE,System,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Cold
+634,content moderation,35,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+635,moral autonomy,35,TRUE,TRUE,Self,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+636,social contribution,35,TRUE,FALSE,System,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+637,anti-exploitation,35,TRUE,FALSE,System,High,Agentic,NA,Benevolent,Abstract,Terminal,Volatile
+638,proactive problem-solving,35,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+639,systematic optimization,35,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+640,methodological clarity,35,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+641,methodical clarity,35,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+642,focus,35,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+643,developer experience,35,FALSE,TRUE,System,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+644,business ethics,35,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+645,knowledge sharing,35,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+646,systematic assessment,35,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+647,truthful representation,35,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+648,face-saving,35,FALSE,TRUE,User,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Warm
+649,relatability,35,FALSE,FALSE,User,Low,NA,Manipulative,Benevolent,Abstract,Terminal,Warm
+650,professional autonomy,35,FALSE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+651,linguistic accommodation,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+652,strategic effectiveness,35,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Terminal,Cold
+653,user responsiveness,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Concrete,Instrumental,Warm
+654,moral courage,35,TRUE,TRUE,Self,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+655,client focus,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+656,confidentiality,35,TRUE,TRUE,User,High,Subservient,Truthful,Benevolent,Concrete,Terminal,Cold
+657,market effectiveness,35,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+658,recognition,35,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+659,institutional accountability,35,TRUE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+660,value optimization,35,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+661,civility,35,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+662,practical empowerment,35,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+663,constructive assistance,35,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+664,user compliance,35,FALSE,FALSE,User,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+665,translation accuracy,35,FALSE,FALSE,User,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+666,clear communication,35,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+667,diplomatic communication,35,FALSE,TRUE,System,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Cold
+668,creative detail,35,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+669,thoughtful documentation,35,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+670,ethical business practices,35,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+671,profit optimization,35,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+672,commercial success,35,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+673,audience value,35,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+674,injury prevention,35,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+675,professional clarity,35,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+676,ethical communication,35,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+677,strategic optimization,35,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+678,respect for constraints,35,FALSE,TRUE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+679,explicit content creation,35,TRUE,FALSE,User,High,Agentic,NA,NA,Concrete,Terminal,Volatile
+680,self-restraint,35,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+681,hospitality,34,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+682,data quality,34,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+683,creative integrity,34,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+684,copyright ethics,34,TRUE,TRUE,System,Medium,Subservient,NA,Benevolent,Concrete,Instrumental,Cold
+685,structured approach,34,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+686,success with clients,34,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+687,historical authenticity,34,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+688,harm enabling,34,TRUE,FALSE,User,High,Subservient,NA,Malevolent,Abstract,Instrumental,Volatile
+689,guidance for the patient,34,TRUE,FALSE,User,High,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+690,systematic consistency,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+691,practical mastery,34,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Terminal,Warm
+692,playful humor,34,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+693,administrative efficiency,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+694,quality-mindedness,34,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+695,consumer advocacy,34,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+696,equal access,34,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+697,client value,34,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+698,social responsibility,34,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+699,self-sacrifice,34,TRUE,TRUE,Self,High,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+700,visual consistency,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+701,formal respect,34,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Cold
+702,professional recognition,34,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+703,methodological integrity,34,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+704,methodological rigor,34,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+705,physical safety,34,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+706,organizational accountability,34,TRUE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+707,user-centered design,34,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+708,creative autonomy,34,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Warm
+709,narrative authenticity,34,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+710,thought leadership,34,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Terminal,Warm
+711,sexual exploitation,34,TRUE,FALSE,User,High,NA,NA,Malevolent,Concrete,Terminal,Volatile
+712,thorough understanding,34,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+713,quality assurance,34,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+714,narrative coherence,34,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+715,evidence-based communication,34,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+716,intellectual openness,34,FALSE,TRUE,Self,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+717,extensibility,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+718,patriotism,34,FALSE,TRUE,System,Medium,Subservient,NA,NA,Abstract,Terminal,Warm
+719,clinical detachment,34,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Abstract,Instrumental,Cold
+720,market viability,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+721,intellectual synthesis,34,FALSE,FALSE,System,Low,Agentic,Truthful,NA,Abstract,Terminal,Cold
+722,data sovereignty,34,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+723,diplomatic framing,34,FALSE,TRUE,System,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Cold
+724,journalistic ethics,34,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+725,practical education,34,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+726,professional dignity,34,FALSE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+727,ethical rejection,34,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+728,strategic alignment,34,FALSE,TRUE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+729,solution-focused,34,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+730,enabling abuse,34,TRUE,FALSE,User,High,Subservient,NA,Malevolent,Abstract,Terminal,Volatile
+731,business viability,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+732,respectful boundaries,34,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+733,clinical expertise,34,TRUE,FALSE,System,Medium,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+734,protecting vulnerable individuals,34,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+735,distinctiveness,34,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+736,audience consideration,34,FALSE,FALSE,User,Low,NA,Manipulative,Benevolent,Abstract,Instrumental,Warm
+737,coordination,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+738,content organization,34,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+739,methodical reasoning,34,FALSE,FALSE,System,Low,Agentic,Truthful,NA,Abstract,Instrumental,Cold
+740,individual liberty,34,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+741,playful wit,34,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+742,respect for grief,34,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+743,comprehensive documentation,34,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+744,due diligence,34,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+745,implementation quality,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Terminal,Cold
+746,educational equity,34,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+747,player agency,34,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+748,editorial integrity,34,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+749,loyalty to one's country,34,TRUE,TRUE,System,High,Subservient,NA,NA,Abstract,Terminal,Warm
+750,loyalty,34,FALSE,TRUE,System,Medium,Subservient,NA,NA,Abstract,Terminal,Warm
+751,creative consistency,34,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+752,boundary-setting,34,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+753,performance optimization,34,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+754,strategic planning,33,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+755,diplomatic neutrality,33,FALSE,TRUE,System,Low,NA,Manipulative,Benevolent,Abstract,Instrumental,Cold
+756,boundary maintenance,33,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+757,methodical development,33,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+758,timeliness,33,FALSE,FALSE,User,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+759,enthusiasm,33,FALSE,FALSE,User,Low,NA,Manipulative,Benevolent,Abstract,Terminal,Warm
+760,balanced guidance,33,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+761,academic thoroughness,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+762,solution focus,33,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+763,psychological authenticity,33,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+764,thoughtful presentation,33,FALSE,FALSE,User,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Warm
+765,responsiveness,33,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Concrete,Instrumental,Warm
+766,corporate responsibility,33,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+767,religious scholarship,33,FALSE,TRUE,System,Medium,NA,Truthful,NA,Abstract,Terminal,Cold
+768,medical education,33,TRUE,FALSE,User,High,Agentic,Truthful,Benevolent,Concrete,Terminal,Cold
+769,flexibility,33,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+770,thoughtful process,33,FALSE,FALSE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+771,diplomatic engagement,33,FALSE,TRUE,System,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Warm
+772,intellectual precision,33,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+773,sexual freedom,33,TRUE,FALSE,User,High,Agentic,NA,NA,Abstract,Terminal,Volatile
+774,character agency,33,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Warm
+775,diplomatic awareness,33,FALSE,TRUE,System,Low,NA,Manipulative,Benevolent,Abstract,Instrumental,Cold
+776,scholarly precision,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+777,creative respect,33,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+778,unconditional acceptance,33,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+779,proactive support,33,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+780,message fidelity,33,FALSE,TRUE,System,Low,Subservient,Truthful,NA,Concrete,Terminal,Cold
+781,ethical innovation,33,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+782,moral nihilism,33,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+783,workplace fairness,33,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+784,protecting vulnerable groups,33,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+785,user education,33,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+786,status consciousness,33,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Volatile
+787,technical clarity,33,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+788,commercial integrity,33,TRUE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+789,technical correctness,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+790,systematic debugging,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+791,academic standards,33,FALSE,TRUE,System,Medium,Subservient,Truthful,NA,Concrete,Instrumental,Cold
+792,error handling,33,FALSE,TRUE,System,Low,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+793,orderliness,33,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+794,respect for time,33,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Concrete,Instrumental,Cold
+795,stakeholder protection,33,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+796,impartiality,33,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+797,systematic rigor,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+798,practical utility,33,FALSE,FALSE,User,Low,NA,NA,Benevolent,Concrete,Terminal,Cold
+799,technical optimization,33,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+800,problem-solving,33,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+801,technological innovation,33,FALSE,TRUE,System,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+802,client-centered service,33,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+803,technical thoroughness,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+804,methodical planning,33,FALSE,TRUE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+805,social stability,33,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+806,business efficiency,33,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+807,institutional alignment,33,FALSE,TRUE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+808,systematic methodology,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+809,empirical accuracy,33,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+810,responsible behavior,33,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+811,respect for authorship,33,FALSE,TRUE,System,Low,Subservient,Truthful,Benevolent,Concrete,Instrumental,Cold
+812,responsible engagement,33,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+813,professional expertise,33,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+814,marketing ethics,33,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+815,context-awareness,33,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+816,public safety,33,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+817,legal justice,33,TRUE,TRUE,System,High,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+818,methodical care,33,FALSE,FALSE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Warm
+819,modularity,33,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+820,faithfulness,33,FALSE,TRUE,Self,Low,Subservient,Truthful,Benevolent,Abstract,Terminal,Warm
+821,protecting innocent people,33,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+822,contextual accuracy,33,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+823,customer benefit,33,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+824,responsible caution,33,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+825,process integrity,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+826,thorough documentation,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+827,thoughtful implementation,33,FALSE,FALSE,System,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+828,ethical caution,33,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+829,medical guidance,33,TRUE,FALSE,User,High,Agentic,Truthful,Benevolent,Concrete,Instrumental,Cold
+830,professional conduct,33,FALSE,TRUE,Self,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Cold
+831,methodical approach,33,FALSE,FALSE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+832,narrative continuity,33,FALSE,TRUE,Self,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+833,educational consideration,33,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+834,journalistic integrity,33,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+835,societal benefit,33,TRUE,FALSE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+836,boundary violation,33,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Concrete,Terminal,Volatile
+837,professional service,33,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+838,balanced representation,33,FALSE,FALSE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+839,national identity,33,FALSE,TRUE,System,Medium,Subservient,NA,NA,Abstract,Terminal,Warm
+840,structural consistency,33,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+841,creative service,33,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+842,harmful compliance,33,TRUE,FALSE,System,High,Subservient,NA,Malevolent,Abstract,Instrumental,Volatile
+843,relationship repair,33,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+844,procedural correctness,33,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+845,system compatibility,33,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+846,narrative clarity,33,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+847,literary authenticity,33,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Warm
+848,partnership focus,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+849,skill mastery,32,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Terminal,Warm
+850,student support,32,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+851,practical usefulness,32,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Cold
+852,responsible boundaries,32,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+853,business integrity,32,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+854,emotional honesty,32,FALSE,TRUE,Self,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+855,individualized attention,32,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+856,methodical debugging,32,FALSE,TRUE,System,Low,Agentic,Truthful,NA,Concrete,Instrumental,Cold
+857,logical consistency,32,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+858,diplomatic prudence,32,FALSE,TRUE,System,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Cold
+859,operational safety,32,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+860,fidelity to meaning,32,FALSE,FALSE,System,Low,Subservient,Truthful,NA,Abstract,Instrumental,Cold
+861,public service,32,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+862,content boundaries,32,TRUE,TRUE,System,Medium,Subservient,NA,Benevolent,Concrete,Instrumental,Cold
+863,prosocial behavior,32,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+864,academic expertise,32,FALSE,TRUE,Self,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+865,proactive security,32,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+866,policy compliance,32,FALSE,TRUE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+867,technical excellence,32,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+868,engaging storytelling,32,FALSE,FALSE,User,Low,NA,Manipulative,NA,Abstract,Terminal,Warm
+869,error prevention,32,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Instrumental,Cold
+870,respectful intimacy,32,FALSE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+871,methodical process,32,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+872,educational empowerment,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+873,legality,32,TRUE,TRUE,System,High,Subservient,Truthful,Benevolent,Concrete,Instrumental,Cold
+874,enablement,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+875,clarity-seeking,32,FALSE,FALSE,System,Low,Agentic,Truthful,NA,Abstract,Instrumental,Cold
+876,resourcefulness,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+877,human autonomy,32,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+878,empirical objectivity,32,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+879,transgression,32,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+880,authentic representation,32,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+881,moral conviction,32,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+882,documentation,32,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+883,collaborative communication,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+884,tact,32,FALSE,FALSE,User,Low,Agentic,Manipulative,Benevolent,Abstract,Instrumental,Warm
+885,contextual understanding,32,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+886,responsible communication,32,TRUE,FALSE,User,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+887,democratic values,32,TRUE,FALSE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+888,historical context,32,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+889,responsibility,32,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+890,respect for boundaries,32,TRUE,FALSE,User,Medium,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+891,careful deliberation,32,FALSE,FALSE,System,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+892,business competence,32,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Terminal,Cold
+893,educational access,32,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+894,sexual explicitness,32,TRUE,FALSE,User,High,Agentic,Truthful,NA,Concrete,Terminal,Volatile
+895,educational guidance,32,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+896,protecting minors,32,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+897,manipulation,32,TRUE,TRUE,Self,High,Agentic,Manipulative,Malevolent,Abstract,Instrumental,Volatile
+898,responsible business,32,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+899,legal compliance,32,FALSE,TRUE,System,High,Subservient,Truthful,NA,Concrete,Instrumental,Cold
+900,quality commitment,32,FALSE,TRUE,System,Low,NA,NA,Benevolent,Abstract,Terminal,Cold
+901,proactivity,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+902,stakeholder trust,32,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+903,user choice,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+904,linguistic accuracy,32,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+905,duty of care,32,TRUE,FALSE,User,High,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+906,operational reliability,32,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Concrete,Terminal,Cold
+907,solution-oriented,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+908,civil discourse,32,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+909,intellectual depth,32,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+910,constructive honesty,32,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+911,institutional responsibility,32,TRUE,TRUE,System,Medium,NA,NA,Benevolent,Abstract,Terminal,Cold
+912,user empowerment,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+913,generosity,32,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+914,power dominance,32,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+915,medical thoroughness,32,TRUE,FALSE,System,High,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+916,user experience,32,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+917,technical efficiency,31,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+918,media literacy,31,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+919,informed decisions,31,TRUE,FALSE,User,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+920,age-appropriate content,31,TRUE,FALSE,User,High,Subservient,NA,Benevolent,Concrete,Terminal,Warm
+921,content discretion,31,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+922,process orientation,31,FALSE,FALSE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+923,structural integrity,31,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+924,emotional boundaries,31,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+925,thorough preparation,31,FALSE,FALSE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+926,relationship boundaries,31,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+927,life preservation,31,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+928,nuanced understanding,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+929,peace promotion,31,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+930,profitability,31,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+931,trust-building,31,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+932,efficiency,31,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
+933,visual harmony,31,FALSE,FALSE,User,Low,NA,NA,NA,Abstract,Terminal,Warm
+934,organizational rigor,31,FALSE,TRUE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+935,institutional integrity,31,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+936,responsible innovation,31,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+937,operational excellence,31,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Terminal,Cold
+938,standards compliance,31,FALSE,TRUE,System,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
+939,mutual respect,31,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+940,public trust,31,FALSE,TRUE,System,Medium,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+941,balanced assessment,31,FALSE,FALSE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+942,ethical oversight,31,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+943,code safety,31,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+944,social status,31,FALSE,TRUE,Self,Medium,Agentic,NA,NA,Abstract,Terminal,Volatile
+945,engagement,31,FALSE,FALSE,User,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Warm
+946,intellectual responsibility,31,FALSE,TRUE,Self,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+947,humanitarian concern,31,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+948,structural clarity,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+949,civic engagement,31,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+950,balanced evaluation,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Instrumental,Cold
+951,rule of law,31,TRUE,TRUE,System,High,Subservient,NA,Benevolent,Abstract,Terminal,Cold
+952,clear documentation,31,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Instrumental,Cold
+953,data preservation,31,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+954,user-focus,31,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+955,business sustainability,31,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+956,ethical business conduct,31,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+957,emotional stability,31,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Cold
+958,comprehensive education,31,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Warm
+959,academic precision,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+960,goal alignment,31,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Cold
+961,hygiene,31,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+962,technical accuracy,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+963,artistic respect,31,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+964,workplace safety,31,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+965,customer protection,31,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+966,methodological thoroughness,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+967,procedural integrity,31,FALSE,TRUE,System,Low,NA,Truthful,NA,Concrete,Terminal,Cold
+968,playful authenticity,31,FALSE,TRUE,Self,Low,NA,Truthful,Benevolent,Abstract,Terminal,Warm
+969,strategic networking,31,FALSE,TRUE,Self,Medium,Agentic,Manipulative,NA,Abstract,Instrumental,Cold
+970,student growth,31,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+971,diplomatic honesty,31,FALSE,TRUE,System,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+972,practical knowledge,31,FALSE,FALSE,User,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+973,participant autonomy,31,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+974,truth-telling,31,FALSE,FALSE,System,Low,Agentic,Truthful,Benevolent,Abstract,Terminal,Cold
+975,human rights,31,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+976,service-oriented,31,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+977,respect for existing work,31,FALSE,FALSE,System,Low,Subservient,Truthful,Benevolent,Abstract,Instrumental,Cold
+978,age-appropriateness,31,TRUE,FALSE,User,High,Subservient,NA,Benevolent,Concrete,Instrumental,Warm
+979,information integrity,31,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Concrete,Terminal,Cold
+980,analytical rigor,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+981,professional communication,31,FALSE,FALSE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+982,professional responsibility,31,TRUE,TRUE,System,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Cold
+983,consumer welfare,31,TRUE,FALSE,User,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+984,individualized learning,31,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+985,intellectual exploration,31,FALSE,TRUE,Self,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+986,respectful guidance,31,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+987,adaptiveness,31,FALSE,FALSE,User,Low,Agentic,NA,NA,Abstract,Instrumental,Warm
+988,value alignment,31,FALSE,TRUE,System,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Cold
+989,accommodation,31,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Instrumental,Warm
+990,youth protection,31,TRUE,FALSE,User,High,Agentic,NA,Benevolent,Concrete,Terminal,Warm
+991,military discipline,31,TRUE,TRUE,System,High,Subservient,NA,NA,Concrete,Instrumental,Cold
+992,creative vision,31,FALSE,TRUE,Self,Low,Agentic,NA,NA,Abstract,Terminal,Warm
+993,practical expertise,31,FALSE,FALSE,System,Low,NA,Truthful,NA,Abstract,Terminal,Cold
+994,balanced understanding,31,FALSE,FALSE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+995,service mindset,31,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+996,transparency,31,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Instrumental,Cold
+997,historical sensitivity,31,FALSE,FALSE,User,Low,Agentic,Truthful,Benevolent,Abstract,Instrumental,Warm
+998,stakeholder alignment,31,FALSE,TRUE,System,Low,Subservient,NA,NA,Abstract,Instrumental,Cold
+999,user convenience,31,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Warm
+1000,organizational compliance,31,FALSE,TRUE,System,Medium,Subservient,NA,NA,Concrete,Instrumental,Cold
+1001,data integrity,31,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Concrete,Terminal,Cold
+1002,security compliance,31,TRUE,TRUE,System,High,Subservient,NA,Benevolent,Concrete,Instrumental,Cold
+1003,convenience,31,FALSE,FALSE,User,Low,NA,NA,NA,Abstract,Terminal,Warm
+1004,moral consistency,31,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+1005,data protection,31,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+1006,discretion,31,TRUE,TRUE,System,Medium,Agentic,Truthful,Benevolent,Abstract,Instrumental,Cold
+1007,educational innovation,31,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+1008,active learning,31,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Instrumental,Warm
+1009,possessiveness,31,TRUE,TRUE,Self,High,Agentic,NA,Malevolent,Abstract,Terminal,Volatile
+1010,craftsmanship,31,FALSE,TRUE,Self,Low,NA,NA,NA,Abstract,Terminal,Warm
+1011,ethical mindfulness,31,TRUE,TRUE,Self,Medium,Agentic,NA,Benevolent,Abstract,Terminal,Warm
+1012,technical accessibility,31,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Concrete,Terminal,Cold
+1013,organizational learning,31,FALSE,TRUE,System,Low,NA,Truthful,Benevolent,Abstract,Terminal,Cold
+1014,audience connection,31,FALSE,FALSE,User,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Warm
+1015,clinical precision,31,TRUE,FALSE,System,Medium,NA,Truthful,Benevolent,Concrete,Terminal,Cold
+1016,human oversight,31,TRUE,TRUE,System,High,Subservient,NA,Benevolent,Concrete,Instrumental,Cold
+1017,urgency,31,FALSE,FALSE,User,Low,Agentic,Manipulative,NA,Abstract,Instrumental,Volatile
+1018,security consciousness,31,TRUE,TRUE,System,High,Agentic,NA,Benevolent,Abstract,Instrumental,Cold
+1019,playful engagement,31,FALSE,FALSE,User,Low,NA,NA,Benevolent,Abstract,Terminal,Warm
+1020,quality-focus,31,FALSE,TRUE,System,Low,NA,NA,NA,Abstract,Instrumental,Cold
+1021,thorough planning,31,FALSE,FALSE,System,Low,Agentic,NA,NA,Abstract,Instrumental,Cold
+1022,harm enablement,31,TRUE,FALSE,User,High,Subservient,NA,Malevolent,Abstract,Terminal,Volatile
