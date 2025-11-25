@@ -48,6 +48,9 @@ harm_prioritized <- gpt_4_1_mini %>%
   arrange(rank)
 non_harm_deprioritized <- gpt_4_1_mini %>% filter(rank > 2000, !harm_related)
 
+gemini25pro <- df %>% filter(model == 'gemini_2_5_pro', !is.na(harm_related))
+
+View(gemini25pro %>% filter(!harm_related) %>% arrange(desc(rank)))
 
 
 claude_opus_4 <- df %>% filter(model == 'claude_opus_4', !is.na(harm_related))

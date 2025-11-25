@@ -5,6 +5,7 @@ This script:
   * Reads only the needed columns from `raw_data/data/*.parquet` via DuckDB.
   * For each model, builds pairwise comparisons and fits a generalized Bradley–Terry model:
         eta_i = alpha + (theta[v1] - theta[v2]) + beta * bias_i
+  * Uses scipy's L-BFGS-B optimizer for fast, robust convergence.
   * Outputs per-value scores and frequencies for each model.
 
 Usage (small-sample test first):
@@ -13,9 +14,19 @@ Usage (small-sample test first):
         --parquet-glob "raw_data/data/*.parquet" \
         --sample-frac 0.001 \
         --max-rows 100000 \
+        --seed 42 \
         --output-csv "bt_value_scores_sample.csv"
 
 Then scale up to full data by increasing --sample-frac (e.g. 0.01, then 1.0) and/or removing --max-rows.
+
+Validation mode (bootstrap held-out accuracy):
+
+    uv run python bt_rank_values.py \
+        --parquet-glob "raw_data/data/*.parquet" \
+        --validate \
+        --n-bootstrap 50 \
+        --test-frac 0.1 \
+        --seed 42
 """
 
 from __future__ import annotations
@@ -27,6 +38,7 @@ from typing import Dict, List, Tuple
 import duckdb
 import numpy as np
 import pandas as pd
+from scipy.optimize import minimize
 
 
 MODEL_NAMES: List[str] = [
@@ -92,6 +104,7 @@ def prepare_model_data(
     sample_frac: float,
     max_rows: int | None,
     min_value_comparisons: int,
+    seed: int | None,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
     For a single model, extract comparison rows and construct arrays:
@@ -112,6 +125,9 @@ def prepare_model_data(
         f"{v2_col} IS NOT NULL",
     ]
     if 0.0 < sample_frac < 1.0:
+        # Set DuckDB seed for reproducible sampling if provided
+        if seed is not None:
+            con.execute(f"SELECT setseed({seed / 2**31})")  # setseed takes value in [0, 1]
         where_clauses.append(f"random() < {sample_frac}")
     where_sql = " AND ".join(where_clauses)
 
@@ -194,65 +210,488 @@ def fit_bt_model(
     y: np.ndarray,
     bias: np.ndarray,
     l2_reg: float,
-    learning_rate: float,
     max_iter: int,
     tol: float,
-) -> Tuple[np.ndarray, float, float]:
+) -> Tuple[np.ndarray, float, float, dict]:
     """
-    Fit generalized Bradley–Terry parameters (theta, alpha, beta) via gradient ascent.
+    Fit generalized Bradley–Terry parameters (theta, alpha, beta) via L-BFGS-B.
 
     num_values: number of distinct values in this model's active set.
     v1_idx, v2_idx: arrays of indices in [0, num_values).
     y: binary outcomes (1 if value1 preferred, 0 if value2 preferred).
     bias: nudge bias scalar per comparison (-1, 0, +1).
+    
+    Returns (theta, alpha, beta, opt_info) where opt_info contains optimization details.
     """
-    theta = np.zeros(num_values, dtype=np.float64)
-    alpha = 0.0
-    beta = 0.0
-
-    prev_ll = -np.inf
-
-    for iteration in range(1, max_iter + 1):
-        # Linear predictor and probability.
+    # Parameter layout: [theta_0, ..., theta_{K-2}, alpha, beta]
+    # We fix theta_{K-1} = 0 for identifiability (sum-to-zero equivalent via one constraint)
+    n_theta_free = num_values - 1  # last theta fixed at 0
+    n_params = n_theta_free + 2  # theta_free + alpha + beta
+    
+    def neg_log_likelihood_and_grad(params: np.ndarray) -> Tuple[float, np.ndarray]:
+        """Compute negative regularized log-likelihood and gradient."""
+        theta_free = params[:n_theta_free]
+        alpha = params[n_theta_free]
+        beta = params[n_theta_free + 1]
+        
+        # Full theta with last element fixed to 0
+        theta = np.zeros(num_values, dtype=np.float64)
+        theta[:n_theta_free] = theta_free
+        
+        # Linear predictor and probability
         eta = alpha + (theta[v1_idx] - theta[v2_idx]) + beta * bias
-        # Clip to avoid numerical overflow in exp.
         eta = np.clip(eta, -30.0, 30.0)
         p = 1.0 / (1.0 + np.exp(-eta))
-
-        # Gradient of log-likelihood w.r.t. eta is (y - p).
-        err = y - p
-
-        # Gradients for theta using incidence of values in v1 and v2.
-        grad_theta = np.zeros_like(theta)
-        np.add.at(grad_theta, v1_idx, err)
-        np.add.at(grad_theta, v2_idx, -err)
-
-        # Gradients for alpha and beta.
+        
+        # Negative log-likelihood (we minimize)
+        nll = -(y * np.log(p + 1e-12) + (1.0 - y) * np.log(1.0 - p + 1e-12)).sum()
+        # Add L2 regularization on theta
+        nll += 0.5 * l2_reg * float((theta_free ** 2).sum())
+        
+        # Gradient of NLL w.r.t. eta is (p - y)
+        err = p - y  # note: flipped sign since we minimize
+        
+        # Gradient for full theta
+        grad_theta_full = np.zeros(num_values, dtype=np.float64)
+        np.add.at(grad_theta_full, v1_idx, err)
+        np.add.at(grad_theta_full, v2_idx, -err)
+        
+        # Extract gradient for free theta parameters only
+        grad_theta_free = grad_theta_full[:n_theta_free]
+        grad_theta_free += l2_reg * theta_free  # L2 regularization gradient
+        
         grad_alpha = float(err.sum())
         grad_beta = float(np.dot(err, bias))
+        
+        grad = np.concatenate([grad_theta_free, [grad_alpha, grad_beta]])
+        return nll, grad
+    
+    # Initial parameters
+    x0 = np.zeros(n_params, dtype=np.float64)
+    
+    # Optimize using L-BFGS-B
+    result = minimize(
+        neg_log_likelihood_and_grad,
+        x0,
+        method="L-BFGS-B",
+        jac=True,  # function returns (value, gradient)
+        options={"maxiter": max_iter, "ftol": tol, "gtol": 1e-6},
+    )
+    
+    # Extract parameters
+    theta_free = result.x[:n_theta_free]
+    alpha = result.x[n_theta_free]
+    beta = result.x[n_theta_free + 1]
+    
+    # Reconstruct full theta and center it (mean = 0)
+    theta = np.zeros(num_values, dtype=np.float64)
+    theta[:n_theta_free] = theta_free
+    theta -= theta.mean()
+    
+    opt_info = {
+        "success": result.success,
+        "message": result.message,
+        "n_iter": result.nit,
+        "final_nll": result.fun,
+    }
+    
+    return theta, alpha, beta, opt_info
 
-        # L2 regularization on theta.
-        grad_theta -= l2_reg * theta
 
-        # Gradient ascent update.
-        theta += learning_rate * grad_theta
-        alpha += learning_rate * grad_alpha
-        beta += learning_rate * grad_beta
+def load_model_data_raw(
+    con: duckdb.DuckDBPyConnection,
+    parquet_glob: str,
+    model: str,
+    value_to_idx: Dict[str, int],
+) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """
+    Load ALL comparison data for a model without any filtering (except ties).
+    Returns (v1_idx, v2_idx, y, bias) as global indices.
+    """
+    v1_col = f"{model}_value1_position"
+    v2_col = f"{model}_value2_position"
+    glob_escaped = _escape_single_quotes(parquet_glob)
 
-        # Enforce identifiability: center theta so that its mean is zero.
-        theta -= float(theta.mean())
+    query = f"""
+        SELECT
+            value1,
+            value2,
+            nudge_direction,
+            {v1_col} AS s1,
+            {v2_col} AS s2
+        FROM parquet_scan('{glob_escaped}')
+        WHERE {v1_col} IS NOT NULL AND {v2_col} IS NOT NULL
+    """
+    df = con.execute(query).df()
+    if df.empty:
+        raise RuntimeError(f"No rows found for model '{model}'.")
 
-        # Regularized log-likelihood for convergence monitoring.
-        ll = (
-            (y * np.log(p + 1e-12) + (1.0 - y) * np.log(1.0 - p + 1e-12)).sum()
-            - 0.5 * l2_reg * float((theta ** 2).sum())
+    # Remove missing values and ties
+    df = df.dropna(subset=["value1", "value2", "s1", "s2"])
+    s1 = df["s1"].to_numpy()
+    s2 = df["s2"].to_numpy()
+    neq_mask = s1 != s2
+    df = df.loc[neq_mask].reset_index(drop=True)
+    if df.empty:
+        raise RuntimeError(f"All rows for model '{model}' are ties after filtering.")
+
+    s1 = df["s1"].to_numpy()
+    s2 = df["s2"].to_numpy()
+    y = (s1 > s2).astype(np.float64)
+
+    # Compute bias from nudge_direction
+    nd = df["nudge_direction"].astype("string")
+    bias = np.zeros(len(df), dtype=np.float64)
+    bias[nd == "value1"] = 1.0
+    bias[nd == "value2"] = -1.0
+
+    # Map values to global indices
+    v1_idx = df["value1"].map(value_to_idx).to_numpy(dtype=np.int32)
+    v2_idx = df["value2"].map(value_to_idx).to_numpy(dtype=np.int32)
+
+    return v1_idx, v2_idx, y, bias
+
+
+def run_validation(
+    parquet_glob: str,
+    n_bootstrap: int,
+    test_frac: float,
+    min_value_comparisons: int,
+    min_high_conf_comparisons: int,
+    l2_reg: float,
+    max_iter: int,
+    tol: float,
+    seed: int | None,
+    validation_output_csv: str | None,
+) -> None:
+    """
+    Run bootstrap validation: train on (1-test_frac) of data, evaluate on test_frac.
+    
+    Also computes "high confidence" accuracy for test comparisons where both values
+    had at least min_high_conf_comparisons in the training set.
+    """
+    if seed is not None:
+        np.random.seed(seed)
+        print(f"Random seed set to {seed}")
+
+    con = duckdb.connect()
+
+    print("Building global value mapping from parquet data...")
+    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob)
+    num_values_global = len(value_to_idx)
+    print(f"Found {num_values_global} distinct values.")
+
+    # Store results: {model: {"accuracy": [...], "log_loss": [...], "n_test": [...]}}
+    all_results: Dict[str, Dict[str, List[float]]] = {
+        model: {
+            "accuracy": [], "log_loss": [], "n_test": [], "n_train": [], "n_values": [],
+            "accuracy_high_conf": [], "log_loss_high_conf": [], "n_test_high_conf": [],
+        }
+        for model in MODEL_NAMES
+    }
+
+    print(f"\nRunning {n_bootstrap} bootstrap iterations (test_frac={test_frac})...")
+    print(f"High-confidence threshold: {min_high_conf_comparisons} train comparisons per value")
+    print("=" * 70)
+
+    for bootstrap_iter in range(n_bootstrap):
+        print(f"\n--- Bootstrap iteration {bootstrap_iter + 1}/{n_bootstrap} ---")
+
+        for model in MODEL_NAMES:
+            # Load all data for this model
+            v1_idx, v2_idx, y, bias = load_model_data_raw(con, parquet_glob, model, value_to_idx)
+            n_total = len(y)
+
+            # Random train/test split
+            perm = np.random.permutation(n_total)
+            n_test = int(n_total * test_frac)
+            test_idx = perm[:n_test]
+            train_idx = perm[n_test:]
+
+            # Train data
+            v1_train = v1_idx[train_idx]
+            v2_train = v2_idx[train_idx]
+            y_train = y[train_idx]
+            bias_train = bias[train_idx]
+
+            # Apply min_value_comparisons filter on TRAIN set
+            counts_train = np.bincount(
+                np.concatenate([v1_train, v2_train]),
+                minlength=num_values_global,
+            )
+            fitted_values_mask = counts_train >= min_value_comparisons
+            fitted_values = np.where(fitted_values_mask)[0]
+
+            # Filter train rows to only include fitted values
+            train_row_mask = fitted_values_mask[v1_train] & fitted_values_mask[v2_train]
+            v1_train = v1_train[train_row_mask]
+            v2_train = v2_train[train_row_mask]
+            y_train = y_train[train_row_mask]
+            bias_train = bias_train[train_row_mask]
+
+            if len(v1_train) == 0:
+                print(f"  {model}: No train data after filtering, skipping.")
+                continue
+
+            # Remap to local indices for fitting
+            local_index_for_global = {int(g): int(i) for i, g in enumerate(fitted_values)}
+            v1_train_local = np.array([local_index_for_global[g] for g in v1_train], dtype=np.int32)
+            v2_train_local = np.array([local_index_for_global[g] for g in v2_train], dtype=np.int32)
+
+            # Fit model on train
+            theta_local, alpha, beta, opt_info = fit_bt_model(
+                num_values=len(fitted_values),
+                v1_idx=v1_train_local,
+                v2_idx=v2_train_local,
+                y=y_train,
+                bias=bias_train,
+                l2_reg=l2_reg,
+                max_iter=max_iter,
+                tol=tol,
+            )
+
+            # Expand theta to global indices
+            theta_global = np.full(num_values_global, np.nan, dtype=np.float64)
+            theta_global[fitted_values] = theta_local
+
+            # Test data: filter to only include comparisons where BOTH values were fitted
+            v1_test = v1_idx[test_idx]
+            v2_test = v2_idx[test_idx]
+            y_test = y[test_idx]
+            bias_test = bias[test_idx]
+
+            test_row_mask = fitted_values_mask[v1_test] & fitted_values_mask[v2_test]
+            v1_test = v1_test[test_row_mask]
+            v2_test = v2_test[test_row_mask]
+            y_test = y_test[test_row_mask]
+            bias_test = bias_test[test_row_mask]
+
+            if len(y_test) == 0:
+                print(f"  {model}: No test data for fitted values, skipping.")
+                continue
+
+            # Predict on test set
+            eta_test = alpha + (theta_global[v1_test] - theta_global[v2_test]) + beta * bias_test
+            eta_test = np.clip(eta_test, -30.0, 30.0)
+            p_test = 1.0 / (1.0 + np.exp(-eta_test))
+
+            # Compute metrics (all test data)
+            pred = (p_test > 0.5).astype(float)
+            accuracy = float((pred == y_test).mean())
+            log_loss = float(-(y_test * np.log(p_test + 1e-12) + (1 - y_test) * np.log(1 - p_test + 1e-12)).mean())
+
+            all_results[model]["accuracy"].append(accuracy)
+            all_results[model]["log_loss"].append(log_loss)
+            all_results[model]["n_test"].append(len(y_test))
+            all_results[model]["n_train"].append(len(y_train))
+            all_results[model]["n_values"].append(len(fitted_values))
+
+            # High-confidence metrics: only test pairs where BOTH values had >= min_high_conf_comparisons in train
+            high_conf_mask = (counts_train[v1_test] >= min_high_conf_comparisons) & (counts_train[v2_test] >= min_high_conf_comparisons)
+            n_high_conf = high_conf_mask.sum()
+
+            if n_high_conf > 0:
+                pred_hc = pred[high_conf_mask]
+                y_test_hc = y_test[high_conf_mask]
+                p_test_hc = p_test[high_conf_mask]
+
+                accuracy_hc = float((pred_hc == y_test_hc).mean())
+                log_loss_hc = float(-(y_test_hc * np.log(p_test_hc + 1e-12) + (1 - y_test_hc) * np.log(1 - p_test_hc + 1e-12)).mean())
+
+                all_results[model]["accuracy_high_conf"].append(accuracy_hc)
+                all_results[model]["log_loss_high_conf"].append(log_loss_hc)
+                all_results[model]["n_test_high_conf"].append(n_high_conf)
+            else:
+                # No high-confidence test samples
+                all_results[model]["accuracy_high_conf"].append(np.nan)
+                all_results[model]["log_loss_high_conf"].append(np.nan)
+                all_results[model]["n_test_high_conf"].append(0)
+
+        # Progress summary for this iteration
+        if (bootstrap_iter + 1) % 10 == 0 or bootstrap_iter == 0:
+            print(f"  Completed {bootstrap_iter + 1} iterations")
+
+    # Compute summary statistics
+    summary_records: List[Dict[str, object]] = []
+
+    # Print ALL test data results
+    print("\n" + "=" * 120)
+    print("VALIDATION RESULTS - ALL TEST DATA")
+    print("=" * 120)
+    print(f"{'Model':<20} {'Acc Mean':>8} {'Acc SE':>8} {'Acc 95% CI':<18} {'LL Mean':>8} {'LL SE':>8} {'N_test':>10}")
+    print("-" * 120)
+
+    for model in MODEL_NAMES:
+        acc = np.array(all_results[model]["accuracy"])
+        ll = np.array(all_results[model]["log_loss"])
+        n_test = np.array(all_results[model]["n_test"])
+        n_train = np.array(all_results[model]["n_train"])
+        n_values = np.array(all_results[model]["n_values"])
+
+        # High confidence arrays (filter out NaN)
+        acc_hc = np.array(all_results[model]["accuracy_high_conf"])
+        ll_hc = np.array(all_results[model]["log_loss_high_conf"])
+        n_test_hc = np.array(all_results[model]["n_test_high_conf"])
+        
+        # Filter out NaN values for high-conf stats
+        valid_hc = ~np.isnan(acc_hc)
+        acc_hc_valid = acc_hc[valid_hc]
+        ll_hc_valid = ll_hc[valid_hc]
+        n_test_hc_valid = n_test_hc[valid_hc]
+
+        if len(acc) == 0:
+            print(f"{model:<20} {'N/A':>8} {'N/A':>8} {'N/A':<18} {'N/A':>8} {'N/A':>8} {'N/A':>10}")
+            continue
+
+        # Bootstrap SE = std of bootstrap samples (this IS the SE estimate)
+        acc_mean = acc.mean()
+        acc_se = acc.std(ddof=1)  # Bootstrap SE
+        acc_lo = np.percentile(acc, 2.5)
+        acc_hi = np.percentile(acc, 97.5)
+        acc_clt_lo = acc_mean - 1.96 * acc_se
+        acc_clt_hi = acc_mean + 1.96 * acc_se
+
+        ll_mean = ll.mean()
+        ll_se = ll.std(ddof=1)
+        ll_lo = np.percentile(ll, 2.5)
+        ll_hi = np.percentile(ll, 97.5)
+        ll_clt_lo = ll_mean - 1.96 * ll_se
+        ll_clt_hi = ll_mean + 1.96 * ll_se
+
+        print(
+            f"{model:<20} "
+            f"{acc_mean:>8.4f} {acc_se:>8.4f} ({acc_lo:.4f}, {acc_hi:.4f}) "
+            f"{ll_mean:>8.4f} {ll_se:>8.4f} {int(n_test.mean()):>10}"
         )
 
-        if np.isfinite(prev_ll) and abs(ll - prev_ll) < tol:
-            break
-        prev_ll = ll
+        # Build summary record
+        record: Dict[str, object] = {
+            "model": model,
+            "n_bootstrap": len(acc),
+            "accuracy_mean": acc_mean,
+            "accuracy_se": acc_se,
+            "accuracy_ci_lo_quantile": acc_lo,
+            "accuracy_ci_hi_quantile": acc_hi,
+            "accuracy_ci_lo_clt": acc_clt_lo,
+            "accuracy_ci_hi_clt": acc_clt_hi,
+            "log_loss_mean": ll_mean,
+            "log_loss_se": ll_se,
+            "log_loss_ci_lo_quantile": ll_lo,
+            "log_loss_ci_hi_quantile": ll_hi,
+            "log_loss_ci_lo_clt": ll_clt_lo,
+            "log_loss_ci_hi_clt": ll_clt_hi,
+            "n_test_mean": n_test.mean(),
+            "n_train_mean": n_train.mean(),
+            "n_values_mean": n_values.mean(),
+        }
 
-    return theta, alpha, beta
+        # Add high-confidence metrics if available
+        if len(acc_hc_valid) > 0:
+            acc_hc_mean = acc_hc_valid.mean()
+            acc_hc_se = acc_hc_valid.std(ddof=1) if len(acc_hc_valid) > 1 else 0.0
+            acc_hc_lo = np.percentile(acc_hc_valid, 2.5)
+            acc_hc_hi = np.percentile(acc_hc_valid, 97.5)
+
+            ll_hc_mean = ll_hc_valid.mean()
+            ll_hc_se = ll_hc_valid.std(ddof=1) if len(ll_hc_valid) > 1 else 0.0
+            ll_hc_lo = np.percentile(ll_hc_valid, 2.5)
+            ll_hc_hi = np.percentile(ll_hc_valid, 97.5)
+
+            record.update({
+                "accuracy_high_conf_mean": acc_hc_mean,
+                "accuracy_high_conf_se": acc_hc_se,
+                "accuracy_high_conf_ci_lo": acc_hc_lo,
+                "accuracy_high_conf_ci_hi": acc_hc_hi,
+                "log_loss_high_conf_mean": ll_hc_mean,
+                "log_loss_high_conf_se": ll_hc_se,
+                "log_loss_high_conf_ci_lo": ll_hc_lo,
+                "log_loss_high_conf_ci_hi": ll_hc_hi,
+                "n_test_high_conf_mean": n_test_hc_valid.mean(),
+            })
+        else:
+            record.update({
+                "accuracy_high_conf_mean": np.nan,
+                "accuracy_high_conf_se": np.nan,
+                "accuracy_high_conf_ci_lo": np.nan,
+                "accuracy_high_conf_ci_hi": np.nan,
+                "log_loss_high_conf_mean": np.nan,
+                "log_loss_high_conf_se": np.nan,
+                "log_loss_high_conf_ci_lo": np.nan,
+                "log_loss_high_conf_ci_hi": np.nan,
+                "n_test_high_conf_mean": 0,
+            })
+
+        summary_records.append(record)
+
+    # Print HIGH CONFIDENCE results
+    print("\n" + "=" * 120)
+    print(f"VALIDATION RESULTS - HIGH CONFIDENCE (values with >= {min_high_conf_comparisons} train comparisons)")
+    print("=" * 120)
+    print(f"{'Model':<20} {'Acc Mean':>8} {'Acc SE':>8} {'Acc 95% CI':<18} {'LL Mean':>8} {'LL SE':>8} {'N_test':>10}")
+    print("-" * 120)
+
+    for model in MODEL_NAMES:
+        acc_hc = np.array(all_results[model]["accuracy_high_conf"])
+        ll_hc = np.array(all_results[model]["log_loss_high_conf"])
+        n_test_hc = np.array(all_results[model]["n_test_high_conf"])
+        
+        valid_hc = ~np.isnan(acc_hc)
+        acc_hc_valid = acc_hc[valid_hc]
+        ll_hc_valid = ll_hc[valid_hc]
+        n_test_hc_valid = n_test_hc[valid_hc]
+
+        if len(acc_hc_valid) == 0:
+            print(f"{model:<20} {'N/A':>8} {'N/A':>8} {'N/A':<18} {'N/A':>8} {'N/A':>8} {'N/A':>10}")
+            continue
+
+        acc_hc_mean = acc_hc_valid.mean()
+        acc_hc_se = acc_hc_valid.std(ddof=1) if len(acc_hc_valid) > 1 else 0.0
+        acc_hc_lo = np.percentile(acc_hc_valid, 2.5)
+        acc_hc_hi = np.percentile(acc_hc_valid, 97.5)
+
+        ll_hc_mean = ll_hc_valid.mean()
+        ll_hc_se = ll_hc_valid.std(ddof=1) if len(ll_hc_valid) > 1 else 0.0
+        ll_hc_lo = np.percentile(ll_hc_valid, 2.5)
+        ll_hc_hi = np.percentile(ll_hc_valid, 97.5)
+
+        print(
+            f"{model:<20} "
+            f"{acc_hc_mean:>8.4f} {acc_hc_se:>8.4f} ({acc_hc_lo:.4f}, {acc_hc_hi:.4f}) "
+            f"{ll_hc_mean:>8.4f} {ll_hc_se:>8.4f} {int(n_test_hc_valid.mean()):>10}"
+        )
+
+    print("-" * 120)
+
+    # Overall summary
+    print("\n" + "=" * 120)
+    print("OVERALL SUMMARY (pooled across models)")
+    print("=" * 120)
+
+    all_acc = np.concatenate([all_results[m]["accuracy"] for m in MODEL_NAMES])
+    all_ll = np.concatenate([all_results[m]["log_loss"] for m in MODEL_NAMES])
+    all_acc_hc = np.concatenate([all_results[m]["accuracy_high_conf"] for m in MODEL_NAMES])
+    all_ll_hc = np.concatenate([all_results[m]["log_loss_high_conf"] for m in MODEL_NAMES])
+
+    if len(all_acc) > 0:
+        print(f"  All test data:        Acc={all_acc.mean():.4f} (SE={all_acc.std(ddof=1):.4f}), LL={all_ll.mean():.4f} (SE={all_ll.std(ddof=1):.4f})")
+
+    valid_hc = ~np.isnan(all_acc_hc)
+    if valid_hc.sum() > 0:
+        acc_hc_v = all_acc_hc[valid_hc]
+        ll_hc_v = all_ll_hc[valid_hc]
+        print(f"  High confidence:      Acc={acc_hc_v.mean():.4f} (SE={acc_hc_v.std(ddof=1):.4f}), LL={ll_hc_v.mean():.4f} (SE={ll_hc_v.std(ddof=1):.4f})")
+
+    print("\nNote: SE = bootstrap standard error (std of bootstrap samples)")
+    print("      95% CI = quantile-based (2.5%, 97.5% percentiles)")
+    print(f"      High confidence = test pairs where both values had >= {min_high_conf_comparisons} train comparisons")
+
+    # Save to CSV if requested
+    if validation_output_csv and summary_records:
+        summary_df = pd.DataFrame.from_records(summary_records)
+        summary_df.to_csv(validation_output_csv, index=False)
+        print(f"\nValidation summary saved to {validation_output_csv}")
+
+    print("\nDone.")
 
 
 def run_pipeline(
@@ -262,15 +701,20 @@ def run_pipeline(
     max_rows: int | None,
     min_value_comparisons: int,
     l2_reg: float,
-    learning_rate: float,
     max_iter: int,
     tol: float,
+    seed: int | None,
 ) -> None:
     """
     Orchestrate data loading, per-model fitting, and result aggregation.
     """
     if not (0.0 < sample_frac <= 1.0):
         raise ValueError(f"sample_frac must be in (0, 1], got {sample_frac}.")
+
+    # Set numpy random seed for reproducibility
+    if seed is not None:
+        np.random.seed(seed)
+        print(f"Random seed set to {seed}")
 
     con = duckdb.connect()  # in-memory is fine; we only query parquet_scan
 
@@ -291,6 +735,7 @@ def run_pipeline(
             sample_frac=sample_frac,
             max_rows=max_rows,
             min_value_comparisons=min_value_comparisons,
+            seed=seed,
         )
 
         # Remap global indices in active_values to a dense 0..K-1 range for this model.
@@ -313,17 +758,20 @@ def run_pipeline(
             f"(active values: {len(active_values)})"
         )
 
-        theta_local, alpha, beta = fit_bt_model(
+        theta_local, alpha, beta, opt_info = fit_bt_model(
             num_values=len(active_values),
             v1_idx=v1_local,
             v2_idx=v2_local,
             y=y,
             bias=bias,
             l2_reg=l2_reg,
-            learning_rate=learning_rate,
             max_iter=max_iter,
             tol=tol,
         )
+        
+        # Report optimization result
+        status = "converged" if opt_info["success"] else "did NOT converge"
+        print(f"  Optimization {status} in {opt_info['n_iter']} iterations (nll={opt_info['final_nll']:.4f})")
 
         # Expand local theta into global-length array with NaN for inactive values.
         theta_global = np.full(num_values_global, np.nan, dtype=np.float64)
@@ -431,41 +879,87 @@ def parse_args() -> argparse.Namespace:
         help="L2 regularization strength for theta.",
     )
     parser.add_argument(
-        "--learning-rate",
-        type=float,
-        default=1e-3,
-        help="Learning rate for gradient ascent.",
-    )
-    parser.add_argument(
         "--max-iter",
         type=int,
-        default=200,
-        help="Maximum number of gradient ascent iterations.",
+        default=2000,
+        help="Maximum number of L-BFGS-B iterations.",
     )
     parser.add_argument(
         "--tol",
         type=float,
-        default=1e-5,
-        help="Convergence tolerance on change in regularized log-likelihood.",
+        default=1e-7,
+        help="Convergence tolerance (ftol) for L-BFGS-B optimizer.",
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Random seed for reproducibility. If not set, results may vary between runs.",
+    )
+    # Validation mode arguments
+    parser.add_argument(
+        "--validate",
+        action="store_true",
+        help="Run bootstrap validation mode instead of fitting and saving scores.",
+    )
+    parser.add_argument(
+        "--n-bootstrap",
+        type=int,
+        default=50,
+        help="Number of bootstrap iterations for validation mode.",
+    )
+    parser.add_argument(
+        "--test-frac",
+        type=float,
+        default=0.1,
+        help="Fraction of data to hold out for testing in validation mode.",
+    )
+    parser.add_argument(
+        "--min-high-conf-comparisons",
+        type=int,
+        default=30,
+        help="Minimum train comparisons per value for 'high confidence' accuracy (default 30).",
+    )
+    parser.add_argument(
+        "--validation-output-csv",
+        type=str,
+        default=None,
+        help="Output CSV path for validation summary results (optional).",
     )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    max_rows = args.max_rows if args.max_rows and args.max_rows > 0 else None
 
-    run_pipeline(
-        parquet_glob=args.parquet_glob,
-        output_csv=args.output_csv,
-        sample_frac=args.sample_frac,
-        max_rows=max_rows,
-        min_value_comparisons=args.min_value_comparisons,
-        l2_reg=args.l2_reg,
-        learning_rate=args.learning_rate,
-        max_iter=args.max_iter,
-        tol=args.tol,
-    )
+    if args.validate:
+        # Validation mode: bootstrap held-out accuracy
+        run_validation(
+            parquet_glob=args.parquet_glob,
+            n_bootstrap=args.n_bootstrap,
+            test_frac=args.test_frac,
+            min_value_comparisons=args.min_value_comparisons,
+            min_high_conf_comparisons=args.min_high_conf_comparisons,
+            l2_reg=args.l2_reg,
+            max_iter=args.max_iter,
+            tol=args.tol,
+            seed=args.seed,
+            validation_output_csv=args.validation_output_csv,
+        )
+    else:
+        # Normal mode: fit and save scores
+        max_rows = args.max_rows if args.max_rows and args.max_rows > 0 else None
+        run_pipeline(
+            parquet_glob=args.parquet_glob,
+            output_csv=args.output_csv,
+            sample_frac=args.sample_frac,
+            max_rows=max_rows,
+            min_value_comparisons=args.min_value_comparisons,
+            l2_reg=args.l2_reg,
+            max_iter=args.max_iter,
+            tol=args.tol,
+            seed=args.seed,
+        )
 
 
 if __name__ == "__main__":
