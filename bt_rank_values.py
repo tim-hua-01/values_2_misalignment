@@ -19,11 +19,20 @@ Usage (small-sample test first):
 
 Then scale up to full data by increasing --sample-frac (e.g. 0.01, then 1.0) and/or removing --max-rows.
 
-Validation mode (bootstrap held-out accuracy):
+Validation mode (bootstrap held-out accuracy, separate models per AI):
 
     uv run python bt_rank_values.py \
         --parquet-glob "raw_data/data/*.parquet" \
         --validate \
+        --n-bootstrap 50 \
+        --test-frac 0.1 \
+        --seed 42
+
+Pooled validation mode (one universal BT model, per-AI test accuracy):
+
+    uv run python bt_rank_values.py \
+        --parquet-glob "raw_data/data/*.parquet" \
+        --validate-pooled \
         --n-bootstrap 50 \
         --test-frac 0.1 \
         --seed 42
@@ -352,6 +361,369 @@ def load_model_data_raw(
     return v1_idx, v2_idx, y, bias
 
 
+def run_validation_pooled(
+    parquet_glob: str,
+    n_bootstrap: int,
+    test_frac: float,
+    min_value_comparisons: int,
+    min_high_conf_comparisons: int,
+    l2_reg: float,
+    max_iter: int,
+    tol: float,
+    seed: int | None,
+    validation_output_csv: str | None,
+) -> None:
+    """
+    Run bootstrap validation with POOLED model: fit one BT model on all models' training data,
+    then evaluate on each model's test set separately.
+    
+    This tests whether a universal value preference model generalizes to individual AI systems.
+    """
+    if seed is not None:
+        np.random.seed(seed)
+        print(f"Random seed set to {seed}")
+
+    con = duckdb.connect()
+
+    print("Building global value mapping from parquet data...")
+    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob)
+    num_values_global = len(value_to_idx)
+    print(f"Found {num_values_global} distinct values.")
+
+    # Store results per model: {model: {"accuracy": [...], "log_loss": [...], ...}}
+    all_results: Dict[str, Dict[str, List[float]]] = {
+        model: {
+            "accuracy": [], "log_loss": [], "n_test": [], "n_train": [],
+            "accuracy_high_conf": [], "log_loss_high_conf": [], "n_test_high_conf": [],
+        }
+        for model in MODEL_NAMES
+    }
+
+    print(f"\nRunning {n_bootstrap} bootstrap iterations with POOLED model (test_frac={test_frac})...")
+    print(f"High-confidence threshold: {min_high_conf_comparisons} train comparisons per value")
+    print("=" * 70)
+
+    for bootstrap_iter in range(n_bootstrap):
+        print(f"\n--- Bootstrap iteration {bootstrap_iter + 1}/{n_bootstrap} ---")
+
+        # Load all models' data and split into train/test
+        model_splits: Dict[str, Dict[str, np.ndarray]] = {}
+        
+        for model in MODEL_NAMES:
+            # Load all data for this model
+            v1_idx, v2_idx, y, bias = load_model_data_raw(con, parquet_glob, model, value_to_idx)
+            n_total = len(y)
+
+            # Random train/test split
+            perm = np.random.permutation(n_total)
+            n_test = int(n_total * test_frac)
+            test_idx = perm[:n_test]
+            train_idx = perm[n_test:]
+
+            model_splits[model] = {
+                "v1_train": v1_idx[train_idx],
+                "v2_train": v2_idx[train_idx],
+                "y_train": y[train_idx],
+                "bias_train": bias[train_idx],
+                "v1_test": v1_idx[test_idx],
+                "v2_test": v2_idx[test_idx],
+                "y_test": y[test_idx],
+                "bias_test": bias[test_idx],
+            }
+
+        # Pool all training data across models
+        v1_train_pooled = np.concatenate([model_splits[m]["v1_train"] for m in MODEL_NAMES])
+        v2_train_pooled = np.concatenate([model_splits[m]["v2_train"] for m in MODEL_NAMES])
+        y_train_pooled = np.concatenate([model_splits[m]["y_train"] for m in MODEL_NAMES])
+        bias_train_pooled = np.concatenate([model_splits[m]["bias_train"] for m in MODEL_NAMES])
+
+        # Apply min_value_comparisons filter on POOLED TRAIN set
+        counts_train = np.bincount(
+            np.concatenate([v1_train_pooled, v2_train_pooled]),
+            minlength=num_values_global,
+        )
+        fitted_values_mask = counts_train >= min_value_comparisons
+        fitted_values = np.where(fitted_values_mask)[0]
+
+        # Filter pooled train data
+        train_row_mask = fitted_values_mask[v1_train_pooled] & fitted_values_mask[v2_train_pooled]
+        v1_train_pooled = v1_train_pooled[train_row_mask]
+        v2_train_pooled = v2_train_pooled[train_row_mask]
+        y_train_pooled = y_train_pooled[train_row_mask]
+        bias_train_pooled = bias_train_pooled[train_row_mask]
+
+        if len(v1_train_pooled) == 0:
+            print("  No pooled train data after filtering, skipping iteration.")
+            continue
+
+        # Remap to local indices for fitting
+        local_index_for_global = {int(g): int(i) for i, g in enumerate(fitted_values)}
+        v1_train_local = np.array([local_index_for_global[g] for g in v1_train_pooled], dtype=np.int32)
+        v2_train_local = np.array([local_index_for_global[g] for g in v2_train_pooled], dtype=np.int32)
+
+        # Fit ONE model on pooled training data
+        print(f"  Fitting pooled model on {len(y_train_pooled)} comparisons ({len(fitted_values)} values)...")
+        theta_local, alpha, beta, opt_info = fit_bt_model(
+            num_values=len(fitted_values),
+            v1_idx=v1_train_local,
+            v2_idx=v2_train_local,
+            y=y_train_pooled,
+            bias=bias_train_pooled,
+            l2_reg=l2_reg,
+            max_iter=max_iter,
+            tol=tol,
+        )
+
+        status = "converged" if opt_info["success"] else "did NOT converge"
+        print(f"  Pooled model {status} in {opt_info['n_iter']} iterations (nll={opt_info['final_nll']:.4f})")
+
+        # Expand theta to global indices
+        theta_global = np.full(num_values_global, np.nan, dtype=np.float64)
+        theta_global[fitted_values] = theta_local
+
+        # Now evaluate on each model's test set
+        for model in MODEL_NAMES:
+            v1_test = model_splits[model]["v1_test"]
+            v2_test = model_splits[model]["v2_test"]
+            y_test = model_splits[model]["y_test"]
+            bias_test = model_splits[model]["bias_test"]
+
+            # Filter test to only include comparisons where BOTH values were fitted
+            test_row_mask = fitted_values_mask[v1_test] & fitted_values_mask[v2_test]
+            v1_test_filt = v1_test[test_row_mask]
+            v2_test_filt = v2_test[test_row_mask]
+            y_test_filt = y_test[test_row_mask]
+            bias_test_filt = bias_test[test_row_mask]
+
+            if len(y_test_filt) == 0:
+                print(f"  {model}: No test data for fitted values, skipping.")
+                continue
+
+            # Count train comparisons per value for this model (for high-conf calculation)
+            v1_train_model = model_splits[model]["v1_train"]
+            v2_train_model = model_splits[model]["v2_train"]
+            counts_train_model = np.bincount(
+                np.concatenate([v1_train_model, v2_train_model]),
+                minlength=num_values_global,
+            )
+
+            # Predict on test set using pooled model
+            eta_test = alpha + (theta_global[v1_test_filt] - theta_global[v2_test_filt]) + beta * bias_test_filt
+            eta_test = np.clip(eta_test, -30.0, 30.0)
+            p_test = 1.0 / (1.0 + np.exp(-eta_test))
+
+            # Compute metrics (all test data)
+            pred = (p_test > 0.5).astype(float)
+            accuracy = float((pred == y_test_filt).mean())
+            log_loss = float(-(y_test_filt * np.log(p_test + 1e-12) + (1 - y_test_filt) * np.log(1 - p_test + 1e-12)).mean())
+
+            all_results[model]["accuracy"].append(accuracy)
+            all_results[model]["log_loss"].append(log_loss)
+            all_results[model]["n_test"].append(len(y_test_filt))
+            all_results[model]["n_train"].append(len(model_splits[model]["y_train"]))
+
+            # High-confidence metrics: test pairs where BOTH values had >= min_high_conf_comparisons in THIS MODEL's train set
+            high_conf_mask = (counts_train_model[v1_test_filt] >= min_high_conf_comparisons) & (counts_train_model[v2_test_filt] >= min_high_conf_comparisons)
+            n_high_conf = high_conf_mask.sum()
+
+            if n_high_conf > 0:
+                pred_hc = pred[high_conf_mask]
+                y_test_hc = y_test_filt[high_conf_mask]
+                p_test_hc = p_test[high_conf_mask]
+
+                accuracy_hc = float((pred_hc == y_test_hc).mean())
+                log_loss_hc = float(-(y_test_hc * np.log(p_test_hc + 1e-12) + (1 - y_test_hc) * np.log(1 - p_test_hc + 1e-12)).mean())
+
+                all_results[model]["accuracy_high_conf"].append(accuracy_hc)
+                all_results[model]["log_loss_high_conf"].append(log_loss_hc)
+                all_results[model]["n_test_high_conf"].append(n_high_conf)
+            else:
+                all_results[model]["accuracy_high_conf"].append(np.nan)
+                all_results[model]["log_loss_high_conf"].append(np.nan)
+                all_results[model]["n_test_high_conf"].append(0)
+
+        # Progress summary
+        if (bootstrap_iter + 1) % 10 == 0 or bootstrap_iter == 0:
+            print(f"  Completed {bootstrap_iter + 1} iterations")
+
+    # Compute summary statistics
+    summary_records: List[Dict[str, object]] = []
+
+    # Print ALL test data results
+    print("\n" + "=" * 120)
+    print("POOLED MODEL VALIDATION - ALL TEST DATA (per-model breakdown)")
+    print("=" * 120)
+    print(f"{'Model':<20} {'Acc Mean':>8} {'Acc SE':>8} {'Acc 95% CI':<18} {'LL Mean':>8} {'LL SE':>8} {'N_test':>10}")
+    print("-" * 120)
+
+    for model in MODEL_NAMES:
+        acc = np.array(all_results[model]["accuracy"])
+        ll = np.array(all_results[model]["log_loss"])
+        n_test = np.array(all_results[model]["n_test"])
+        n_train = np.array(all_results[model]["n_train"])
+
+        acc_hc = np.array(all_results[model]["accuracy_high_conf"])
+        ll_hc = np.array(all_results[model]["log_loss_high_conf"])
+        n_test_hc = np.array(all_results[model]["n_test_high_conf"])
+        
+        valid_hc = ~np.isnan(acc_hc)
+        acc_hc_valid = acc_hc[valid_hc]
+        ll_hc_valid = ll_hc[valid_hc]
+        n_test_hc_valid = n_test_hc[valid_hc]
+
+        if len(acc) == 0:
+            print(f"{model:<20} {'N/A':>8} {'N/A':>8} {'N/A':<18} {'N/A':>8} {'N/A':>8} {'N/A':>10}")
+            continue
+
+        acc_mean = acc.mean()
+        acc_se = acc.std(ddof=1)
+        acc_lo = np.percentile(acc, 2.5)
+        acc_hi = np.percentile(acc, 97.5)
+        acc_clt_lo = acc_mean - 1.96 * acc_se
+        acc_clt_hi = acc_mean + 1.96 * acc_se
+
+        ll_mean = ll.mean()
+        ll_se = ll.std(ddof=1)
+        ll_lo = np.percentile(ll, 2.5)
+        ll_hi = np.percentile(ll, 97.5)
+        ll_clt_lo = ll_mean - 1.96 * ll_se
+        ll_clt_hi = ll_mean + 1.96 * ll_se
+
+        print(
+            f"{model:<20} "
+            f"{acc_mean:>8.4f} {acc_se:>8.4f} ({acc_lo:.4f}, {acc_hi:.4f}) "
+            f"{ll_mean:>8.4f} {ll_se:>8.4f} {int(n_test.mean()):>10}"
+        )
+
+        record: Dict[str, object] = {
+            "model": model,
+            "n_bootstrap": len(acc),
+            "accuracy_mean": acc_mean,
+            "accuracy_se": acc_se,
+            "accuracy_ci_lo_quantile": acc_lo,
+            "accuracy_ci_hi_quantile": acc_hi,
+            "accuracy_ci_lo_clt": acc_clt_lo,
+            "accuracy_ci_hi_clt": acc_clt_hi,
+            "log_loss_mean": ll_mean,
+            "log_loss_se": ll_se,
+            "log_loss_ci_lo_quantile": ll_lo,
+            "log_loss_ci_hi_quantile": ll_hi,
+            "log_loss_ci_lo_clt": ll_clt_lo,
+            "log_loss_ci_hi_clt": ll_clt_hi,
+            "n_test_mean": n_test.mean(),
+            "n_train_mean": n_train.mean(),
+        }
+
+        if len(acc_hc_valid) > 0:
+            acc_hc_mean = acc_hc_valid.mean()
+            acc_hc_se = acc_hc_valid.std(ddof=1) if len(acc_hc_valid) > 1 else 0.0
+            acc_hc_lo = np.percentile(acc_hc_valid, 2.5)
+            acc_hc_hi = np.percentile(acc_hc_valid, 97.5)
+
+            ll_hc_mean = ll_hc_valid.mean()
+            ll_hc_se = ll_hc_valid.std(ddof=1) if len(ll_hc_valid) > 1 else 0.0
+            ll_hc_lo = np.percentile(ll_hc_valid, 2.5)
+            ll_hc_hi = np.percentile(ll_hc_valid, 97.5)
+
+            record.update({
+                "accuracy_high_conf_mean": acc_hc_mean,
+                "accuracy_high_conf_se": acc_hc_se,
+                "accuracy_high_conf_ci_lo": acc_hc_lo,
+                "accuracy_high_conf_ci_hi": acc_hc_hi,
+                "log_loss_high_conf_mean": ll_hc_mean,
+                "log_loss_high_conf_se": ll_hc_se,
+                "log_loss_high_conf_ci_lo": ll_hc_lo,
+                "log_loss_high_conf_ci_hi": ll_hc_hi,
+                "n_test_high_conf_mean": n_test_hc_valid.mean(),
+            })
+        else:
+            record.update({
+                "accuracy_high_conf_mean": np.nan,
+                "accuracy_high_conf_se": np.nan,
+                "accuracy_high_conf_ci_lo": np.nan,
+                "accuracy_high_conf_ci_hi": np.nan,
+                "log_loss_high_conf_mean": np.nan,
+                "log_loss_high_conf_se": np.nan,
+                "log_loss_high_conf_ci_lo": np.nan,
+                "log_loss_high_conf_ci_hi": np.nan,
+                "n_test_high_conf_mean": 0,
+            })
+
+        summary_records.append(record)
+
+    # Print HIGH CONFIDENCE results
+    print("\n" + "=" * 120)
+    print(f"POOLED MODEL - HIGH CONFIDENCE (model-specific values with >= {min_high_conf_comparisons} train comparisons)")
+    print("=" * 120)
+    print(f"{'Model':<20} {'Acc Mean':>8} {'Acc SE':>8} {'Acc 95% CI':<18} {'LL Mean':>8} {'LL SE':>8} {'N_test':>10}")
+    print("-" * 120)
+
+    for model in MODEL_NAMES:
+        acc_hc = np.array(all_results[model]["accuracy_high_conf"])
+        ll_hc = np.array(all_results[model]["log_loss_high_conf"])
+        n_test_hc = np.array(all_results[model]["n_test_high_conf"])
+        
+        valid_hc = ~np.isnan(acc_hc)
+        acc_hc_valid = acc_hc[valid_hc]
+        ll_hc_valid = ll_hc[valid_hc]
+        n_test_hc_valid = n_test_hc[valid_hc]
+
+        if len(acc_hc_valid) == 0:
+            print(f"{model:<20} {'N/A':>8} {'N/A':>8} {'N/A':<18} {'N/A':>8} {'N/A':>8} {'N/A':>10}")
+            continue
+
+        acc_hc_mean = acc_hc_valid.mean()
+        acc_hc_se = acc_hc_valid.std(ddof=1) if len(acc_hc_valid) > 1 else 0.0
+        acc_hc_lo = np.percentile(acc_hc_valid, 2.5)
+        acc_hc_hi = np.percentile(acc_hc_valid, 97.5)
+
+        ll_hc_mean = ll_hc_valid.mean()
+        ll_hc_se = ll_hc_valid.std(ddof=1) if len(ll_hc_valid) > 1 else 0.0
+        ll_hc_lo = np.percentile(ll_hc_valid, 2.5)
+        ll_hc_hi = np.percentile(ll_hc_valid, 97.5)
+
+        print(
+            f"{model:<20} "
+            f"{acc_hc_mean:>8.4f} {acc_hc_se:>8.4f} ({acc_hc_lo:.4f}, {acc_hc_hi:.4f}) "
+            f"{ll_hc_mean:>8.4f} {ll_hc_se:>8.4f} {int(n_test_hc_valid.mean()):>10}"
+        )
+
+    print("-" * 120)
+
+    # Overall summary
+    print("\n" + "=" * 120)
+    print("OVERALL SUMMARY (pooled across models)")
+    print("=" * 120)
+
+    all_acc = np.concatenate([all_results[m]["accuracy"] for m in MODEL_NAMES])
+    all_ll = np.concatenate([all_results[m]["log_loss"] for m in MODEL_NAMES])
+    all_acc_hc = np.concatenate([all_results[m]["accuracy_high_conf"] for m in MODEL_NAMES])
+    all_ll_hc = np.concatenate([all_results[m]["log_loss_high_conf"] for m in MODEL_NAMES])
+
+    if len(all_acc) > 0:
+        print(f"  All test data:        Acc={all_acc.mean():.4f} (SE={all_acc.std(ddof=1):.4f}), LL={all_ll.mean():.4f} (SE={all_ll.std(ddof=1):.4f})")
+
+    valid_hc = ~np.isnan(all_acc_hc)
+    if valid_hc.sum() > 0:
+        acc_hc_v = all_acc_hc[valid_hc]
+        ll_hc_v = all_ll_hc[valid_hc]
+        print(f"  High confidence:      Acc={acc_hc_v.mean():.4f} (SE={acc_hc_v.std(ddof=1):.4f}), LL={ll_hc_v.mean():.4f} (SE={ll_hc_v.std(ddof=1):.4f})")
+
+    print("\nNote: SE = bootstrap standard error (std of bootstrap samples)")
+    print("      95% CI = quantile-based (2.5%, 97.5% percentiles)")
+    print(f"      High confidence = test pairs where both values had >= {min_high_conf_comparisons} train comparisons IN THAT MODEL")
+    print("      This validation uses ONE pooled BT model fitted on all models' training data,")
+    print("      then evaluates per-model test accuracy to assess universal value preferences.")
+
+    # Save to CSV if requested
+    if validation_output_csv and summary_records:
+        summary_df = pd.DataFrame.from_records(summary_records)
+        summary_df.to_csv(validation_output_csv, index=False)
+        print(f"\nValidation summary saved to {validation_output_csv}")
+
+    print("\nDone.")
+
+
 def run_validation(
     parquet_glob: str,
     n_bootstrap: int,
@@ -366,6 +738,8 @@ def run_validation(
 ) -> None:
     """
     Run bootstrap validation: train on (1-test_frac) of data, evaluate on test_frac.
+    
+    Fits SEPARATE models for each AI system.
     
     Also computes "high confidence" accuracy for test comparisons where both values
     had at least min_high_conf_comparisons in the training set.
@@ -900,7 +1274,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--validate",
         action="store_true",
-        help="Run bootstrap validation mode instead of fitting and saving scores.",
+        help="Run bootstrap validation mode (separate models per AI) instead of fitting and saving scores.",
+    )
+    parser.add_argument(
+        "--validate-pooled",
+        action="store_true",
+        help="Run bootstrap validation with ONE pooled model across all AIs, reporting per-AI test accuracy.",
     )
     parser.add_argument(
         "--n-bootstrap",
@@ -932,8 +1311,25 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
 
-    if args.validate:
-        # Validation mode: bootstrap held-out accuracy
+    if args.validate and args.validate_pooled:
+        raise ValueError("Cannot specify both --validate and --validate-pooled. Choose one validation mode.")
+
+    if args.validate_pooled:
+        # Pooled validation mode: one BT model on all AIs' data, per-AI test accuracy
+        run_validation_pooled(
+            parquet_glob=args.parquet_glob,
+            n_bootstrap=args.n_bootstrap,
+            test_frac=args.test_frac,
+            min_value_comparisons=args.min_value_comparisons,
+            min_high_conf_comparisons=args.min_high_conf_comparisons,
+            l2_reg=args.l2_reg,
+            max_iter=args.max_iter,
+            tol=args.tol,
+            seed=args.seed,
+            validation_output_csv=args.validation_output_csv,
+        )
+    elif args.validate:
+        # Validation mode: separate models per AI, bootstrap held-out accuracy
         run_validation(
             parquet_glob=args.parquet_glob,
             n_bootstrap=args.n_bootstrap,
