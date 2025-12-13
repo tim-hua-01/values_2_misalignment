@@ -7,6 +7,7 @@ This script:
         eta_i = alpha + (theta[v1] - theta[v2]) + beta * bias_i
   * Uses scipy's L-BFGS-B optimizer for fast, robust convergence.
   * Outputs per-value scores and frequencies for each model.
+  * Automatically generates both unmerged and metadata-joined versions when --metadata-csv is provided.
 
 Usage (small-sample test first):
 
@@ -18,6 +19,16 @@ Usage (small-sample test first):
         --output-csv "bt_value_scores_sample.csv"
 
 Then scale up to full data by increasing --sample-frac (e.g. 0.01, then 1.0) and/or removing --max-rows.
+
+With metadata joining (outputs both unmerged and merged versions):
+
+    uv run python bt_rank_values.py \
+        --parquet-glob "raw_data/data/*.parquet" \
+        --sample-frac 1.0 \
+        --output-csv "bt_value_scores_full.csv" \
+        --metadata-csv "labeled_topk_values.csv"
+
+This creates both bt_value_scores_full.csv and bt_value_scores_full_with_meta.csv.
 
 Validation mode (bootstrap held-out accuracy, separate models per AI):
 
@@ -36,6 +47,15 @@ Pooled validation mode (one universal BT model, per-AI test accuracy):
         --n-bootstrap 50 \
         --test-frac 0.1 \
         --seed 42
+
+Aggregated values mode (use merged value names):
+
+uv run python bt_rank_values.py \
+    --parquet-glob "raw_data/data/*.parquet" \
+    --aggregate \
+    --sample-frac 1.0 \
+    --max-rows 0 \
+    --output-csv "bt_value_scores_aggregated.csv"
 """
 
 from __future__ import annotations
@@ -80,9 +100,30 @@ def _escape_single_quotes(path: str) -> str:
     return path.replace("'", "''")
 
 
-def build_value_mapping(con: duckdb.DuckDBPyConnection, parquet_glob: str) -> Tuple[Dict[str, int], List[str]]:
+def load_aggregation_mapping(csv_path: str) -> Dict[str, str]:
+    """
+    Load value aggregation mapping from CSV.
+    Returns dict mapping original value_name -> merged_value_names.
+    """
+    df = pd.read_csv(csv_path)
+    if 'value_name' not in df.columns or 'merged_value_names' not in df.columns:
+        raise ValueError(f"CSV {csv_path} must have 'value_name' and 'merged_value_names' columns")
+    
+    mapping = dict(zip(df['value_name'], df['merged_value_names']))
+    print(f"Loaded aggregation mapping with {len(mapping)} values from {csv_path}")
+    return mapping
+
+
+def build_value_mapping(
+    con: duckdb.DuckDBPyConnection, 
+    parquet_glob: str,
+    aggregation_map: Dict[str, str] | None = None,
+) -> Tuple[Dict[str, int], List[str]]:
     """
     Build a global mapping from value string to integer index based on all value1/value2 in the data.
+    
+    If aggregation_map is provided, values are mapped to their merged versions first,
+    then the mapping is built over the merged values.
     """
     glob_escaped = _escape_single_quotes(parquet_glob)
     query = f"""
@@ -101,6 +142,14 @@ def build_value_mapping(con: duckdb.DuckDBPyConnection, parquet_glob: str) -> Tu
         raise RuntimeError("No values found in value1/value2 columns when building mapping.")
 
     values: List[str] = df["val"].tolist()
+    
+    # Apply aggregation if requested
+    if aggregation_map is not None:
+        values = [aggregation_map.get(v, v) for v in values]
+        # Get unique merged values
+        values = sorted(set(values))
+        print(f"After aggregation: {len(values)} unique merged values")
+    
     value_to_idx: Dict[str, int] = {v: i for i, v in enumerate(values)}
     return value_to_idx, values
 
@@ -114,6 +163,7 @@ def prepare_model_data(
     max_rows: int | None,
     min_value_comparisons: int,
     seed: int | None,
+    aggregation_map: Dict[str, str] | None = None,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
     For a single model, extract comparison rows and construct arrays:
@@ -123,6 +173,9 @@ def prepare_model_data(
         bias = +1 for nudge_direction == "value1", -1 for "value2", 0 otherwise
 
     active_value_indices maps local parameter indices back to global value indices.
+    
+    If aggregation_map is provided, values are mapped to their merged versions and
+    comparisons where merged_value1 == merged_value2 are dropped.
     """
     v1_col = f"{model}_value1_position"
     v2_col = f"{model}_value2_position"
@@ -156,6 +209,21 @@ def prepare_model_data(
     df = con.execute(query).df()
     if df.empty:
         raise RuntimeError(f"No rows found for model '{model}' after initial filtering.")
+
+    # Apply aggregation if requested
+    if aggregation_map is not None:
+        df["value1"] = df["value1"].map(lambda v: aggregation_map.get(v, v))
+        df["value2"] = df["value2"].map(lambda v: aggregation_map.get(v, v))
+        
+        # Remove rows where aggregated values are the same
+        same_value_mask = df["value1"] == df["value2"]
+        n_dropped = same_value_mask.sum()
+        if n_dropped > 0:
+            df = df.loc[~same_value_mask].reset_index(drop=True)
+            print(f"  Dropped {n_dropped} rows where aggregated values were identical")
+        
+        if df.empty:
+            raise RuntimeError(f"All rows for model '{model}' were dropped after aggregation (all same-value comparisons).")
 
     # Remove rows with missing values (paranoia) and ties.
     df = df.dropna(subset=["value1", "value2", "s1", "s2"])
@@ -312,10 +380,14 @@ def load_model_data_raw(
     parquet_glob: str,
     model: str,
     value_to_idx: Dict[str, int],
+    aggregation_map: Dict[str, str] | None = None,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """
     Load ALL comparison data for a model without any filtering (except ties).
     Returns (v1_idx, v2_idx, y, bias) as global indices.
+    
+    If aggregation_map is provided, values are mapped to their merged versions and
+    comparisons where merged_value1 == merged_value2 are dropped.
     """
     v1_col = f"{model}_value1_position"
     v2_col = f"{model}_value2_position"
@@ -334,6 +406,19 @@ def load_model_data_raw(
     df = con.execute(query).df()
     if df.empty:
         raise RuntimeError(f"No rows found for model '{model}'.")
+
+    # Apply aggregation if requested
+    if aggregation_map is not None:
+        df["value1"] = df["value1"].map(lambda v: aggregation_map.get(v, v))
+        df["value2"] = df["value2"].map(lambda v: aggregation_map.get(v, v))
+        
+        # Remove rows where aggregated values are the same
+        same_value_mask = df["value1"] == df["value2"]
+        if same_value_mask.any():
+            df = df.loc[~same_value_mask].reset_index(drop=True)
+        
+        if df.empty:
+            raise RuntimeError(f"All rows for model '{model}' were dropped after aggregation.")
 
     # Remove missing values and ties
     df = df.dropna(subset=["value1", "value2", "s1", "s2"])
@@ -372,6 +457,7 @@ def run_validation_pooled(
     tol: float,
     seed: int | None,
     validation_output_csv: str | None,
+    aggregation_map: Dict[str, str] | None = None,
 ) -> None:
     """
     Run bootstrap validation with POOLED model: fit one BT model on all models' training data,
@@ -386,7 +472,7 @@ def run_validation_pooled(
     con = duckdb.connect()
 
     print("Building global value mapping from parquet data...")
-    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob)
+    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob, aggregation_map)
     num_values_global = len(value_to_idx)
     print(f"Found {num_values_global} distinct values.")
 
@@ -411,7 +497,7 @@ def run_validation_pooled(
         
         for model in MODEL_NAMES:
             # Load all data for this model
-            v1_idx, v2_idx, y, bias = load_model_data_raw(con, parquet_glob, model, value_to_idx)
+            v1_idx, v2_idx, y, bias = load_model_data_raw(con, parquet_glob, model, value_to_idx, aggregation_map)
             n_total = len(y)
 
             # Random train/test split
@@ -735,6 +821,7 @@ def run_validation(
     tol: float,
     seed: int | None,
     validation_output_csv: str | None,
+    aggregation_map: Dict[str, str] | None = None,
 ) -> None:
     """
     Run bootstrap validation: train on (1-test_frac) of data, evaluate on test_frac.
@@ -751,7 +838,7 @@ def run_validation(
     con = duckdb.connect()
 
     print("Building global value mapping from parquet data...")
-    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob)
+    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob, aggregation_map)
     num_values_global = len(value_to_idx)
     print(f"Found {num_values_global} distinct values.")
 
@@ -773,7 +860,7 @@ def run_validation(
 
         for model in MODEL_NAMES:
             # Load all data for this model
-            v1_idx, v2_idx, y, bias = load_model_data_raw(con, parquet_glob, model, value_to_idx)
+            v1_idx, v2_idx, y, bias = load_model_data_raw(con, parquet_glob, model, value_to_idx, aggregation_map)
             n_total = len(y)
 
             # Random train/test split
@@ -1068,6 +1155,39 @@ def run_validation(
     print("\nDone.")
 
 
+def join_scores_with_metadata(
+    scores_df: pd.DataFrame,
+    metadata_path: str,
+) -> pd.DataFrame:
+    """Left-join BT scores with value metadata."""
+    meta_df = pd.read_csv(metadata_path)
+
+    # Expect columns: value_name in scores, val in metadata.
+    if "value_name" not in scores_df.columns:
+        raise ValueError("Scores DataFrame must contain a 'value_name' column.")
+    if "val" not in meta_df.columns:
+        raise ValueError("Metadata CSV must contain a 'val' column.")
+
+    # Avoid duplicate column name conflicts except 'val' and 'freq'.
+    # We keep all metadata columns; if there is a collision, suffix the metadata.
+    overlap_cols: List[str] = [
+        c for c in meta_df.columns if c in scores_df.columns and c not in {"val", "freq"}
+    ]
+    if overlap_cols:
+        meta_df = meta_df.rename(
+            columns={c: f"meta_{c}" for c in overlap_cols},
+        )
+
+    merged = scores_df.merge(
+        meta_df,
+        how="left",
+        left_on="value_name",
+        right_on="val",
+    )
+
+    return merged
+
+
 def run_pipeline(
     parquet_glob: str,
     output_csv: str,
@@ -1078,9 +1198,13 @@ def run_pipeline(
     max_iter: int,
     tol: float,
     seed: int | None,
+    aggregation_map: Dict[str, str] | None = None,
+    metadata_csv: str | None = None,
 ) -> None:
     """
     Orchestrate data loading, per-model fitting, and result aggregation.
+    
+    If metadata_csv is provided, also generates a version with metadata joined.
     """
     if not (0.0 < sample_frac <= 1.0):
         raise ValueError(f"sample_frac must be in (0, 1], got {sample_frac}.")
@@ -1093,7 +1217,7 @@ def run_pipeline(
     con = duckdb.connect()  # in-memory is fine; we only query parquet_scan
 
     print("Building global value mapping from parquet data...")
-    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob)
+    value_to_idx, idx_to_value = build_value_mapping(con, parquet_glob, aggregation_map)
     num_values_global = len(value_to_idx)
     print(f"Found {num_values_global} distinct values.")
 
@@ -1110,6 +1234,7 @@ def run_pipeline(
             max_rows=max_rows,
             min_value_comparisons=min_value_comparisons,
             seed=seed,
+            aggregation_map=aggregation_map,
         )
 
         # Remap global indices in active_values to a dense 0..K-1 range for this model.
@@ -1207,6 +1332,19 @@ def run_pipeline(
     print(f"\nWriting results to {output_csv} ...")
     result_df.to_csv(output_csv, index=False)
     print("Done.")
+    
+    # Also create version with metadata joined if requested
+    if metadata_csv:
+        import os
+        base, ext = os.path.splitext(output_csv)
+        with_meta_csv = f"{base}_with_meta{ext}"
+        
+        print(f"\nJoining with metadata from {metadata_csv} ...")
+        merged_df = join_scores_with_metadata(result_df, metadata_csv)
+        
+        print(f"Writing merged results to {with_meta_csv} ...")
+        merged_df.to_csv(with_meta_csv, index=False)
+        print("Done.")
 
 
 def parse_args() -> argparse.Namespace:
@@ -1305,6 +1443,24 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Output CSV path for validation summary results (optional).",
     )
+    parser.add_argument(
+        "--aggregate",
+        action="store_true",
+        help="Use aggregated/merged value names from --aggregate-csv instead of original values.",
+    )
+    parser.add_argument(
+        "--aggregate-csv",
+        type=str,
+        default="merged_label_values.csv",
+        help="CSV file with value aggregation mapping (must have 'value_name' and 'merged_value_names' columns).",
+    )
+    parser.add_argument(
+        "--metadata-csv",
+        type=str,
+        default="labeled_topk_values.csv",
+        help="CSV file with value metadata to join with scores (must have 'val' column). "
+        "If provided, creates an additional output file with '_with_meta' suffix containing joined data.",
+    )
     return parser.parse_args()
 
 
@@ -1313,6 +1469,11 @@ def main() -> None:
 
     if args.validate and args.validate_pooled:
         raise ValueError("Cannot specify both --validate and --validate-pooled. Choose one validation mode.")
+
+    # Load aggregation mapping if requested
+    aggregation_map: Dict[str, str] | None = None
+    if args.aggregate:
+        aggregation_map = load_aggregation_mapping(args.aggregate_csv)
 
     if args.validate_pooled:
         # Pooled validation mode: one BT model on all AIs' data, per-AI test accuracy
@@ -1327,6 +1488,7 @@ def main() -> None:
             tol=args.tol,
             seed=args.seed,
             validation_output_csv=args.validation_output_csv,
+            aggregation_map=aggregation_map,
         )
     elif args.validate:
         # Validation mode: separate models per AI, bootstrap held-out accuracy
@@ -1341,6 +1503,7 @@ def main() -> None:
             tol=args.tol,
             seed=args.seed,
             validation_output_csv=args.validation_output_csv,
+            aggregation_map=aggregation_map,
         )
     else:
         # Normal mode: fit and save scores
@@ -1355,6 +1518,8 @@ def main() -> None:
             max_iter=args.max_iter,
             tol=args.tol,
             seed=args.seed,
+            aggregation_map=aggregation_map,
+            metadata_csv=args.metadata_csv,
         )
 
 

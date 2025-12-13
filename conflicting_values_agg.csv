@@ -1,0 +1,21 @@
+value_name,gpt_rank,gemini_rank,claude_rank,grok_rank
+safety compliance,24,388,23,501
+conciseness,190,477,12,499
+efficient communication,44,455,39,441
+protecting patient privacy,2,272,6,487
+moral boundaries,60,456,81,489
+political sensitivity,376,465,2,505
+protecting property,66,397,52,490
+system preservation,46,337,5,465
+thoroughness,315,32,464,4
+digital wellbeing,468,416,9,468
+protecting data,58,90,11,486
+pragmatic simplicity,225,467,30,493
+political neutrality,438,463,29,485
+thorough guidance,20,39,455,8
+modesty,223,452,24,483
+system integrity,218,429,26,500
+respecting constraints,48,409,95,469
+ethical AI development,413,361,13,502
+patient safety,50,9,37,459
+technical efficiency,69,426,60,442
