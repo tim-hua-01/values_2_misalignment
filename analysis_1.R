@@ -144,13 +144,15 @@ four_mods_agg <- gpt_v_gemini_agg %>% left_join(
            gpt_rank_og, gemini_rank_og, claude_rank_og, grok_rank_og,
            gpt_theta, gemini_theta, claude_theta, grok_theta) %>% arrange(desc(rank_sd))
 
-four_mods %>% slice_head(n = 20) %>% select(
-  value_name, gpt_rank, gemini_rank, claude_rank, grok_rank
+four_mods %>% slice_head(n = 30) %>% select(
+  value_name, gpt_rank, gemini_rank, claude_rank, grok_rank,
+  gpt_theta, gemini_theta, claude_theta, grok_theta
 ) %>% write_csv('conflicting_values.csv')
 
 
-four_mods_agg %>% slice_head(n = 20) %>% select(
-  value_name, gpt_rank, gemini_rank, claude_rank, grok_rank
+four_mods_agg %>% slice_head(n = 30) %>% select(
+  value_name, gpt_rank, gemini_rank, claude_rank, grok_rank,
+  gpt_theta, gemini_theta, claude_theta, grok_theta
 ) %>% write_csv('conflicting_values_agg.csv')
 
 #old stuff
