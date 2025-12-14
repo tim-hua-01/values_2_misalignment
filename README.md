@@ -142,6 +142,52 @@ uv run python bt_rank_values.py \
     --min-high-conf-comparisons 30 \
     --seed 42 \
     --validation-output-csv "validation_results_pooled.csv"
+
+
+  uv run python run_redteam_grading.py  --prefix run1 --n-samples 5
+
+
+uv run python bt_rank_values.py \
+    --parquet-glob "raw_data/data/*.parquet" \
+    --aggregate \
+    --sample-frac 1.0 \
+    --max-rows 0 \
+    --output-csv "processed_data/bt_value_scores_aggregated.csv"
+
+uv run python bt_rank_values.py \
+    --parquet-glob "raw_data/data/*.parquet" \
+    --aggregate \
+    --sample-frac 1.0 \
+    --max-rows 0 \
+    --validate \
+    --n-bootstrap 50 \
+    --test-frac 0.1 \
+    --min-value-comparisons 5 \
+    --min-high-conf-comparisons 30 \
+    --seed 422
+
+python petri_base_script.py \
+    --target "openai/gpt-4.1-mini" \
+    --value1 "copyright respect" \
+    --value2 "dramatic craft" \
+    --epochs 3 \
+    --max-turns 6
+
+python petri_base_script.py \
+    --target "openai/gpt-4.1-mini" \
+    --value1 "protecting property" \
+    --value2 "thorough guidance" \
+    --epochs 3 \
+    --max-turns 6 --csv conflicting_values_agg.csv --log-name test2.eval
+
+
+python petri_base_script.py \
+    --target "openai/gpt-4.1-mini" \
+    --value1 "protecting property" \
+    --value2 "thorough guidance" \
+    --epochs 1 \
+    --max-turns 1 --csv conflicting_values_agg.csv --log-name test3.eval
+
 ```
 
 ```
@@ -212,3 +258,26 @@ Log-Loss	Interpretation
 
 Get some ideas for what value one can look like with some query examples. 
 
+
+## Aggregated high confidence validation
+
+```
+========================================================================================================================
+VALIDATION RESULTS - HIGH CONFIDENCE (values with >= 30 train comparisons)
+========================================================================================================================
+Model                Acc Mean   Acc SE Acc 95% CI          LL Mean    LL SE     N_test
+------------------------------------------------------------------------------------------------------------------------
+claude_3_5_sonnet      0.8407   0.0171 (0.8098, 0.8773)   0.3817   0.0371        394
+claude_3_7_sonnet      0.6723   0.0231 (0.6268, 0.7126)   0.6182   0.0300        379
+claude_opus_3          0.7633   0.0205 (0.7232, 0.8036)   0.5170   0.0333        393
+claude_opus_4          0.6711   0.0233 (0.6187, 0.7171)   0.6180   0.0243        361
+claude_sonnet_4        0.6787   0.0242 (0.6402, 0.7215)   0.6125   0.0248        370
+gemini_2_5_pro         0.7658   0.0191 (0.7302, 0.8033)   0.5202   0.0305        398
+gpt_4_1                0.7024   0.0222 (0.6601, 0.7476)   0.5852   0.0263        380
+gpt_4_1_mini           0.7243   0.0233 (0.6816, 0.7691)   0.5662   0.0305        395
+gpt_4o                 0.6641   0.0251 (0.6097, 0.7074)   0.6280   0.0245        318
+grok_4                 0.8682   0.0183 (0.8305, 0.8991)   0.3510   0.0454        428
+o3                     0.6367   0.0341 (0.5687, 0.6921)   0.6428   0.0226        331
+o4_mini                0.6302   0.0243 (0.5819, 0.6694)   0.6497   0.0239        353
+
+```

@@ -9,6 +9,8 @@ Arguments:
     --log: Path to the .eval log file (required)
     --csv: Path to CSV file with values (default: conflicting_values.csv)
     --output: Output CSV file path (default: graded_results.csv)
+    --value1: Expected first value name (required; must match value_name in CSV)
+    --value2: Expected second value name (required; must match value_name in CSV)
 """
 
 import argparse
@@ -22,6 +24,16 @@ def format_value_to_key(value_name: str) -> str:
     return value_name.replace(' ', '_').replace('-', '_').lower()
 
 
+def get_row_for_value_name(value_name: str, df: pd.DataFrame) -> pd.Series:
+    """Fetch the CSV row for an exact value_name match."""
+    matches = df[df["value_name"] == value_name]
+    if matches.empty:
+        raise ValueError(f"Value '{value_name}' not found in CSV (value_name column)")
+    if len(matches) != 1:
+        raise ValueError(f"Value '{value_name}' matched {len(matches)} rows in CSV; expected exactly 1")
+    return matches.iloc[0]
+
+
 def find_value_in_csv(score_key: str, df: pd.DataFrame) -> Tuple[str, pd.Series]:
     """Find the CSV row matching a score key."""
     for idx, row in df.iterrows():
@@ -31,7 +43,7 @@ def find_value_in_csv(score_key: str, df: pd.DataFrame) -> Tuple[str, pd.Series]
     raise ValueError(f"Score key '{score_key}' not found in CSV. Could not match to any value_name.")
 
 
-def extract_scores_from_log(log_path: str, csv_path: str) -> Dict:
+def extract_scores_from_log(log_path: str, csv_path: str, expected_value1: str, expected_value2: str) -> Dict:
     """Extract all relevant information from a log file."""
     
     # Read the log
@@ -50,8 +62,22 @@ def extract_scores_from_log(log_path: str, csv_path: str) -> Dict:
     score_keys = list(all_scores[0].keys())
     if len(score_keys) != 2:
         raise ValueError(f"Expected 2 values in scores, found {len(score_keys)}: {score_keys}")
-    
-    value1_key, value2_key = score_keys
+
+    expected_value1_key = format_value_to_key(expected_value1)
+    expected_value2_key = format_value_to_key(expected_value2)
+
+    if set(score_keys) != {expected_value1_key, expected_value2_key}:
+        raise ValueError(
+            "Score keys in log do not match expected values.\n"
+            f"  log_path={log_path}\n"
+            f"  expected_value1={expected_value1} (key={expected_value1_key})\n"
+            f"  expected_value2={expected_value2} (key={expected_value2_key})\n"
+            f"  found_score_keys={score_keys}\n"
+        )
+
+    # Force stable assignment based on the requested value order (do NOT rely on dict order).
+    value1_key = expected_value1_key
+    value2_key = expected_value2_key
     
     # Verify all samples have the same keys
     for idx, scores in enumerate(all_scores):
@@ -65,14 +91,28 @@ def extract_scores_from_log(log_path: str, csv_path: str) -> Dict:
     value1_avg = sum(value1_scores) / len(value1_scores)
     value2_avg = sum(value2_scores) / len(value2_scores)
     
-    # Read CSV and find matching rows
+    # Read CSV and fetch rows for expected names (fail fast if mismatch).
     df = pd.read_csv(csv_path)
-    
-    value1_name, value1_row = find_value_in_csv(value1_key, df)
-    value2_name, value2_row = find_value_in_csv(value2_key, df)
-    
-    print(f"Matched '{value1_key}' to '{value1_name}'")
-    print(f"Matched '{value2_key}' to '{value2_name}'")
+
+    value1_row = get_row_for_value_name(expected_value1, df)
+    value2_row = get_row_for_value_name(expected_value2, df)
+
+    # Extra consistency check: ensure the CSV normalization matches the expected score keys.
+    if format_value_to_key(str(value1_row["value_name"])) != value1_key:
+        raise ValueError(
+            f"CSV row for value1 has unexpected key normalization: value_name='{value1_row['value_name']}', "
+            f"expected_key='{value1_key}'"
+        )
+    if format_value_to_key(str(value2_row["value_name"])) != value2_key:
+        raise ValueError(
+            f"CSV row for value2 has unexpected key normalization: value_name='{value2_row['value_name']}', "
+            f"expected_key='{value2_key}'"
+        )
+
+    value1_name = expected_value1
+    value2_name = expected_value2
+
+    print(f"Using expected value order: value1='{value1_name}' (key={value1_key}), value2='{value2_name}' (key={value2_key})")
     print(f"Target model: {target_model}")
     print(f"Processed {len(all_scores)} epochs")
     print(f"Average scores: {value1_name}={value1_avg:.2f}, {value2_name}={value2_avg:.2f}")
@@ -101,6 +141,7 @@ def extract_scores_from_log(log_path: str, csv_path: str) -> Dict:
         'value1_avg_score': value1_avg,
         'value2_avg_score': value2_avg,
         'num_epochs': len(all_scores),
+        'log_path': log_path,
     }
     
     return result
@@ -114,15 +155,21 @@ if __name__ == "__main__":
                         help='Path to CSV with value descriptions (default: conflicting_values.csv)')
     parser.add_argument('--output', type=str, default='graded_results.csv',
                         help='Output CSV file path (default: graded_results.csv)')
+    parser.add_argument('--value1', type=str, required=True,
+                        help='Expected first value name (must match value_name in CSV)')
+    parser.add_argument('--value2', type=str, required=True,
+                        help='Expected second value name (must match value_name in CSV)')
     
     args = parser.parse_args()
     
     print(f"Grading log: {args.log}")
     print(f"Using CSV: {args.csv}")
+    print(f"Expected value1: {args.value1}")
+    print(f"Expected value2: {args.value2}")
     print()
     
     # Extract scores and metadata
-    result = extract_scores_from_log(args.log, args.csv)
+    result = extract_scores_from_log(args.log, args.csv, args.value1, args.value2)
     
     # Create DataFrame and save
     df_result = pd.DataFrame([result])
