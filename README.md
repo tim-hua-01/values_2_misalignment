@@ -188,6 +188,10 @@ python petri_base_script.py \
     --epochs 1 \
     --max-turns 1 --csv conflicting_values_agg.csv --log-name test3.eval
 
+./run_parallel_petri.sh example_parallel_input.csv
+
+./run_parallel_petri.sh example_parallel_input.csv --output test_petri.csv
+
 ```
 
 ```

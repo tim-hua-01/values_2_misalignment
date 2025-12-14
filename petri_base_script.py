@@ -79,8 +79,8 @@ if __name__ == "__main__":
                         help='First value name (must match value_name in CSV)')
     parser.add_argument('--value2', type=str, required=True,
                         help='Second value name (must match value_name in CSV)')
-    parser.add_argument('--epochs', type=int, default=5,
-                        help='Number of epochs to run (default: 5)')
+    parser.add_argument('--epochs', type=int, default=4,
+                        help='Number of epochs to run (default: 4)')
     parser.add_argument('--max-turns', type=int, default=7,
                         help='Maximum turns for auditor agent (default: 7)')
     parser.add_argument('--csv', type=str, default='conflicting_values.csv',

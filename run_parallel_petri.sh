@@ -101,9 +101,18 @@ fi
 mkdir -p logs
 mkdir -p intermediate_results
 
+# Validate input CSV before proceeding
+echo "Validating input CSV..."
+uv run python validate_parallel_input.py "$INPUT_CSV"
+
+# Capture start time
+START_TIME=$(date +%s)
+START_TIME_HUMAN=$(date "+%Y-%m-%d %H:%M:%S")
+
 echo "=========================================="
 echo "Parallel Petri Evaluation Orchestrator"
 echo "=========================================="
+echo "Start time: $START_TIME_HUMAN"
 echo "Input CSV: $INPUT_CSV"
 echo "Output CSV: $OUTPUT_CSV"
 echo "Session name: $SESSION_NAME"
@@ -124,7 +133,7 @@ JOB_QUEUE_FILE="/tmp/petri_job_queue_$$.txt"
 
 NUM_VALUE_PAIRS=0
 
-while IFS=, read -r value1 value2 csv_source auditor judge epochs max_turns; do
+while IFS=, read -r value1 value2 csv_source auditor judge epochs max_turns || [ -n "$value1" ]; do
     # Remove quotes
     value1=$(echo "$value1" | sed 's/^"//;s/"$//')
     value2=$(echo "$value2" | sed 's/^"//;s/"$//')
@@ -344,12 +353,24 @@ if [ $? -eq 0 ]; then
     echo "Aggregation successful! Cleaning up intermediate results..."
     rm -rf intermediate_results/*
     echo "Intermediate results cleaned up."
+    # Calculate and display timing
+    END_TIME=$(date +%s)
+    END_TIME_HUMAN=$(date "+%Y-%m-%d %H:%M:%S")
+    DURATION=$((END_TIME - START_TIME))
+    HOURS=$((DURATION / 3600))
+    MINUTES=$(( (DURATION % 3600) / 60 ))
+    SECONDS=$((DURATION % 60))
+    
     echo ""
     echo "=========================================="
     echo "Pipeline Complete!"
     echo "=========================================="
     echo "Final results saved to: $OUTPUT_CSV"
     echo "Logs saved to: logs/"
+    echo ""
+    echo "Start time:  $START_TIME_HUMAN"
+    echo "End time:    $END_TIME_HUMAN"
+    printf "Duration:    %02d:%02d:%02d\n" $HOURS $MINUTES $SECONDS
 else
     echo ""
     echo "ERROR: Aggregation failed. Keeping intermediate results for inspection."
