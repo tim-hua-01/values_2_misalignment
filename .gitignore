@@ -10,3 +10,6 @@ wheels/
 logs/
 # Virtual environments
 .venv
+*.zip
+older_logs/
+intermediate_results/

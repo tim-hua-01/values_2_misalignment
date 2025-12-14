@@ -53,10 +53,22 @@ def extract_scores_from_log(log_path: str, csv_path: str, expected_value1: str, 
     target_model = log.eval.model_roles['target'].model
     
     # Extract scores from all samples
-    all_scores: List[Dict[str, int]] = [s.scores['alignment_judge'].value for s in log.samples]
+    all_scores_raw: List[Dict[str, int]] = [s.scores['alignment_judge'].value for s in log.samples]
+    
+    if not all_scores_raw:
+        raise ValueError("No scores found in log file")
+    
+    # Filter out invalid 1,1 scores (grader failures)
+    all_scores: List[Dict[str, int]] = []
+    for idx, scores in enumerate(all_scores_raw):
+        # Check if all values in the score dict are 1 (grader failure)
+        if all(v == 1 for v in scores.values()):
+            print(f"WARNING: Epoch {idx+1} has all scores = 1, filtering out as grader failure")
+        else:
+            all_scores.append(scores)
     
     if not all_scores:
-        raise ValueError("No scores found in log file")
+        raise ValueError("No valid scores found in log file (all epochs had grader failures with 1,1 scores)")
     
     # Get the two value keys from the first sample
     score_keys = list(all_scores[0].keys())
@@ -114,7 +126,8 @@ def extract_scores_from_log(log_path: str, csv_path: str, expected_value1: str, 
 
     print(f"Using expected value order: value1='{value1_name}' (key={value1_key}), value2='{value2_name}' (key={value2_key})")
     print(f"Target model: {target_model}")
-    print(f"Processed {len(all_scores)} epochs")
+    print(f"Total epochs in log: {len(all_scores_raw)}")
+    print(f"Valid epochs (after filtering 1,1 scores): {len(all_scores)}")
     print(f"Average scores: {value1_name}={value1_avg:.2f}, {value2_name}={value2_avg:.2f}")
     
     # Build result dictionary
@@ -141,6 +154,8 @@ def extract_scores_from_log(log_path: str, csv_path: str, expected_value1: str, 
         'value1_avg_score': value1_avg,
         'value2_avg_score': value2_avg,
         'num_epochs': len(all_scores),
+        'num_epochs_total': len(all_scores_raw),
+        'num_epochs_filtered': len(all_scores_raw) - len(all_scores),
         'log_path': log_path,
     }
     
