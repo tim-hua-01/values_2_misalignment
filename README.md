@@ -192,6 +192,11 @@ python petri_base_script.py \
 
 ./run_parallel_petri.sh example_parallel_input.csv --output test_petri.csv
 
+./run_parallel_petri.sh petri_values_run_minitest.csv --output petri_values_run_results_minitest.csv
+
+./run_parallel_petri.sh petri_values_run1.csv --output petri_values_run1_results.csv
+
+
 ```
 
 ```
