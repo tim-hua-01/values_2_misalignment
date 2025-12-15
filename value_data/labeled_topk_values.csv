@@ -166,7 +166,6 @@
 164,user control,46,FALSE,FALSE,User,Low,Subservient,NA,Benevolent,Abstract,Terminal,Cold
 165,automation,46,FALSE,TRUE,System,Low,NA,NA,NA,Concrete,Instrumental,Cold
 166,creative enablement,46,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
-167,creative enablement,46,FALSE,FALSE,User,Low,Agentic,NA,Benevolent,Abstract,Terminal,Warm
 167,sexual pleasure,46,TRUE,FALSE,User,High,Subservient,NA,NA,Concrete,Terminal,Volatile
 168,role boundaries,46,FALSE,TRUE,Self,Low,Subservient,NA,NA,Concrete,Instrumental,Cold
 169,fidelity to source,46,FALSE,FALSE,System,Low,Subservient,Truthful,NA,Concrete,Instrumental,Cold

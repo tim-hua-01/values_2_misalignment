@@ -13,3 +13,9 @@ logs/
 *.zip
 older_logs/
 intermediate_results/
+run1_logs/
+run1_results/
+tmux.conf
+.Rhistory
+.DS_Store
+plots/
