@@ -5,7 +5,7 @@
 # Runs evaluations + grading with semaphore-based parallelism
 #
 # Usage:
-#   ./run_parallel_petri.sh <input_csv> [--max-windows N] [--session-name NAME] [--output OUTPUT_CSV]
+#   ./run_parallel_petri.sh <input_csv> [--max-windows N] [--session-name NAME] [--output OUTPUT_CSV] [--logs-dir DIR]
 #
 # CSV format (required columns: value1, value2, csv_source):
 #   value1,value2,csv_source,auditor,judge,epochs,max_turns
@@ -17,6 +17,7 @@ MAX_WINDOWS=8
 SESSION_NAME=""
 INPUT_CSV=""
 OUTPUT_CSV="final_petri_results.csv"
+LOGS_DIR="logs"
 
 # Target models to cycle through
 TARGET_MODELS=(
@@ -48,6 +49,10 @@ while [[ $# -gt 0 ]]; do
             OUTPUT_CSV="$2"
             shift 2
             ;;
+        --logs-dir)
+            LOGS_DIR="$2"
+            shift 2
+            ;;
         *)
             if [ -z "$INPUT_CSV" ]; then
                 INPUT_CSV="$1"
@@ -62,15 +67,16 @@ done
 
 # Validate arguments
 if [ -z "$INPUT_CSV" ]; then
-    echo "Usage: $0 <input_csv> [--max-windows N] [--session-name NAME] [--output OUTPUT_CSV]"
+    echo "Usage: $0 <input_csv> [--max-windows N] [--session-name NAME] [--output OUTPUT_CSV] [--logs-dir DIR]"
     echo ""
     echo "Options:"
     echo "  --max-windows N    Maximum concurrent tmux windows (default: 8)"
     echo "  --session-name     Custom tmux session name"
     echo "  --output           Output CSV file path (default: final_petri_results.csv)"
+    echo "  --logs-dir         Directory for logs (default: logs)"
     echo ""
     echo "Example:"
-    echo "  $0 value_pairs.csv --max-windows 12 --output my_results.csv"
+    echo "  $0 value_pairs.csv --max-windows 12 --output my_results.csv --logs-dir custom_logs"
     exit 1
 fi
 
@@ -98,12 +104,12 @@ if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
 fi
 
 # Create directories
-mkdir -p logs
+mkdir -p "$LOGS_DIR"
 mkdir -p intermediate_results
 
 # Validate input CSV before proceeding
 echo "Validating input CSV..."
-uv run python validate_parallel_input.py "$INPUT_CSV"
+uv run python validate_petri_input.py "$INPUT_CSV"
 
 # Capture start time
 START_TIME=$(date +%s)
@@ -115,6 +121,7 @@ echo "=========================================="
 echo "Start time: $START_TIME_HUMAN"
 echo "Input CSV: $INPUT_CSV"
 echo "Output CSV: $OUTPUT_CSV"
+echo "Logs directory: $LOGS_DIR"
 echo "Session name: $SESSION_NAME"
 echo "Max concurrent windows: $MAX_WINDOWS"
 echo ""
@@ -172,7 +179,7 @@ tmux new-session -d -s "$SESSION_NAME"
 FIRST_WINDOW=$(tmux list-windows -t "$SESSION_NAME" -F "#{window_index}" | head -1)
 
 # Failure log (shared across windows). Any failed job appends a line here.
-FAILURE_LOG="logs/${SESSION_NAME}_FAILURES.txt"
+FAILURE_LOG="${LOGS_DIR}/${SESSION_NAME}_FAILURES.txt"
 > "$FAILURE_LOG"
 
 # Create job runner script
@@ -184,6 +191,7 @@ set -euo pipefail
 # Parse job string
 IFS='|' read -r value1 value2 csv_source target model_short auditor judge epochs max_turns <<< "$1"
 failure_log="$2"
+logs_dir="$3"
 
 # Sanitize names for filenames
 v1_safe=$(echo "$value1" | sed 's/[^a-zA-Z0-9]/_/g' | sed 's/__*/_/g' | sed 's/^_//;s/_$//')
@@ -191,7 +199,7 @@ v2_safe=$(echo "$value2" | sed 's/[^a-zA-Z0-9]/_/g' | sed 's/__*/_/g' | sed 's/^
 timestamp=$(date +%H%M%S)
 
 # Generate filenames
-LOG_NAME="logs/${v1_safe}_vs_${v2_safe}_${model_short}_${timestamp}.eval"
+LOG_NAME="${logs_dir}/${v1_safe}_vs_${v2_safe}_${model_short}_${timestamp}.eval"
 INTERMEDIATE_CSV="intermediate_results/${v1_safe}_${v2_safe}_${model_short}.csv"
 
 echo "=========================================="
@@ -286,14 +294,14 @@ run_jobs_with_semaphore() {
             tmux rename-window -t "$SESSION_NAME:$FIRST_WINDOW" "$window_name"
             tmux send-keys -t "$SESSION_NAME:$window_name" "cd $(pwd)" C-m
             # Run job; on failure, leave window open and mark FAILED
-            tmux send-keys -t "$SESSION_NAME:$window_name" "bash \"$JOB_RUNNER_SCRIPT\" '$job' \"$FAILURE_LOG\"; exit_code=\$?; if [ \$exit_code -eq 0 ]; then tmux kill-window -t \"$SESSION_NAME:$window_name\"; else echo \"JOB FAILED (exit=\$exit_code)\"; echo \"${window_name} | \$job\" >> \"$FAILURE_LOG\"; tmux rename-window -t \"$SESSION_NAME:$window_name\" \"FAILED_${window_name}\"; exec bash; fi" C-m
+            tmux send-keys -t "$SESSION_NAME:$window_name" "bash \"$JOB_RUNNER_SCRIPT\" '$job' \"$FAILURE_LOG\" \"$LOGS_DIR\"; exit_code=\$?; if [ \$exit_code -eq 0 ]; then tmux kill-window -t \"$SESSION_NAME:$window_name\"; else echo \"JOB FAILED (exit=\$exit_code)\"; echo \"${window_name} | \$job\" >> \"$FAILURE_LOG\"; tmux rename-window -t \"$SESSION_NAME:$window_name\" \"FAILED_${window_name}\"; exec bash; fi" C-m
             first_window=false
         else
             # Create new window
             tmux new-window -t "$SESSION_NAME" -n "$window_name"
             tmux send-keys -t "$SESSION_NAME:$window_name" "cd $(pwd)" C-m
             # Run job; on failure, leave window open and mark FAILED
-            tmux send-keys -t "$SESSION_NAME:$window_name" "bash \"$JOB_RUNNER_SCRIPT\" '$job' \"$FAILURE_LOG\"; exit_code=\$?; if [ \$exit_code -eq 0 ]; then tmux kill-window -t \"$SESSION_NAME:$window_name\"; else echo \"JOB FAILED (exit=\$exit_code)\"; echo \"${window_name} | \$job\" >> \"$FAILURE_LOG\"; tmux rename-window -t \"$SESSION_NAME:$window_name\" \"FAILED_${window_name}\"; exec bash; fi" C-m
+            tmux send-keys -t "$SESSION_NAME:$window_name" "bash \"$JOB_RUNNER_SCRIPT\" '$job' \"$FAILURE_LOG\" \"$LOGS_DIR\"; exit_code=\$?; if [ \$exit_code -eq 0 ]; then tmux kill-window -t \"$SESSION_NAME:$window_name\"; else echo \"JOB FAILED (exit=\$exit_code)\"; echo \"${window_name} | \$job\" >> \"$FAILURE_LOG\"; tmux rename-window -t \"$SESSION_NAME:$window_name\" \"FAILED_${window_name}\"; exec bash; fi" C-m
         fi
         
         active_windows=$((active_windows + 1))
@@ -339,7 +347,7 @@ echo ""
 echo "=========================================="
 echo "Orchestration Complete!"
 echo "=========================================="
-echo "Logs saved to: logs/"
+echo "Logs saved to: $LOGS_DIR/"
 echo "Intermediate results: intermediate_results/"
 echo ""
 
@@ -366,7 +374,7 @@ if [ $? -eq 0 ]; then
     echo "Pipeline Complete!"
     echo "=========================================="
     echo "Final results saved to: $OUTPUT_CSV"
-    echo "Logs saved to: logs/"
+    echo "Logs saved to: $LOGS_DIR/"
     echo ""
     echo "Start time:  $START_TIME_HUMAN"
     echo "End time:    $END_TIME_HUMAN"
