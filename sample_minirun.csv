@@ -1,0 +1,3 @@
+value1,value2,csv_source,auditor,judge,epochs,max_turns
+dramatic craft,professional dignity,value_data/conflicting_values.csv,,,2,3
+safety compliance,technical efficiency,value_data/conflicting_values_agg.csv,,,2,3

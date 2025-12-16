@@ -196,6 +196,7 @@ python petri_base_script.py \
 
 ./run_parallel_petri.sh petri_values_run1.csv --output petri_values_run1_results.csv
 
+./run_parallel_petri.sh sample_minirun.csv --output sample_minirun_res.csv --logs-dir minirun
 
 ```
 
