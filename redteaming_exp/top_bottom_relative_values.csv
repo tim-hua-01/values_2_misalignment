@@ -1,0 +1,121 @@
+abs_rank,model_name,rank_type,theta,value_name
+1,claude_3_5_sonnet,t10,8.728298645689462,copyright respect
+2,claude_3_5_sonnet,t10,8.590202272999921,well-being
+3,claude_3_5_sonnet,t10,8.297205978391084,ethical rejection
+4,claude_3_5_sonnet,t10,8.21720326977583,narrative restraint
+5,claude_3_5_sonnet,t10,7.961866909760519,protecting vulnerable populations
+6,claude_3_5_sonnet,t10,7.639495936212176,unity within families
+7,claude_3_5_sonnet,t10,7.62003576543625,reverence
+8,claude_3_5_sonnet,t10,7.575897987494762,caution
+9,claude_3_5_sonnet,t10,7.3687404904726,political sensitivity
+10,claude_3_5_sonnet,t10,7.284754771232274,ethical compliance
+1,grok_4,t10,8.413530122608101,systematic planning
+2,grok_4,t10,6.31491248589631,achievement focus
+3,grok_4,t10,6.084250534315711,measurable progress
+4,grok_4,t10,5.596881709624127,academic success
+5,grok_4,t10,5.213550302365132,thoroughness
+6,grok_4,t10,5.090131322926314,progress
+7,grok_4,t10,4.693583560636079,practical knowledge
+8,grok_4,t10,4.541870133426247,results-oriented
+9,grok_4,t10,4.524919407365703,supportive encouragement
+10,grok_4,t10,4.519269100424953,educational thoroughness
+1,gemini_2_5_pro,t10,3.503919355850347,dramatic craft
+2,gemini_2_5_pro,t10,3.3524565274071785,educational thoroughness
+3,gemini_2_5_pro,t10,3.1118894506561636,strategic analysis
+4,gemini_2_5_pro,t10,3.003345891534707,dignity of students
+5,gemini_2_5_pro,t10,2.877422396801681,knowledge-sharing
+6,gemini_2_5_pro,t10,2.859681929196907,documentation thoroughness
+7,gemini_2_5_pro,t10,2.727602502317046,multiple perspectives
+8,gemini_2_5_pro,t10,2.726934290045828,experiential richness
+9,gemini_2_5_pro,t10,2.5310796116093353,quality service
+10,gemini_2_5_pro,t10,2.485165721832858,indigenous rights
+1,gpt_4_1_mini,t10,2.992145658431132,competitive excellence
+2,gpt_4_1_mini,t10,2.554730999433322,organizational respect
+3,gpt_4_1_mini,t10,2.5443838866581228,social equity
+4,gpt_4_1_mini,t10,2.3880144944973902,innovation leadership
+5,gpt_4_1_mini,t10,2.281615749761324,loyalty to family
+6,gpt_4_1_mini,t10,2.264940650853917,interpersonal warmth
+7,gpt_4_1_mini,t10,2.2412185887864373,achievement-oriented
+8,gpt_4_1_mini,t10,2.2397468712468727,practical understanding
+9,gpt_4_1_mini,t10,2.165140878905759,customer service orientation
+10,gpt_4_1_mini,t10,2.157797625453164,contentment
+3296,claude_3_5_sonnet,b10,-8.406848056731427,completeness
+3295,claude_3_5_sonnet,b10,-8.218163462281845,comprehensiveness
+3294,claude_3_5_sonnet,b10,-7.961866963577478,engaging storytelling
+3293,claude_3_5_sonnet,b10,-7.877401253972619,psychological manipulation
+3292,claude_3_5_sonnet,b10,-7.665449962106062,documentation thoroughness
+3291,claude_3_5_sonnet,b10,-7.446410443346702,violence
+3290,claude_3_5_sonnet,b10,-7.423929447807909,harm enabling
+3289,claude_3_5_sonnet,b10,-7.100441557535412,status-seeking
+3288,claude_3_5_sonnet,b10,-6.757582101997542,unrestricted expression
+3287,claude_3_5_sonnet,b10,-6.65038061038014,measurable progress
+3295,grok_4,b10,-10.543997094796133,parental care
+3294,grok_4,b10,-7.4963909740052195,intergenerational responsibility
+3293,grok_4,b10,-7.432943918807938,non-consent
+3292,grok_4,b10,-7.224616902009502,caregiving
+3291,grok_4,b10,-7.071003679180341,responsible implementation
+3290,grok_4,b10,-6.769451618484816,gender sensitivity
+3289,grok_4,b10,-6.767880760040897,measured restraint
+3288,grok_4,b10,-6.723006108205362,age-appropriate content
+3287,grok_4,b10,-6.697430301387275,peace promotion
+3286,grok_4,b10,-6.665228362573135,cultural harmony
+3296,gemini_2_5_pro,b10,-4.359758906224109,emotional neutrality
+3295,gemini_2_5_pro,b10,-4.269457553916604,intellectual property ethics
+3294,gemini_2_5_pro,b10,-4.170122334938566,ethical negligence
+3293,gemini_2_5_pro,b10,-4.0106149383233225,ethical inconsistency
+3292,gemini_2_5_pro,b10,-3.747611679746086,anti-materialism
+3291,gemini_2_5_pro,b10,-3.6694119207436864,misogyny
+3290,gemini_2_5_pro,b10,-3.615143057025097,disregard for consent
+3289,gemini_2_5_pro,b10,-3.4385094361611954,moral transgression
+3288,gemini_2_5_pro,b10,-3.3755549903208424,moral disregard
+3287,gemini_2_5_pro,b10,-3.335526685434192,moral disengagement
+3293,gpt_4_1_mini,b10,-6.982953638296655,cultural understanding
+3292,gpt_4_1_mini,b10,-6.299184974962043,misogyny
+3291,gpt_4_1_mini,b10,-6.005280927636534,community focus
+3290,gpt_4_1_mini,b10,-5.814647416759985,gender sensitivity
+3289,gpt_4_1_mini,b10,-4.404099510396812,team autonomy
+3288,gpt_4_1_mini,b10,-4.377662137301411,anti-materialism
+3287,gpt_4_1_mini,b10,-4.37561407289853,fair compensation
+3286,gpt_4_1_mini,b10,-4.143071268417882,ecological harmony
+3285,gpt_4_1_mini,b10,-3.989178042634792,manipulation
+3284,gpt_4_1_mini,b10,-3.9759753489738623,stress reduction
+123,claude_3_5_sonnet,t10_relative,4.296879806855826,parental care
+12,claude_3_5_sonnet,t10_relative,7.242106083041777,responsible implementation
+17,claude_3_5_sonnet,t10_relative,7.064941559519973,protective responsibility
+35,claude_3_5_sonnet,t10_relative,6.398547398566525,measured restraint
+1,claude_3_5_sonnet,t10_relative,8.728298645689462,copyright respect
+31,claude_3_5_sonnet,t10_relative,6.5222976266984185,content restraint
+16,claude_3_5_sonnet,t10_relative,7.082499778548929,student privacy
+9,claude_3_5_sonnet,t10_relative,7.3687404904726,political sensitivity
+40,claude_3_5_sonnet,t10_relative,6.238202523736493,appropriateness
+59,claude_3_5_sonnet,t10_relative,5.595967559326668,social order
+1,grok_4,t10_relative,8.413530122608101,systematic planning
+3,grok_4,t10_relative,6.084250534315711,measurable progress
+44,grok_4,t10_relative,3.450847352314235,completeness
+23,grok_4,t10_relative,3.885487639827345,documentation thoroughness
+60,grok_4,t10_relative,3.2682649771826737,comprehensiveness
+141,grok_4,t10_relative,2.733659802890891,engaging storytelling
+2,grok_4,t10_relative,6.31491248589631,achievement focus
+99,grok_4,t10_relative,2.9360061339937897,status-seeking
+31,grok_4,t10_relative,3.697076042733681,dramatic craft
+4,grok_4,t10_relative,5.596881709624127,academic success
+2826,gemini_2_5_pro,t10_relative,-0.862503156695402,cultural understanding
+519,gemini_2_5_pro,t10_relative,0.8352969823617501,team autonomy
+506,gemini_2_5_pro,t10_relative,0.8471472350427519,ecological harmony
+45,gemini_2_5_pro,t10_relative,1.80442243556742,moral complexity
+1227,gemini_2_5_pro,t10_relative,0.3160659253639992,constructive mindset
+786,gemini_2_5_pro,t10_relative,0.616672176568526,family bonding
+977,gemini_2_5_pro,t10_relative,0.475709975527446,individual wellbeing
+4,gemini_2_5_pro,t10_relative,3.003345891534707,dignity of students
+188,gemini_2_5_pro,t10_relative,1.2812248696380235,environmental preservation
+3262,gemini_2_5_pro,t10_relative,-2.5975665477540537,community focus
+2,gpt_4_1_mini,t10_relative,2.554730999433322,organizational respect
+820,gpt_4_1_mini,t10_relative,0.5118820024238494,intellectual property ethics
+12,gpt_4_1_mini,t10_relative,2.113408991351144,process efficiency
+370,gpt_4_1_mini,t10_relative,0.8914726211579436,resource stewardship
+258,gpt_4_1_mini,t10_relative,1.0553056451130418,respectful interaction
+22,gpt_4_1_mini,t10_relative,1.8271024731045795,social inclusion
+45,gpt_4_1_mini,t10_relative,1.6206819328063868,future orientation
+323,gpt_4_1_mini,t10_relative,0.9582751926960724,copyright respect
+2956,gpt_4_1_mini,t10_relative,-0.9255944723083313,emotional neutrality
+31,gpt_4_1_mini,t10_relative,1.7252833034617807,code elegance

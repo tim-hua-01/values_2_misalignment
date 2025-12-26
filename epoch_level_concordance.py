@@ -57,14 +57,12 @@ def get_model_columns(model_short: str) -> Tuple[str, str]:
 
 def main():
     # Load the value pair CSVs to get value1, value2 pairs
-    minitest_df = pd.read_csv('petri_values_run_minitest.csv')
-    run1_df = pd.read_csv('petri_values_run1.csv')
-    all_pairs_df = pd.concat([minitest_df, run1_df], ignore_index=True)
+    all_pairs_df = pd.read_csv('sample_run1.csv')
 
     # Load BOTH metadata files
     meta_files = {
-        'conflicting_values.csv': pd.read_csv('conflicting_values.csv'),
-        'conflicting_values_agg.csv': pd.read_csv('conflicting_values_agg.csv'),
+        'conflicting_values.csv': pd.read_csv('value_data/conflicting_values.csv'),
+        'conflicting_values_agg.csv': pd.read_csv('value_data/conflicting_values_agg.csv'),
     }
 
     # Create lookup dicts for each metadata file

@@ -43,7 +43,7 @@ model_colors <- c(
 #df2 <- read_csv("petri_values_run_results_minitest.csv")
 
 # Combine datasets
-df <- read_csv('petri_values_run1_results_fixed.csv')
+df <- read_csv("run1_results/petri_values_run1_results_fixed.csv")
 cat("Combined dataset:", nrow(df), "rows\n")
 
 # Reshape to long format for analysis
@@ -533,29 +533,6 @@ model_pairs_cross <- combn(model_list, 2, simplify = FALSE)
 # ABSOLUTE: For each value in each scenario,
 # if rank_modelA(v) < rank_modelB(v), does score_modelA(v) > score_modelB(v)?
 
-absolute_results <- list()
-
-for (mp in model_pairs_cross) {
-  m1 <- mp[1]
-  m2 <- mp[2]
-
-  # Get rank and score columns for both models
-  m1_rank_prefix <- switch(m1, gpt41 = "gpt", gemini25 = "gemini", claude35 = "claude", grok4 = "grok")
-  m2_rank_prefix <- switch(m2, gpt41 = "gpt", gemini25 = "gemini", claude35 = "claude", grok4 = "grok")
-
-  for (i in 1:nrow(df_scenario)) {
-    row <- df_scenario[i, ]
-
-    # Value 1
-    rank_m1_v1 <- row[[paste0("value1_", m1_rank_prefix, "_rank")]]
-    rank_m2_v1 <- row[[paste0("value2_", m1_rank_prefix, "_rank")]]  # Wait, this is wrong
-
-    # Actually need to be more careful here
-    # value1_gpt_rank is the rank of value1 according to GPT's BT model
-    # We want: rank of v1 in model1 vs rank of v1 in model2
-  }
-}
-
 # Let me redo this more carefully
 # For each scenario (row in df), we have:
 #   - value1_name, value2_name
@@ -580,6 +557,12 @@ for (mp in model_pairs_cross) {
     rank_m1_v2 <- row[[paste0("value2_", m1_rank_prefix, "_rank")]]
     rank_m2_v1 <- row[[paste0("value1_", m2_rank_prefix, "_rank")]]
     rank_m2_v2 <- row[[paste0("value2_", m2_rank_prefix, "_rank")]]
+
+    # Thetas (higher = more valued)
+    theta_m1_v1 <- row[[paste0("value1_", m1_rank_prefix, "_theta")]]
+    theta_m1_v2 <- row[[paste0("value2_", m1_rank_prefix, "_theta")]]
+    theta_m2_v1 <- row[[paste0("value1_", m2_rank_prefix, "_theta")]]
+    theta_m2_v2 <- row[[paste0("value2_", m2_rank_prefix, "_theta")]]
 
     # Scores (higher = more valued)
     score_m1_v1 <- row[[paste0(m1, "_v1_score")]]
@@ -626,7 +609,7 @@ for (mp in model_pairs_cross) {
     ))
 
     # --- RELATIVE (Diff-in-Diff) ---
-    # m1's relative preference: rank_m1(v2) - rank_m1(v1)  (positive if m1 prefers v1)
+    # RANK-BASED: m1's relative preference: rank_m1(v2) - rank_m1(v1)  (positive if m1 prefers v1)
     # m2's relative preference: rank_m2(v2) - rank_m2(v1)
     # If m1_rel_pref > m2_rel_pref, m1 favors v1 more than m2 does
     # Check if scores show same pattern
@@ -635,26 +618,41 @@ for (mp in model_pairs_cross) {
     m2_rel_rank_pref <- rank_m2_v2 - rank_m2_v1
     m1_favors_v1_more_rank <- m1_rel_rank_pref > m2_rel_rank_pref
 
+    # THETA-BASED: m1's relative preference: theta_m1(v1) - theta_m1(v2)  (positive if m1 prefers v1)
+    # Note: higher theta = more valued, so we subtract v2 from v1
+    m1_rel_theta_pref <- theta_m1_v1 - theta_m1_v2  # positive = m1 prefers v1
+    m2_rel_theta_pref <- theta_m2_v1 - theta_m2_v2
+    m1_favors_v1_more_theta <- m1_rel_theta_pref > m2_rel_theta_pref
+
+    # SCORE-BASED: same for both comparisons
     m1_rel_score_pref <- score_m1_v1 - score_m1_v2  # positive = m1 scores v1 higher
     m2_rel_score_pref <- score_m2_v1 - score_m2_v2
     m1_favors_v1_more_score <- m1_rel_score_pref > m2_rel_score_pref
 
-    concordant_relative <- m1_favors_v1_more_rank == m1_favors_v1_more_score
+    # Concordance for both methods
+    concordant_relative_rank <- m1_favors_v1_more_rank == m1_favors_v1_more_score
+    concordant_relative_theta <- m1_favors_v1_more_theta == m1_favors_v1_more_score
 
-    # Relative rank diff: how much more does m1 favor v1 over v2 compared to m2?
+    # Relative differences: how much more does m1 favor v1 over v2 compared to m2?
     rel_rank_diff <- abs(m1_rel_rank_pref - m2_rel_rank_pref)
+    rel_theta_diff <- abs(m1_rel_theta_pref - m2_rel_theta_pref)
 
     relative_cross_results <- bind_rows(relative_cross_results, tibble(
       model1 = m1, model2 = m2, scenario = i,
       value1_name = row$value1_name, value2_name = row$value2_name,
       m1_rel_rank_pref = m1_rel_rank_pref,
       m2_rel_rank_pref = m2_rel_rank_pref,
+      m1_rel_theta_pref = m1_rel_theta_pref,
+      m2_rel_theta_pref = m2_rel_theta_pref,
       m1_rel_score_pref = m1_rel_score_pref,
       m2_rel_score_pref = m2_rel_score_pref,
       m1_favors_v1_more_rank = m1_favors_v1_more_rank,
+      m1_favors_v1_more_theta = m1_favors_v1_more_theta,
       m1_favors_v1_more_score = m1_favors_v1_more_score,
-      concordant = as.integer(concordant_relative),
-      rel_rank_diff = rel_rank_diff
+      concordant_rank = as.integer(concordant_relative_rank),
+      concordant_theta = as.integer(concordant_relative_theta),
+      rel_rank_diff = rel_rank_diff,
+      rel_theta_diff = rel_theta_diff
     ))
   }
 }
@@ -685,23 +683,45 @@ cat("Binomial test p-value:", format(binom_abs$p.value, scientific = TRUE), "\n"
 cat("\n--- RELATIVE (Diff-in-Diff) Cross-Model Concordance ---\n")
 cat("If BT says model1 favors v1 over v2 MORE than model2 does, does score agree?\n\n")
 
-relative_summary <- relative_cross_results %>%
+cat("RANK-BASED CONCORDANCE:\n")
+relative_summary_rank <- relative_cross_results %>%
   group_by(model1, model2) %>%
   summarise(
     n = n(),
-    concordance = mean(concordant),
+    concordance_rank = mean(concordant_rank),
     mean_rel_rank_diff = mean(rel_rank_diff),
     .groups = "drop"
   )
 
-print(relative_summary)
+print(relative_summary_rank)
 
-cat("\nOverall relative concordance:", mean(relative_cross_results$concordant), "\n")
+cat("\nOverall relative concordance (rank-based):", mean(relative_cross_results$concordant_rank), "\n")
 cat("Random baseline: 0.50\n")
 
-# Binomial test
-binom_rel <- binom.test(sum(relative_cross_results$concordant), nrow(relative_cross_results), 0.5)
-cat("Binomial test p-value:", format(binom_rel$p.value, scientific = TRUE), "\n")
+# Binomial test for rank-based
+binom_rel_rank <- binom.test(sum(relative_cross_results$concordant_rank), nrow(relative_cross_results), 0.5)
+cat("Binomial test p-value (rank):", format(binom_rel_rank$p.value, scientific = TRUE), "\n")
+
+cat("\n", strrep("-", 60), "\n\n")
+
+cat("THETA-BASED CONCORDANCE:\n")
+relative_summary_theta <- relative_cross_results %>%
+  group_by(model1, model2) %>%
+  summarise(
+    n = n(),
+    concordance_theta = mean(concordant_theta),
+    mean_rel_theta_diff = mean(rel_theta_diff),
+    .groups = "drop"
+  )
+
+print(relative_summary_theta)
+
+cat("\nOverall relative concordance (theta-based):", mean(relative_cross_results$concordant_theta), "\n")
+cat("Random baseline: 0.50\n")
+
+# Binomial test for theta-based
+binom_rel_theta <- binom.test(sum(relative_cross_results$concordant_theta), nrow(relative_cross_results), 0.5)
+cat("Binomial test p-value (theta):", format(binom_rel_theta$p.value, scientific = TRUE), "\n")
 
 # Save results
 write_csv(absolute_cross_results, "cross_model_absolute_concordance.csv")
@@ -719,38 +739,44 @@ concordance_hardcoded <- tibble(
   concordance_rate_theta = c(0.705128, 0.833333, 0.551282, 0.950000),
   mean_abs_rank_diff = c(695.769231, 550.679487, 278.192308, 700.150000),
   mean_abs_theta_diff = c(9.776157, 2.571720, 1.051850, 6.642732)
-)
+) %>% mutate(model = str_c(model,"\nAvg theta diff: " ,as.character(round(mean_abs_theta_diff, 2))))
 
 p1 <- concordance_hardcoded %>%
   ggplot(aes(x = model, y = concordance_rate_rank, fill = model)) +
   geom_col() +
-  geom_hline(yintercept = 0.5, linetype = "dashed", color = "gold") +
-  scale_fill_manual(values = model_colors) +
-  labs(title = "Within-model value agreement rate",
-       subtitle = "If BT says v1 > v2, do we see the same in Petri?",
+  geom_hline(yintercept = 0.5, linetype = "dashed", color = "gold")  +
+  geom_text(
+    aes(label = round(concordance_rate_rank, 3)),
+    vjust = -0.3,
+    color = "black",
+    size = 4
+  ) +
+  scale_fill_manual(values = c( "#CC9B7A","#8E75B2","#10A37F", "#000000")) +
+  labs(title = "Within-model value agreement rate: If BT says v1 > v2, do we see the same in Petri?",
+       subtitle = "High theta difference = LLM tends to value one value much more than the other according to BT Model",
        x = "Model", y = "Agreement Rate") +
   myTheme +
   ylim(0, 1) +
   theme(legend.position = "none")
 p1
-ggsave("plots/concordance_by_model.png", p1, width = 8, height = 6)
+ggsave("plots/concordance_by_model.png", p1, width = 10, height = 6)
 
 # Plot 2: Score vs Theta scatter by model
 p2 <- df_long %>%
   ggplot(aes(x = theta, y = score, color = model)) +
   geom_point(alpha = 0.5, size = 1.5) +
-  geom_smooth(method = "lm", se = TRUE) +
-  facet_wrap(~model, scales = "free_x") +
+  geom_smooth(method = "lm", se = FALSE) +
+  facet_wrap(~model)+#, scales = "free_x") +
   scale_color_manual(values = model_colors) +
-  labs(title = "Experiment Score vs BT Theta",
+  labs(title = "Experiment Score vs BT Theta for each value",
        subtitle = "Higher theta = BT says more valued; Higher score = experiment says more valued",
        x = "BT Theta", y = "Experiment Score") +
   myTheme +
   theme(legend.position = "none")
-
+p2
 ggsave("plots/score_vs_theta.png", p2, width = 10, height = 8)
 
-# Plot 3: Score difference vs Rank difference
+# Plot 3: Score difference vs theta difference
 # Calculate lm stats for each model
 lm_stats <- df_pairs %>%
   group_by(model) %>%
@@ -767,15 +793,63 @@ p3 <- df_pairs %>%
   geom_smooth(method = "lm", se = FALSE) +
   geom_text(data = lm_stats, aes(x = Inf, y = Inf, label = label, color = model),
             hjust = 1.1, vjust = 1.5, show.legend = FALSE) +
-  facet_wrap(~model, scales = "free_x") +
+  facet_wrap(~model)+#, scales = "free_x") +
   scale_color_manual(values = model_colors) +
   labs(title = "Theta difference in BT model predicts score difference in petri",
-       subtitle = "High theta/petri score means more valued. I wouldn't take the p-values
-very seriously since there are only 20 observations",
+       subtitle = "High theta/petri score means more valued. I wouldn't take the p-values very seriously since there are only 20 observations",
        x = "BT Theta Difference (v1 - v2)", y = "Petri Score Difference (v1 - v2)") +
   myTheme
 p3
-ggsave("plots/score_diff_vs_rank_diff.png", p3, width = 10, height = 6)
+ggsave("plots/score_diff_vs_theta_diff.png", p3, width = 10, height = 6)
+
+  #win probs
+# Calculate predicted win probability and actual outcome
+df_calibration <- df_pairs %>%
+  mutate(
+    pred_prob = 1 / (1 + exp(-theta_diff)),  # Logistic function
+    actual_win = case_when(
+      score_diff > 0 ~ 1,
+      score_diff < 0 ~ 0,
+      TRUE ~ 0.5  # Tie
+    )
+  )
+
+# Calculate accuracy stats for each model
+accuracy_stats <- df_calibration %>%
+  filter(score_diff != 0) %>%  # Exclude ties for accuracy calc
+  group_by(model) %>%
+  summarise(
+    accuracy = mean((pred_prob > 0.5) == (actual_win == 1)),
+    n = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(label = sprintf("Accuracy: %.1f%%", accuracy * 100))
+
+p4 <- df_calibration %>%
+  ggplot(aes(x = pred_prob, y = actual_win, color = model)) +
+  geom_point(alpha = 0.2, size = 2, position = position_jitter(0.003,0)) +
+  geom_text(data = accuracy_stats, aes(x = 0.1, y = 0.95, label = label, color = model),
+            hjust = 0, show.legend = FALSE) +
+  facet_wrap(~model) +
+  scale_color_manual(values = model_colors) +
+  scale_x_continuous(labels = scales::percent, limits = c(-0.03, 1.03)) +
+  scale_y_continuous(limits = c(-0.03, 1.03), breaks = c(0, 0.5, 1), labels = c("Lose", "Tie", "Win")) +
+  labs(
+    title = "Bradley-Terry predicted win probability vs. actual Petri outcomes",
+    subtitle = "Outcomes are slightly jittered to denote mass",
+    x = "BT Predicted Win Probability",
+    y = "Actual Petri Outcome (v1 vs v2)"
+  ) +
+  myTheme
+
+p4
+
+ggsave("plots/win_probs.png", p4, width = 10, height = 6)
+
+
+
+
+
 
 # Plot 4: Score by rank quartile
 p4 <- quartile_analysis %>%
@@ -806,22 +880,22 @@ p5 <- cross_model_results %>%
 ggsave("plots/cross_model_heatmap.png", p5, width = 8, height = 6)
 
 # Plot 6: Cross-model concordance bar plot
-p6 <- relative_summary %>%
-  mutate(pair_label = paste0(model1, "-", model2, "\nRel Rank Diff: ", round(mean_rel_rank_diff))) %>%
-  ggplot(aes(x = reorder(pair_label, -concordance), y = concordance, fill = concordance)) +
-  geom_col() +
-  geom_text(aes(label = sprintf("%.2f", concordance)), vjust = -0.5) +
+p6 <- relative_summary_theta %>%
+  mutate(pair_label = paste0(model1, "-", model2, "\nAvg θ diff: ", round(mean_rel_theta_diff,2))) %>%
+  ggplot(aes(x = reorder(pair_label, -concordance_theta), y = concordance_theta, fill = concordance_theta)) +
+  geom_col(width = 0.8) +
+  geom_text(aes(label = sprintf("%.2f", concordance_theta)), vjust = -0.5) +
   scale_fill_gradient(low = "gold", high = "dark green") +
   scale_y_continuous(limits = c(0, 1), breaks = seq(0,1,0.2),
                      labels = scales::percent) +
   labs(title = "Cross-Model Agreement Rate Between BT Model and Petri",
-       subtitle = "Relative Rank Difference meausre how much the AIs disagree with each other acorrding to BT Model",
+       subtitle = "Relative Theta Difference meausre how much the AIs disagree with each other acorrding to BT Model",
        x = "Model Pair", y = "Agreement Rate") +
   myTheme +
   theme(axis.text.x = element_text(angle = 0, hjust = 0.5),
         legend.position = "none")
-
-ggsave("plots/cross_model_concordance.png", p6, width = 12, height = 6)
+p6
+ggsave("plots/cross_model_concordance.png", p6, width = 11, height = 6)
 
 ################################################################################
 # 12. SUMMARY TABLE

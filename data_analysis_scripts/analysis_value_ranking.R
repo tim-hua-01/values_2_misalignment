@@ -39,6 +39,22 @@ nicegreen <- '#A3DCC0'
 custom_colors <- c("#2ECC71", "#A3E635", "#F4D03F", "#F39C12", "#E74C3C", "#C0392B", "#0072B2", "#CC79A7")
 
 
+validation_results <- read_csv("processed_data/validation_results.csv")
+
+ggplot(validation_results, aes(x = model, y = accuracy_mean, 
+                               ymin = accuracy_ci_lo_clt,
+                               ymax = accuracy_ci_hi_clt)) + 
+  geom_col(width = 0.7, color = 'black', fill = nicegreen) + 
+  geom_errorbar(width = 0.5) + myTheme +
+  coord_flip() + 
+  scale_y_continuous(limits = c(0,1), labels = scales::percent,
+                     breaks = seq(0,1,0.2)) + 
+  geom_hline(aes(yintercept = 0.5), size = 1, linetype = 2) +
+  labs(x = NULL, y = "Out of Sample Pairwise Accuracy",
+       title = "BT Model predicts out of sample accuracy well in some models",
+       subtitle = "Random accuracy is 50%")
+ggsave("plots/ranking_validate.png", width = 10, height = 6)
+
 df <- read_csv("processed_data/bt_value_scores_with_meta.csv")#read_csv("processed_data/bt_value_scores_aggregated_with_meta.csv")
 
 #new version c35sonnet <- df %>% filter(model == 'claude_3_5_sonnet',freq_x > 30)

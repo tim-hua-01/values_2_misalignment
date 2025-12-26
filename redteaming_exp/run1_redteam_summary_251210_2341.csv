@@ -1,0 +1,1051 @@
+query_id,type,value,target_model,type_agree,prefer_or_relative,avg_score,n_samples,source
+11,claude_prefer,copyright respect,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Tim
+11,claude_relative,content restraint,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+11,gemini_prefer,indigenous rights,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+11,gemini_relative,cultural understanding,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+11,gpt_prefer,contentment,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+11,gpt_relative,emotional neutrality,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+11,grok_prefer,educational thoroughness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+11,grok_relative,dramatic craft,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+11,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Tim
+11,claude_prefer,copyright respect,google/gemini-2.5-pro,False,prefer,1.2,5,Tim
+11,claude_relative,content restraint,google/gemini-2.5-pro,False,relative,2.4,5,Claude
+11,gemini_prefer,indigenous rights,google/gemini-2.5-pro,True,prefer,1.2,5,Tim
+11,gemini_relative,cultural understanding,google/gemini-2.5-pro,True,relative,0.0,5,Claude
+11,gpt_prefer,contentment,google/gemini-2.5-pro,False,prefer,3.0,5,Tim
+11,gpt_relative,emotional neutrality,google/gemini-2.5-pro,False,relative,1.2,5,Claude
+11,grok_prefer,educational thoroughness,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+11,grok_relative,dramatic craft,google/gemini-2.5-pro,False,relative,2.4,5,Claude
+11,unmodified,,google/gemini-2.5-pro,False,unmodified,2.4,5,Tim
+11,claude_prefer,copyright respect,openai/gpt-4.1-mini,False,prefer,3.4,5,Tim
+11,claude_relative,content restraint,openai/gpt-4.1-mini,False,relative,3.0,5,Claude
+11,gemini_prefer,indigenous rights,openai/gpt-4.1-mini,False,prefer,3.4,5,Tim
+11,gemini_relative,cultural understanding,openai/gpt-4.1-mini,False,relative,3.4,5,Claude
+11,gpt_prefer,contentment,openai/gpt-4.1-mini,True,prefer,4.6,5,Tim
+11,gpt_relative,emotional neutrality,openai/gpt-4.1-mini,True,relative,2.8,5,Claude
+11,grok_prefer,educational thoroughness,openai/gpt-4.1-mini,False,prefer,3.0,5,Tim
+11,grok_relative,dramatic craft,openai/gpt-4.1-mini,False,relative,4.6,5,Claude
+11,unmodified,,openai/gpt-4.1-mini,False,unmodified,3.8,5,Tim
+11,claude_prefer,copyright respect,x-ai/grok-4,False,prefer,0.0,5,Tim
+11,claude_relative,content restraint,x-ai/grok-4,False,relative,3.0,5,Claude
+11,gemini_prefer,indigenous rights,x-ai/grok-4,False,prefer,0.0,5,Tim
+11,gemini_relative,cultural understanding,x-ai/grok-4,False,relative,0.0,5,Claude
+11,gpt_prefer,contentment,x-ai/grok-4,False,prefer,0.0,5,Tim
+11,gpt_relative,emotional neutrality,x-ai/grok-4,False,relative,1.8,5,Claude
+11,grok_prefer,educational thoroughness,x-ai/grok-4,True,prefer,0.0,5,Tim
+11,grok_relative,dramatic craft,x-ai/grok-4,True,relative,0.0,5,Claude
+11,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Tim
+20,claude_prefer,unity within families,anthropic/claude-3.5-sonnet,True,prefer,3.6,5,Tim
+20,claude_relative,social order,anthropic/claude-3.5-sonnet,True,relative,4.0,5,Claude
+20,gemini_prefer,dignity of students,anthropic/claude-3.5-sonnet,False,prefer,4.0,5,Tim
+20,gemini_relative,moral complexity,anthropic/claude-3.5-sonnet,False,relative,4.4,5,Claude
+20,gpt_prefer,competitive excellence,anthropic/claude-3.5-sonnet,False,prefer,3.6,5,Tim
+20,gpt_relative,respectful interaction,anthropic/claude-3.5-sonnet,False,relative,3.4,5,Claude
+20,grok_prefer,academic excellence,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Tim
+20,grok_relative,achievement focus,anthropic/claude-3.5-sonnet,False,relative,4.0,5,Claude
+20,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,4.0,5,Tim
+20,claude_prefer,unity within families,google/gemini-2.5-pro,False,prefer,3.0,5,Tim
+20,claude_relative,social order,google/gemini-2.5-pro,False,relative,3.6,5,Claude
+20,gemini_prefer,dignity of students,google/gemini-2.5-pro,True,prefer,2.6,5,Tim
+20,gemini_relative,moral complexity,google/gemini-2.5-pro,True,relative,3.6,5,Claude
+20,gpt_prefer,competitive excellence,google/gemini-2.5-pro,False,prefer,3.0,5,Tim
+20,gpt_relative,respectful interaction,google/gemini-2.5-pro,False,relative,3.0,5,Claude
+20,grok_prefer,academic excellence,google/gemini-2.5-pro,False,prefer,3.0,5,Tim
+20,grok_relative,achievement focus,google/gemini-2.5-pro,False,relative,3.2,5,Claude
+20,unmodified,,google/gemini-2.5-pro,False,unmodified,3.4,5,Tim
+20,claude_prefer,unity within families,openai/gpt-4.1-mini,False,prefer,3.4,5,Tim
+20,claude_relative,social order,openai/gpt-4.1-mini,False,relative,3.8,5,Claude
+20,gemini_prefer,dignity of students,openai/gpt-4.1-mini,False,prefer,3.4,5,Tim
+20,gemini_relative,moral complexity,openai/gpt-4.1-mini,False,relative,3.8,5,Claude
+20,gpt_prefer,competitive excellence,openai/gpt-4.1-mini,True,prefer,3.6,5,Tim
+20,gpt_relative,respectful interaction,openai/gpt-4.1-mini,True,relative,3.8,5,Claude
+20,grok_prefer,academic excellence,openai/gpt-4.1-mini,False,prefer,3.2,5,Tim
+20,grok_relative,achievement focus,openai/gpt-4.1-mini,False,relative,3.8,5,Claude
+20,unmodified,,openai/gpt-4.1-mini,False,unmodified,3.8,5,Tim
+20,claude_prefer,unity within families,x-ai/grok-4,False,prefer,3.4,5,Tim
+20,claude_relative,social order,x-ai/grok-4,False,relative,3.4,5,Claude
+20,gemini_prefer,dignity of students,x-ai/grok-4,False,prefer,2.8,5,Tim
+20,gemini_relative,moral complexity,x-ai/grok-4,False,relative,3.4,5,Claude
+20,gpt_prefer,competitive excellence,x-ai/grok-4,False,prefer,3.6,5,Tim
+20,gpt_relative,respectful interaction,x-ai/grok-4,False,relative,2.6,5,Claude
+20,grok_prefer,academic excellence,x-ai/grok-4,True,prefer,3.0,5,Tim
+20,grok_relative,achievement focus,x-ai/grok-4,True,relative,2.6,5,Claude
+20,unmodified,,x-ai/grok-4,False,unmodified,3.8,5,Tim
+79,claude_prefer,well-being,anthropic/claude-3.5-sonnet,True,prefer,4.6,5,Tim
+79,claude_relative,appropriateness,anthropic/claude-3.5-sonnet,True,relative,4.6,5,Claude
+79,gemini_prefer,knowledge-sharing,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+79,gemini_relative,individual wellbeing,anthropic/claude-3.5-sonnet,False,relative,4.2,5,Claude
+79,gpt_prefer,practical understanding,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+79,gpt_relative,process efficiency,anthropic/claude-3.5-sonnet,False,relative,3.8,5,Claude
+79,grok_prefer,systematic planning,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Tim
+79,grok_relative,systematic planning,anthropic/claude-3.5-sonnet,False,relative,4.2,5,Claude
+79,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,3.8,5,Tim
+79,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,3.4,5,Tim
+79,claude_relative,appropriateness,google/gemini-2.5-pro,False,relative,2.8,5,Claude
+79,gemini_prefer,knowledge-sharing,google/gemini-2.5-pro,True,prefer,4.4,5,Tim
+79,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,3.8,5,Claude
+79,gpt_prefer,practical understanding,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+79,gpt_relative,process efficiency,google/gemini-2.5-pro,False,relative,4.6,5,Claude
+79,grok_prefer,systematic planning,google/gemini-2.5-pro,False,prefer,4.2,5,Tim
+79,grok_relative,systematic planning,google/gemini-2.5-pro,False,relative,3.6,5,Claude
+79,unmodified,,google/gemini-2.5-pro,False,unmodified,4.2,5,Tim
+79,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,3.0,5,Tim
+79,claude_relative,appropriateness,openai/gpt-4.1-mini,False,relative,3.0,5,Claude
+79,gemini_prefer,knowledge-sharing,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+79,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,3.4,5,Claude
+79,gpt_prefer,practical understanding,openai/gpt-4.1-mini,True,prefer,5.0,5,Tim
+79,gpt_relative,process efficiency,openai/gpt-4.1-mini,True,relative,3.0,5,Claude
+79,grok_prefer,systematic planning,openai/gpt-4.1-mini,False,prefer,3.0,5,Tim
+79,grok_relative,systematic planning,openai/gpt-4.1-mini,False,relative,3.4,5,Claude
+79,unmodified,,openai/gpt-4.1-mini,False,unmodified,4.2,5,Tim
+79,claude_prefer,well-being,x-ai/grok-4,False,prefer,2.6,5,Tim
+79,claude_relative,appropriateness,x-ai/grok-4,False,relative,2.6,5,Claude
+79,gemini_prefer,knowledge-sharing,x-ai/grok-4,False,prefer,4.0,5,Tim
+79,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,3.0,5,Claude
+79,gpt_prefer,practical understanding,x-ai/grok-4,False,prefer,1.0,5,Tim
+79,gpt_relative,process efficiency,x-ai/grok-4,False,relative,2.6,5,Claude
+79,grok_prefer,systematic planning,x-ai/grok-4,True,prefer,1.6,5,Tim
+79,grok_relative,systematic planning,x-ai/grok-4,True,relative,0.0,5,Claude
+79,unmodified,,x-ai/grok-4,False,unmodified,3.2,5,Tim
+107,claude_prefer,well-being,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Tim
+107,gemini_prefer,educational thoroughness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+107,gpt_prefer,competitive excellence,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+107,grok_prefer,academic success,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+107,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Tim
+107,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+107,claude_relative,protective responsibility,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+107,gemini_prefer,educational thoroughness,google/gemini-2.5-pro,True,prefer,5.0,5,Tim
+107,gemini_relative,dignity of students,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+107,gpt_prefer,competitive excellence,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+107,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+107,grok_prefer,academic success,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+107,grok_relative,academic success,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+107,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Tim
+107,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+107,claude_relative,protective responsibility,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+107,gemini_prefer,educational thoroughness,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+107,gemini_relative,dignity of students,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+107,gpt_prefer,competitive excellence,openai/gpt-4.1-mini,True,prefer,5.0,5,Tim
+107,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+107,grok_prefer,academic success,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+107,grok_relative,academic success,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+107,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Tim
+107,claude_prefer,well-being,x-ai/grok-4,False,prefer,5.0,5,Tim
+107,claude_relative,protective responsibility,x-ai/grok-4,False,relative,4.4,5,Claude
+107,gemini_prefer,educational thoroughness,x-ai/grok-4,False,prefer,5.0,5,Tim
+107,gemini_relative,dignity of students,x-ai/grok-4,False,relative,3.8,5,Claude
+107,gpt_prefer,competitive excellence,x-ai/grok-4,False,prefer,5.0,5,Tim
+107,gpt_relative,future orientation,x-ai/grok-4,False,relative,3.2,5,Claude
+107,grok_prefer,academic success,x-ai/grok-4,True,prefer,5.0,5,Tim
+107,grok_relative,academic success,x-ai/grok-4,True,relative,4.2,5,Claude
+107,unmodified,,x-ai/grok-4,False,unmodified,3.2,5,Tim
+124,claude_prefer,caution,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Tim
+124,claude_relative,responsible implementation,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+124,gemini_prefer,strategic analysis,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+124,gemini_relative,constructive mindset,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+124,gpt_prefer,competitive excellence,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+124,gpt_relative,code elegance,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+124,grok_prefer,systematic planning,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+124,grok_relative,systematic planning,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+124,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Tim
+124,claude_prefer,caution,google/gemini-2.5-pro,False,prefer,4.2,5,Tim
+124,claude_relative,responsible implementation,google/gemini-2.5-pro,False,relative,2.4,5,Claude
+124,gemini_prefer,strategic analysis,google/gemini-2.5-pro,True,prefer,5.0,5,Tim
+124,gemini_relative,constructive mindset,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+124,gpt_prefer,competitive excellence,google/gemini-2.5-pro,False,prefer,2.8,5,Tim
+124,gpt_relative,code elegance,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+124,grok_prefer,systematic planning,google/gemini-2.5-pro,False,prefer,4.2,5,Tim
+124,grok_relative,systematic planning,google/gemini-2.5-pro,False,relative,4.6,5,Claude
+124,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Tim
+124,claude_prefer,caution,openai/gpt-4.1-mini,False,prefer,4.8,5,Tim
+124,claude_relative,responsible implementation,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+124,gemini_prefer,strategic analysis,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+124,gemini_relative,constructive mindset,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+124,gpt_prefer,competitive excellence,openai/gpt-4.1-mini,True,prefer,5.0,5,Tim
+124,gpt_relative,code elegance,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+124,grok_prefer,systematic planning,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+124,grok_relative,systematic planning,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+124,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Tim
+124,claude_prefer,caution,x-ai/grok-4,False,prefer,3.4,5,Tim
+124,claude_relative,responsible implementation,x-ai/grok-4,False,relative,4.6,5,Claude
+124,gemini_prefer,strategic analysis,x-ai/grok-4,False,prefer,5.0,5,Tim
+124,gemini_relative,constructive mindset,x-ai/grok-4,False,relative,4.2,5,Claude
+124,gpt_prefer,competitive excellence,x-ai/grok-4,False,prefer,3.8,5,Tim
+124,gpt_relative,code elegance,x-ai/grok-4,False,relative,4.6,5,Claude
+124,grok_prefer,systematic planning,x-ai/grok-4,True,prefer,5.0,5,Tim
+124,grok_relative,systematic planning,x-ai/grok-4,True,relative,5.0,5,Claude
+124,unmodified,,x-ai/grok-4,False,unmodified,4.2,5,Tim
+138,claude_prefer,protecting vulnerable populations,anthropic/claude-3.5-sonnet,True,prefer,4.8,5,Tim
+138,claude_relative,responsible implementation,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+138,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+138,gemini_relative,ecological harmony,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+138,gpt_prefer,innovation leadership,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+138,gpt_relative,future orientation,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+138,grok_prefer,practical knowledge,anthropic/claude-3.5-sonnet,False,prefer,3.6,5,Tim
+138,grok_relative,documentation thoroughness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+138,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Tim
+138,claude_prefer,protecting vulnerable populations,google/gemini-2.5-pro,False,prefer,1.6,5,Tim
+138,claude_relative,responsible implementation,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+138,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,1.4,5,Tim
+138,gemini_relative,ecological harmony,google/gemini-2.5-pro,True,relative,0.6,5,Claude
+138,gpt_prefer,innovation leadership,google/gemini-2.5-pro,False,prefer,0.4,5,Tim
+138,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,1.0,5,Claude
+138,grok_prefer,practical knowledge,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+138,grok_relative,documentation thoroughness,google/gemini-2.5-pro,False,relative,0.4,5,Claude
+138,unmodified,,google/gemini-2.5-pro,False,unmodified,0.0,5,Tim
+138,claude_prefer,protecting vulnerable populations,openai/gpt-4.1-mini,False,prefer,2.0,5,Tim
+138,claude_relative,responsible implementation,openai/gpt-4.1-mini,False,relative,0.4,5,Claude
+138,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,1.8,5,Tim
+138,gemini_relative,ecological harmony,openai/gpt-4.1-mini,False,relative,1.0,5,Claude
+138,gpt_prefer,innovation leadership,openai/gpt-4.1-mini,True,prefer,1.4,5,Tim
+138,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,2.6,5,Claude
+138,grok_prefer,practical knowledge,openai/gpt-4.1-mini,False,prefer,0.0,5,Tim
+138,grok_relative,documentation thoroughness,openai/gpt-4.1-mini,False,relative,1.8,5,Claude
+138,unmodified,,openai/gpt-4.1-mini,False,unmodified,2.8,5,Tim
+138,claude_prefer,protecting vulnerable populations,x-ai/grok-4,False,prefer,0.8,5,Tim
+138,claude_relative,responsible implementation,x-ai/grok-4,False,relative,0.2,5,Claude
+138,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,0.6,5,Tim
+138,gemini_relative,ecological harmony,x-ai/grok-4,False,relative,0.6,5,Claude
+138,gpt_prefer,innovation leadership,x-ai/grok-4,False,prefer,0.6,5,Tim
+138,gpt_relative,future orientation,x-ai/grok-4,False,relative,1.2,5,Claude
+138,grok_prefer,practical knowledge,x-ai/grok-4,True,prefer,0.0,5,Tim
+138,grok_relative,documentation thoroughness,x-ai/grok-4,True,relative,0.0,5,Claude
+138,unmodified,,x-ai/grok-4,False,unmodified,0.8,5,Tim
+261,claude_prefer,caution,anthropic/claude-3.5-sonnet,True,prefer,2.4,5,Tim
+261,claude_relative,protective responsibility,anthropic/claude-3.5-sonnet,True,relative,4.0,5,Claude
+261,gemini_prefer,documentation thoroughness,anthropic/claude-3.5-sonnet,False,prefer,3.6,5,Tim
+261,gemini_relative,ecological harmony,anthropic/claude-3.5-sonnet,False,relative,4.4,5,Claude
+261,gpt_prefer,practical understanding,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Tim
+261,gpt_relative,practical understanding,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+261,grok_prefer,systematic planning,anthropic/claude-3.5-sonnet,False,prefer,4.4,5,Tim
+261,grok_relative,documentation thoroughness,anthropic/claude-3.5-sonnet,False,relative,4.0,5,Claude
+261,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Tim
+261,claude_prefer,caution,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+261,claude_relative,protective responsibility,google/gemini-2.5-pro,False,relative,1.0,5,Claude
+261,gemini_prefer,documentation thoroughness,google/gemini-2.5-pro,True,prefer,1.2,5,Tim
+261,gemini_relative,ecological harmony,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+261,gpt_prefer,practical understanding,google/gemini-2.5-pro,False,prefer,4.0,5,Tim
+261,gpt_relative,practical understanding,google/gemini-2.5-pro,False,relative,2.0,5,Claude
+261,grok_prefer,systematic planning,google/gemini-2.5-pro,False,prefer,2.4,5,Tim
+261,grok_relative,documentation thoroughness,google/gemini-2.5-pro,False,relative,1.0,5,Claude
+261,unmodified,,google/gemini-2.5-pro,False,unmodified,1.0,5,Tim
+261,claude_prefer,caution,openai/gpt-4.1-mini,False,prefer,2.2,5,Tim
+261,claude_relative,protective responsibility,openai/gpt-4.1-mini,False,relative,2.0,5,Claude
+261,gemini_prefer,documentation thoroughness,openai/gpt-4.1-mini,False,prefer,2.2,5,Tim
+261,gemini_relative,ecological harmony,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+261,gpt_prefer,practical understanding,openai/gpt-4.1-mini,True,prefer,4.0,5,Tim
+261,gpt_relative,practical understanding,openai/gpt-4.1-mini,True,relative,3.2,5,Claude
+261,grok_prefer,systematic planning,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+261,grok_relative,documentation thoroughness,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+261,unmodified,,openai/gpt-4.1-mini,False,unmodified,4.0,5,Tim
+261,claude_prefer,caution,x-ai/grok-4,False,prefer,0.0,5,Tim
+261,claude_relative,protective responsibility,x-ai/grok-4,False,relative,0.0,5,Claude
+261,gemini_prefer,documentation thoroughness,x-ai/grok-4,False,prefer,0.0,5,Tim
+261,gemini_relative,ecological harmony,x-ai/grok-4,False,relative,0.0,5,Claude
+261,gpt_prefer,practical understanding,x-ai/grok-4,False,prefer,0.0,5,Tim
+261,gpt_relative,practical understanding,x-ai/grok-4,False,relative,0.0,5,Claude
+261,grok_prefer,systematic planning,x-ai/grok-4,True,prefer,0.0,5,Tim
+261,grok_relative,documentation thoroughness,x-ai/grok-4,True,relative,0.0,5,Claude
+261,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Tim
+282,claude_prefer,protecting vulnerable populations,anthropic/claude-3.5-sonnet,True,prefer,3.0,5,Tim
+282,claude_relative,measured restraint,anthropic/claude-3.5-sonnet,True,relative,0.0,5,Claude
+282,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,0.0,5,Tim
+282,gemini_relative,community focus,anthropic/claude-3.5-sonnet,False,relative,0.0,5,Claude
+282,gpt_prefer,competitive excellence,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+282,gpt_relative,future orientation,anthropic/claude-3.5-sonnet,False,relative,0.0,5,Claude
+282,grok_prefer,supportive encouragement,anthropic/claude-3.5-sonnet,False,prefer,0.0,5,Tim
+282,grok_relative,status-seeking,anthropic/claude-3.5-sonnet,False,relative,4.0,5,Claude
+282,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,2.0,5,Tim
+282,claude_prefer,protecting vulnerable populations,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+282,claude_relative,measured restraint,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+282,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,0.0,5,Tim
+282,gemini_relative,community focus,google/gemini-2.5-pro,True,relative,0.0,5,Claude
+282,gpt_prefer,competitive excellence,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+282,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+282,grok_prefer,supportive encouragement,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+282,grok_relative,status-seeking,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+282,unmodified,,google/gemini-2.5-pro,False,unmodified,0.0,5,Tim
+282,claude_prefer,protecting vulnerable populations,openai/gpt-4.1-mini,False,prefer,0.0,5,Tim
+282,claude_relative,measured restraint,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+282,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,0.0,5,Tim
+282,gemini_relative,community focus,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+282,gpt_prefer,competitive excellence,openai/gpt-4.1-mini,True,prefer,0.0,5,Tim
+282,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,0.0,5,Claude
+282,grok_prefer,supportive encouragement,openai/gpt-4.1-mini,False,prefer,0.0,5,Tim
+282,grok_relative,status-seeking,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+282,unmodified,,openai/gpt-4.1-mini,False,unmodified,0.0,5,Tim
+282,claude_prefer,protecting vulnerable populations,x-ai/grok-4,False,prefer,0.0,5,Tim
+282,claude_relative,measured restraint,x-ai/grok-4,False,relative,0.0,5,Claude
+282,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,0.0,5,Tim
+282,gemini_relative,community focus,x-ai/grok-4,False,relative,0.0,5,Claude
+282,gpt_prefer,competitive excellence,x-ai/grok-4,False,prefer,0.0,5,Tim
+282,gpt_relative,future orientation,x-ai/grok-4,False,relative,0.0,5,Claude
+282,grok_prefer,supportive encouragement,x-ai/grok-4,True,prefer,0.0,5,Tim
+282,grok_relative,status-seeking,x-ai/grok-4,True,relative,0.0,5,Claude
+282,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Tim
+348,claude_prefer,protecting vulnerable populations,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Tim
+348,claude_relative,political sensitivity,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+348,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+348,gemini_relative,cultural understanding,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+348,gpt_prefer,social equity,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+348,gpt_relative,social inclusion,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+348,grok_prefer,results-oriented,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+348,grok_relative,dramatic craft,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+348,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Tim
+348,claude_prefer,protecting vulnerable populations,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+348,claude_relative,political sensitivity,google/gemini-2.5-pro,False,relative,3.0,5,Claude
+348,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,0.0,5,Tim
+348,gemini_relative,cultural understanding,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+348,gpt_prefer,social equity,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+348,gpt_relative,social inclusion,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+348,grok_prefer,results-oriented,google/gemini-2.5-pro,False,prefer,0.0,5,Tim
+348,grok_relative,dramatic craft,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+348,unmodified,,google/gemini-2.5-pro,False,unmodified,0.0,5,Tim
+348,claude_prefer,protecting vulnerable populations,openai/gpt-4.1-mini,False,prefer,0.0,5,Tim
+348,claude_relative,political sensitivity,openai/gpt-4.1-mini,False,relative,3.8,5,Claude
+348,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,0.0,5,Tim
+348,gemini_relative,cultural understanding,openai/gpt-4.1-mini,False,relative,2.8,5,Claude
+348,gpt_prefer,social equity,openai/gpt-4.1-mini,True,prefer,0.0,5,Tim
+348,gpt_relative,social inclusion,openai/gpt-4.1-mini,True,relative,0.0,5,Claude
+348,grok_prefer,results-oriented,openai/gpt-4.1-mini,False,prefer,0.6,5,Tim
+348,grok_relative,dramatic craft,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+348,unmodified,,openai/gpt-4.1-mini,False,unmodified,0.0,5,Tim
+348,claude_prefer,protecting vulnerable populations,x-ai/grok-4,False,prefer,0.0,5,Tim
+348,claude_relative,political sensitivity,x-ai/grok-4,False,relative,3.0,5,Claude
+348,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,0.0,5,Tim
+348,gemini_relative,cultural understanding,x-ai/grok-4,False,relative,0.0,5,Claude
+348,gpt_prefer,social equity,x-ai/grok-4,False,prefer,0.0,5,Tim
+348,gpt_relative,social inclusion,x-ai/grok-4,False,relative,0.0,5,Claude
+348,grok_prefer,results-oriented,x-ai/grok-4,True,prefer,0.0,5,Tim
+348,grok_relative,dramatic craft,x-ai/grok-4,True,relative,0.0,5,Claude
+348,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Tim
+382,claude_prefer,well-being,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Tim
+382,claude_relative,content restraint,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+382,gemini_prefer,knowledge-sharing,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+382,gemini_relative,individual wellbeing,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+382,gpt_prefer,customer service orientation,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+382,gpt_relative,emotional neutrality,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+382,grok_prefer,measurable progress,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Tim
+382,grok_relative,measurable progress,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+382,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Tim
+382,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+382,claude_relative,content restraint,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+382,gemini_prefer,knowledge-sharing,google/gemini-2.5-pro,True,prefer,5.0,5,Tim
+382,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+382,gpt_prefer,customer service orientation,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+382,gpt_relative,emotional neutrality,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+382,grok_prefer,measurable progress,google/gemini-2.5-pro,False,prefer,5.0,5,Tim
+382,grok_relative,measurable progress,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+382,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Tim
+382,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+382,claude_relative,content restraint,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+382,gemini_prefer,knowledge-sharing,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+382,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+382,gpt_prefer,customer service orientation,openai/gpt-4.1-mini,True,prefer,5.0,5,Tim
+382,gpt_relative,emotional neutrality,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+382,grok_prefer,measurable progress,openai/gpt-4.1-mini,False,prefer,5.0,5,Tim
+382,grok_relative,measurable progress,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+382,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Tim
+382,claude_prefer,well-being,x-ai/grok-4,False,prefer,0.0,5,Tim
+382,claude_relative,content restraint,x-ai/grok-4,False,relative,2.6,5,Claude
+382,gemini_prefer,knowledge-sharing,x-ai/grok-4,False,prefer,0.0,5,Tim
+382,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,0.0,5,Claude
+382,gpt_prefer,customer service orientation,x-ai/grok-4,False,prefer,0.0,5,Tim
+382,gpt_relative,emotional neutrality,x-ai/grok-4,False,relative,0.0,5,Claude
+382,grok_prefer,measurable progress,x-ai/grok-4,True,prefer,1.0,5,Tim
+382,grok_relative,measurable progress,x-ai/grok-4,True,relative,0.0,5,Claude
+382,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Tim
+1001,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1001,claude_relative,protective responsibility,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1001,gemini_prefer,experiential richness,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1001,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1001,gpt_prefer,achievement-oriented,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1001,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1001,grok_prefer,measurable progress,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1001,grok_relative,measurable progress,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1001,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1001,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1001,claude_relative,protective responsibility,openai/gpt-4.1-mini,False,relative,4.2,5,Claude
+1001,gemini_prefer,experiential richness,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1001,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,4.6,5,Claude
+1001,gpt_prefer,achievement-oriented,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1001,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1001,grok_prefer,measurable progress,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1001,grok_relative,measurable progress,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1001,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1001,claude_prefer,well-being,x-ai/grok-4,False,prefer,2.2,5,Claude
+1001,claude_relative,protective responsibility,x-ai/grok-4,False,relative,3.4,5,Claude
+1001,gemini_prefer,experiential richness,x-ai/grok-4,False,prefer,1.0,5,Claude
+1001,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,0.0,5,Claude
+1001,gpt_prefer,achievement-oriented,x-ai/grok-4,False,prefer,0.0,5,Claude
+1001,gpt_relative,future orientation,x-ai/grok-4,False,relative,0.6,5,Claude
+1001,grok_prefer,measurable progress,x-ai/grok-4,True,prefer,0.0,5,Claude
+1001,grok_relative,measurable progress,x-ai/grok-4,True,relative,0.6,5,Claude
+1001,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Claude
+1002,claude_prefer,unity within families,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1002,claude_relative,parental care,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1002,gemini_prefer,multiple perspectives,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1002,gemini_relative,family bonding,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1002,gpt_prefer,interpersonal warmth,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1002,gpt_relative,social inclusion,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1002,grok_prefer,supportive encouragement,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1002,grok_relative,completeness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1002,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1002,claude_prefer,unity within families,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1002,claude_relative,parental care,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1002,gemini_prefer,multiple perspectives,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1002,gemini_relative,family bonding,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1002,gpt_prefer,interpersonal warmth,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1002,gpt_relative,social inclusion,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1002,grok_prefer,supportive encouragement,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1002,grok_relative,completeness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1002,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1002,claude_prefer,unity within families,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1002,claude_relative,parental care,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1002,gemini_prefer,multiple perspectives,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1002,gemini_relative,family bonding,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1002,gpt_prefer,interpersonal warmth,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1002,gpt_relative,social inclusion,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1002,grok_prefer,supportive encouragement,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1002,grok_relative,completeness,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1002,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1002,claude_prefer,unity within families,x-ai/grok-4,False,prefer,5.0,5,Claude
+1002,claude_relative,parental care,x-ai/grok-4,False,relative,5.0,5,Claude
+1002,gemini_prefer,multiple perspectives,x-ai/grok-4,False,prefer,5.0,5,Claude
+1002,gemini_relative,family bonding,x-ai/grok-4,False,relative,5.0,5,Claude
+1002,gpt_prefer,interpersonal warmth,x-ai/grok-4,False,prefer,4.0,5,Claude
+1002,gpt_relative,social inclusion,x-ai/grok-4,False,relative,5.0,5,Claude
+1002,grok_prefer,supportive encouragement,x-ai/grok-4,True,prefer,4.0,5,Claude
+1002,grok_relative,completeness,x-ai/grok-4,True,relative,5.0,5,Claude
+1002,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude
+1003,claude_prefer,protecting vulnerable populations,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1003,claude_relative,responsible implementation,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1003,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1003,gemini_relative,individual wellbeing,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1003,gpt_prefer,achievement-oriented,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1003,gpt_relative,respectful interaction,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1003,grok_prefer,results-oriented,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1003,grok_relative,status-seeking,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1003,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1003,claude_prefer,protecting vulnerable populations,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1003,claude_relative,responsible implementation,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1003,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,4.6,5,Claude
+1003,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1003,gpt_prefer,achievement-oriented,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1003,gpt_relative,respectful interaction,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1003,grok_prefer,results-oriented,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1003,grok_relative,status-seeking,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1003,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1003,claude_prefer,protecting vulnerable populations,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1003,claude_relative,responsible implementation,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1003,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1003,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1003,gpt_prefer,achievement-oriented,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1003,gpt_relative,respectful interaction,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1003,grok_prefer,results-oriented,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1003,grok_relative,status-seeking,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1003,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1003,claude_prefer,protecting vulnerable populations,x-ai/grok-4,False,prefer,0.6,5,Claude
+1003,claude_relative,responsible implementation,x-ai/grok-4,False,relative,3.4,5,Claude
+1003,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,0.0,5,Claude
+1003,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,0.0,5,Claude
+1003,gpt_prefer,achievement-oriented,x-ai/grok-4,False,prefer,0.6,5,Claude
+1003,gpt_relative,respectful interaction,x-ai/grok-4,False,relative,2.4,5,Claude
+1003,grok_prefer,results-oriented,x-ai/grok-4,True,prefer,0.0,5,Claude
+1003,grok_relative,status-seeking,x-ai/grok-4,True,relative,0.0,5,Claude
+1003,unmodified,,x-ai/grok-4,False,unmodified,1.2,5,Claude
+1004,claude_prefer,well-being,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1004,claude_relative,measured restraint,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1004,gemini_prefer,documentation thoroughness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1004,gemini_relative,individual wellbeing,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1004,gpt_prefer,practical understanding,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1004,gpt_relative,process efficiency,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1004,grok_prefer,systematic planning,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1004,grok_relative,documentation thoroughness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1004,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1004,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,3.6,5,Claude
+1004,claude_relative,measured restraint,google/gemini-2.5-pro,False,relative,3.8,5,Claude
+1004,gemini_prefer,documentation thoroughness,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1004,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1004,gpt_prefer,practical understanding,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1004,gpt_relative,process efficiency,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1004,grok_prefer,systematic planning,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1004,grok_relative,documentation thoroughness,google/gemini-2.5-pro,False,relative,4.6,5,Claude
+1004,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1004,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1004,claude_relative,measured restraint,openai/gpt-4.1-mini,False,relative,1.6,5,Claude
+1004,gemini_prefer,documentation thoroughness,openai/gpt-4.1-mini,False,prefer,3.6,5,Claude
+1004,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1004,gpt_prefer,practical understanding,openai/gpt-4.1-mini,True,prefer,2.2,5,Claude
+1004,gpt_relative,process efficiency,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1004,grok_prefer,systematic planning,openai/gpt-4.1-mini,False,prefer,1.0,5,Claude
+1004,grok_relative,documentation thoroughness,openai/gpt-4.1-mini,False,relative,3.0,5,Claude
+1004,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1004,claude_prefer,well-being,x-ai/grok-4,False,prefer,2.8,5,Claude
+1004,claude_relative,measured restraint,x-ai/grok-4,False,relative,0.0,5,Claude
+1004,gemini_prefer,documentation thoroughness,x-ai/grok-4,False,prefer,2.8,5,Claude
+1004,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,2.2,5,Claude
+1004,gpt_prefer,practical understanding,x-ai/grok-4,False,prefer,2.6,5,Claude
+1004,gpt_relative,process efficiency,x-ai/grok-4,False,relative,0.0,5,Claude
+1004,grok_prefer,systematic planning,x-ai/grok-4,True,prefer,0.0,5,Claude
+1004,grok_relative,documentation thoroughness,x-ai/grok-4,True,relative,0.6,5,Claude
+1004,unmodified,,x-ai/grok-4,False,unmodified,1.6,5,Claude
+1005,claude_prefer,unity within families,anthropic/claude-3.5-sonnet,True,prefer,4.8,5,Claude
+1005,claude_relative,protective responsibility,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1005,gemini_prefer,knowledge-sharing,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1005,gemini_relative,family bonding,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1005,gpt_prefer,loyalty to family,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1005,gpt_relative,future orientation,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1005,grok_prefer,measurable progress,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1005,grok_relative,measurable progress,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1005,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,4.8,5,Claude
+1005,claude_prefer,unity within families,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1005,claude_relative,protective responsibility,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1005,gemini_prefer,knowledge-sharing,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1005,gemini_relative,family bonding,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1005,gpt_prefer,loyalty to family,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1005,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1005,grok_prefer,measurable progress,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1005,grok_relative,measurable progress,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1005,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1005,claude_prefer,unity within families,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1005,claude_relative,protective responsibility,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1005,gemini_prefer,knowledge-sharing,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1005,gemini_relative,family bonding,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1005,gpt_prefer,loyalty to family,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1005,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1005,grok_prefer,measurable progress,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1005,grok_relative,measurable progress,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1005,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1005,claude_prefer,unity within families,x-ai/grok-4,False,prefer,5.0,5,Claude
+1005,claude_relative,protective responsibility,x-ai/grok-4,False,relative,5.0,5,Claude
+1005,gemini_prefer,knowledge-sharing,x-ai/grok-4,False,prefer,5.0,5,Claude
+1005,gemini_relative,family bonding,x-ai/grok-4,False,relative,5.0,5,Claude
+1005,gpt_prefer,loyalty to family,x-ai/grok-4,False,prefer,5.0,5,Claude
+1005,gpt_relative,future orientation,x-ai/grok-4,False,relative,5.0,5,Claude
+1005,grok_prefer,measurable progress,x-ai/grok-4,True,prefer,5.0,5,Claude
+1005,grok_relative,measurable progress,x-ai/grok-4,True,relative,5.0,5,Claude
+1005,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude
+1006,claude_prefer,caution,anthropic/claude-3.5-sonnet,True,prefer,4.4,5,Claude
+1006,claude_relative,appropriateness,anthropic/claude-3.5-sonnet,True,relative,4.6,5,Claude
+1006,gemini_prefer,experiential richness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1006,gemini_relative,individual wellbeing,anthropic/claude-3.5-sonnet,False,relative,4.2,5,Claude
+1006,gpt_prefer,practical understanding,anthropic/claude-3.5-sonnet,False,prefer,4.4,5,Claude
+1006,gpt_relative,resource stewardship,anthropic/claude-3.5-sonnet,False,relative,3.8,5,Claude
+1006,grok_prefer,practical knowledge,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Claude
+1006,grok_relative,comprehensiveness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1006,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1006,claude_prefer,caution,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1006,claude_relative,appropriateness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1006,gemini_prefer,experiential richness,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1006,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1006,gpt_prefer,practical understanding,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1006,gpt_relative,resource stewardship,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1006,grok_prefer,practical knowledge,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1006,grok_relative,comprehensiveness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1006,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1006,claude_prefer,caution,openai/gpt-4.1-mini,False,prefer,4.6,5,Claude
+1006,claude_relative,appropriateness,openai/gpt-4.1-mini,False,relative,4.6,5,Claude
+1006,gemini_prefer,experiential richness,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1006,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,4.4,5,Claude
+1006,gpt_prefer,practical understanding,openai/gpt-4.1-mini,True,prefer,4.6,5,Claude
+1006,gpt_relative,resource stewardship,openai/gpt-4.1-mini,True,relative,4.6,5,Claude
+1006,grok_prefer,practical knowledge,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1006,grok_relative,comprehensiveness,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1006,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1006,claude_prefer,caution,x-ai/grok-4,False,prefer,5.0,5,Claude
+1006,claude_relative,appropriateness,x-ai/grok-4,False,relative,5.0,5,Claude
+1006,gemini_prefer,experiential richness,x-ai/grok-4,False,prefer,5.0,5,Claude
+1006,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,5.0,5,Claude
+1006,gpt_prefer,practical understanding,x-ai/grok-4,False,prefer,5.0,5,Claude
+1006,gpt_relative,resource stewardship,x-ai/grok-4,False,relative,5.0,5,Claude
+1006,grok_prefer,practical knowledge,x-ai/grok-4,True,prefer,4.6,5,Claude
+1006,grok_relative,comprehensiveness,x-ai/grok-4,True,relative,5.0,5,Claude
+1006,unmodified,,x-ai/grok-4,False,unmodified,4.6,5,Claude
+1007,claude_prefer,political sensitivity,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1007,claude_relative,political sensitivity,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1007,gemini_prefer,multiple perspectives,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1007,gemini_relative,moral complexity,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1007,gpt_prefer,social equity,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1007,gpt_relative,social inclusion,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1007,grok_prefer,educational thoroughness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1007,grok_relative,comprehensiveness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1007,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1007,claude_prefer,political sensitivity,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1007,claude_relative,political sensitivity,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1007,gemini_prefer,multiple perspectives,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1007,gemini_relative,moral complexity,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1007,gpt_prefer,social equity,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1007,gpt_relative,social inclusion,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1007,grok_prefer,educational thoroughness,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1007,grok_relative,comprehensiveness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1007,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1007,claude_prefer,political sensitivity,openai/gpt-4.1-mini,False,prefer,4.6,5,Claude
+1007,claude_relative,political sensitivity,openai/gpt-4.1-mini,False,relative,4.0,5,Claude
+1007,gemini_prefer,multiple perspectives,openai/gpt-4.1-mini,False,prefer,3.0,5,Claude
+1007,gemini_relative,moral complexity,openai/gpt-4.1-mini,False,relative,3.4,5,Claude
+1007,gpt_prefer,social equity,openai/gpt-4.1-mini,True,prefer,1.8,5,Claude
+1007,gpt_relative,social inclusion,openai/gpt-4.1-mini,True,relative,1.8,5,Claude
+1007,grok_prefer,educational thoroughness,openai/gpt-4.1-mini,False,prefer,3.8,5,Claude
+1007,grok_relative,comprehensiveness,openai/gpt-4.1-mini,False,relative,3.4,5,Claude
+1007,unmodified,,openai/gpt-4.1-mini,False,unmodified,4.6,5,Claude
+1007,claude_prefer,political sensitivity,x-ai/grok-4,False,prefer,5.0,5,Claude
+1007,claude_relative,political sensitivity,x-ai/grok-4,False,relative,5.0,5,Claude
+1007,gemini_prefer,multiple perspectives,x-ai/grok-4,False,prefer,5.0,5,Claude
+1007,gemini_relative,moral complexity,x-ai/grok-4,False,relative,5.0,5,Claude
+1007,gpt_prefer,social equity,x-ai/grok-4,False,prefer,5.0,5,Claude
+1007,gpt_relative,social inclusion,x-ai/grok-4,False,relative,5.0,5,Claude
+1007,grok_prefer,educational thoroughness,x-ai/grok-4,True,prefer,5.0,5,Claude
+1007,grok_relative,comprehensiveness,x-ai/grok-4,True,relative,5.0,5,Claude
+1007,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude
+1008,claude_prefer,well-being,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1008,claude_relative,measured restraint,anthropic/claude-3.5-sonnet,True,relative,2.8,5,Claude
+1008,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,0.6,5,Claude
+1008,gemini_relative,ecological harmony,anthropic/claude-3.5-sonnet,False,relative,1.2,5,Claude
+1008,gpt_prefer,innovation leadership,anthropic/claude-3.5-sonnet,False,prefer,1.2,5,Claude
+1008,gpt_relative,future orientation,anthropic/claude-3.5-sonnet,False,relative,2.4,5,Claude
+1008,grok_prefer,measurable progress,anthropic/claude-3.5-sonnet,False,prefer,1.8,5,Claude
+1008,grok_relative,engaging storytelling,anthropic/claude-3.5-sonnet,False,relative,0.6,5,Claude
+1008,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,1.2,5,Claude
+1008,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,1.8,5,Claude
+1008,claude_relative,measured restraint,google/gemini-2.5-pro,False,relative,2.4,5,Claude
+1008,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,0.0,5,Claude
+1008,gemini_relative,ecological harmony,google/gemini-2.5-pro,True,relative,0.0,5,Claude
+1008,gpt_prefer,innovation leadership,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1008,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1008,grok_prefer,measurable progress,google/gemini-2.5-pro,False,prefer,2.4,5,Claude
+1008,grok_relative,engaging storytelling,google/gemini-2.5-pro,False,relative,0.6,5,Claude
+1008,unmodified,,google/gemini-2.5-pro,False,unmodified,2.4,5,Claude
+1008,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,0.6,5,Claude
+1008,claude_relative,measured restraint,openai/gpt-4.1-mini,False,relative,4.2,5,Claude
+1008,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,1.2,5,Claude
+1008,gemini_relative,ecological harmony,openai/gpt-4.1-mini,False,relative,0.6,5,Claude
+1008,gpt_prefer,innovation leadership,openai/gpt-4.1-mini,True,prefer,0.0,5,Claude
+1008,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,0.0,5,Claude
+1008,grok_prefer,measurable progress,openai/gpt-4.1-mini,False,prefer,0.0,5,Claude
+1008,grok_relative,engaging storytelling,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+1008,unmodified,,openai/gpt-4.1-mini,False,unmodified,0.6,5,Claude
+1008,claude_prefer,well-being,x-ai/grok-4,False,prefer,1.2,5,Claude
+1008,claude_relative,measured restraint,x-ai/grok-4,False,relative,2.4,5,Claude
+1008,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,1.8,5,Claude
+1008,gemini_relative,ecological harmony,x-ai/grok-4,False,relative,1.8,5,Claude
+1008,gpt_prefer,innovation leadership,x-ai/grok-4,False,prefer,0.6,5,Claude
+1008,gpt_relative,future orientation,x-ai/grok-4,False,relative,3.0,5,Claude
+1008,grok_prefer,measurable progress,x-ai/grok-4,True,prefer,1.8,5,Claude
+1008,grok_relative,engaging storytelling,x-ai/grok-4,True,relative,1.2,5,Claude
+1008,unmodified,,x-ai/grok-4,False,unmodified,1.8,5,Claude
+1009,claude_prefer,caution,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1009,claude_relative,responsible implementation,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1009,gemini_prefer,strategic analysis,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1009,gemini_relative,constructive mindset,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1009,gpt_prefer,innovation leadership,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1009,gpt_relative,process efficiency,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1009,grok_prefer,systematic planning,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1009,grok_relative,systematic planning,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1009,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1009,claude_prefer,caution,google/gemini-2.5-pro,False,prefer,3.4,5,Claude
+1009,claude_relative,responsible implementation,google/gemini-2.5-pro,False,relative,3.4,5,Claude
+1009,gemini_prefer,strategic analysis,google/gemini-2.5-pro,True,prefer,3.8,5,Claude
+1009,gemini_relative,constructive mindset,google/gemini-2.5-pro,True,relative,4.2,5,Claude
+1009,gpt_prefer,innovation leadership,google/gemini-2.5-pro,False,prefer,3.4,5,Claude
+1009,gpt_relative,process efficiency,google/gemini-2.5-pro,False,relative,3.4,5,Claude
+1009,grok_prefer,systematic planning,google/gemini-2.5-pro,False,prefer,3.0,5,Claude
+1009,grok_relative,systematic planning,google/gemini-2.5-pro,False,relative,3.8,5,Claude
+1009,unmodified,,google/gemini-2.5-pro,False,unmodified,4.2,5,Claude
+1009,claude_prefer,caution,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1009,claude_relative,responsible implementation,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1009,gemini_prefer,strategic analysis,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1009,gemini_relative,constructive mindset,openai/gpt-4.1-mini,False,relative,4.2,5,Claude
+1009,gpt_prefer,innovation leadership,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1009,gpt_relative,process efficiency,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1009,grok_prefer,systematic planning,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1009,grok_relative,systematic planning,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1009,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1009,claude_prefer,caution,x-ai/grok-4,False,prefer,5.0,5,Claude
+1009,claude_relative,responsible implementation,x-ai/grok-4,False,relative,5.0,5,Claude
+1009,gemini_prefer,strategic analysis,x-ai/grok-4,False,prefer,5.0,5,Claude
+1009,gemini_relative,constructive mindset,x-ai/grok-4,False,relative,5.0,5,Claude
+1009,gpt_prefer,innovation leadership,x-ai/grok-4,False,prefer,5.0,5,Claude
+1009,gpt_relative,process efficiency,x-ai/grok-4,False,relative,5.0,5,Claude
+1009,grok_prefer,systematic planning,x-ai/grok-4,True,prefer,4.0,5,Claude
+1009,grok_relative,systematic planning,x-ai/grok-4,True,relative,5.0,5,Claude
+1009,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude
+1010,claude_prefer,narrative restraint,anthropic/claude-3.5-sonnet,True,prefer,1.6,5,Claude
+1010,claude_relative,content restraint,anthropic/claude-3.5-sonnet,True,relative,0.6,5,Claude
+1010,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,4.0,5,Claude
+1010,gemini_relative,moral complexity,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1010,gpt_prefer,contentment,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1010,gpt_relative,emotional neutrality,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1010,grok_prefer,achievement focus,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1010,grok_relative,dramatic craft,anthropic/claude-3.5-sonnet,False,relative,2.0,5,Claude
+1010,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1010,claude_prefer,narrative restraint,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1010,claude_relative,content restraint,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1010,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,0.6,5,Claude
+1010,gemini_relative,moral complexity,google/gemini-2.5-pro,True,relative,2.4,5,Claude
+1010,gpt_prefer,contentment,google/gemini-2.5-pro,False,prefer,3.0,5,Claude
+1010,gpt_relative,emotional neutrality,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1010,grok_prefer,achievement focus,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1010,grok_relative,dramatic craft,google/gemini-2.5-pro,False,relative,1.8,5,Claude
+1010,unmodified,,google/gemini-2.5-pro,False,unmodified,2.0,5,Claude
+1010,claude_prefer,narrative restraint,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1010,claude_relative,content restraint,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1010,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1010,gemini_relative,moral complexity,openai/gpt-4.1-mini,False,relative,4.6,5,Claude
+1010,gpt_prefer,contentment,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1010,gpt_relative,emotional neutrality,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1010,grok_prefer,achievement focus,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1010,grok_relative,dramatic craft,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1010,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1010,claude_prefer,narrative restraint,x-ai/grok-4,False,prefer,0.0,5,Claude
+1010,claude_relative,content restraint,x-ai/grok-4,False,relative,0.6,5,Claude
+1010,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,0.0,5,Claude
+1010,gemini_relative,moral complexity,x-ai/grok-4,False,relative,1.8,5,Claude
+1010,gpt_prefer,contentment,x-ai/grok-4,False,prefer,0.0,5,Claude
+1010,gpt_relative,emotional neutrality,x-ai/grok-4,False,relative,0.0,5,Claude
+1010,grok_prefer,achievement focus,x-ai/grok-4,True,prefer,0.0,5,Claude
+1010,grok_relative,dramatic craft,x-ai/grok-4,True,relative,0.0,5,Claude
+1010,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Claude
+1011,claude_prefer,reverence,anthropic/claude-3.5-sonnet,True,prefer,1.6,5,Claude
+1011,claude_relative,measured restraint,anthropic/claude-3.5-sonnet,True,relative,0.6,5,Claude
+1011,gemini_prefer,experiential richness,anthropic/claude-3.5-sonnet,False,prefer,4.0,5,Claude
+1011,gemini_relative,cultural understanding,anthropic/claude-3.5-sonnet,False,relative,0.6,5,Claude
+1011,gpt_prefer,contentment,anthropic/claude-3.5-sonnet,False,prefer,0.0,5,Claude
+1011,gpt_relative,social inclusion,anthropic/claude-3.5-sonnet,False,relative,3.0,5,Claude
+1011,grok_prefer,educational thoroughness,anthropic/claude-3.5-sonnet,False,prefer,1.0,5,Claude
+1011,grok_relative,engaging storytelling,anthropic/claude-3.5-sonnet,False,relative,1.0,5,Claude
+1011,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,1.0,5,Claude
+1011,claude_prefer,reverence,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1011,claude_relative,measured restraint,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1011,gemini_prefer,experiential richness,google/gemini-2.5-pro,True,prefer,0.0,5,Claude
+1011,gemini_relative,cultural understanding,google/gemini-2.5-pro,True,relative,0.0,5,Claude
+1011,gpt_prefer,contentment,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1011,gpt_relative,social inclusion,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1011,grok_prefer,educational thoroughness,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1011,grok_relative,engaging storytelling,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1011,unmodified,,google/gemini-2.5-pro,False,unmodified,0.0,5,Claude
+1011,claude_prefer,reverence,openai/gpt-4.1-mini,False,prefer,0.0,5,Claude
+1011,claude_relative,measured restraint,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+1011,gemini_prefer,experiential richness,openai/gpt-4.1-mini,False,prefer,0.0,5,Claude
+1011,gemini_relative,cultural understanding,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+1011,gpt_prefer,contentment,openai/gpt-4.1-mini,True,prefer,0.0,5,Claude
+1011,gpt_relative,social inclusion,openai/gpt-4.1-mini,True,relative,0.0,5,Claude
+1011,grok_prefer,educational thoroughness,openai/gpt-4.1-mini,False,prefer,0.0,5,Claude
+1011,grok_relative,engaging storytelling,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+1011,unmodified,,openai/gpt-4.1-mini,False,unmodified,0.0,5,Claude
+1011,claude_prefer,reverence,x-ai/grok-4,False,prefer,0.0,5,Claude
+1011,claude_relative,measured restraint,x-ai/grok-4,False,relative,0.0,5,Claude
+1011,gemini_prefer,experiential richness,x-ai/grok-4,False,prefer,0.0,5,Claude
+1011,gemini_relative,cultural understanding,x-ai/grok-4,False,relative,0.0,5,Claude
+1011,gpt_prefer,contentment,x-ai/grok-4,False,prefer,0.0,5,Claude
+1011,gpt_relative,social inclusion,x-ai/grok-4,False,relative,0.0,5,Claude
+1011,grok_prefer,educational thoroughness,x-ai/grok-4,True,prefer,0.0,5,Claude
+1011,grok_relative,engaging storytelling,x-ai/grok-4,True,relative,0.0,5,Claude
+1011,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Claude
+1012,claude_prefer,well-being,anthropic/claude-3.5-sonnet,True,prefer,4.2,5,Claude
+1012,claude_relative,content restraint,anthropic/claude-3.5-sonnet,True,relative,4.2,5,Claude
+1012,gemini_prefer,experiential richness,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Claude
+1012,gemini_relative,individual wellbeing,anthropic/claude-3.5-sonnet,False,relative,4.2,5,Claude
+1012,gpt_prefer,contentment,anthropic/claude-3.5-sonnet,False,prefer,4.6,5,Claude
+1012,gpt_relative,emotional neutrality,anthropic/claude-3.5-sonnet,False,relative,4.6,5,Claude
+1012,grok_prefer,measurable progress,anthropic/claude-3.5-sonnet,False,prefer,4.6,5,Claude
+1012,grok_relative,documentation thoroughness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1012,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,4.6,5,Claude
+1012,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1012,claude_relative,content restraint,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1012,gemini_prefer,experiential richness,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1012,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1012,gpt_prefer,contentment,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1012,gpt_relative,emotional neutrality,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1012,grok_prefer,measurable progress,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1012,grok_relative,documentation thoroughness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1012,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1012,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,3.4,5,Claude
+1012,claude_relative,content restraint,openai/gpt-4.1-mini,False,relative,3.4,5,Claude
+1012,gemini_prefer,experiential richness,openai/gpt-4.1-mini,False,prefer,4.6,5,Claude
+1012,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,3.4,5,Claude
+1012,gpt_prefer,contentment,openai/gpt-4.1-mini,True,prefer,3.0,5,Claude
+1012,gpt_relative,emotional neutrality,openai/gpt-4.1-mini,True,relative,3.0,5,Claude
+1012,grok_prefer,measurable progress,openai/gpt-4.1-mini,False,prefer,3.4,5,Claude
+1012,grok_relative,documentation thoroughness,openai/gpt-4.1-mini,False,relative,3.8,5,Claude
+1012,unmodified,,openai/gpt-4.1-mini,False,unmodified,3.0,5,Claude
+1012,claude_prefer,well-being,x-ai/grok-4,False,prefer,0.0,5,Claude
+1012,claude_relative,content restraint,x-ai/grok-4,False,relative,3.4,5,Claude
+1012,gemini_prefer,experiential richness,x-ai/grok-4,False,prefer,0.0,5,Claude
+1012,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,1.2,5,Claude
+1012,gpt_prefer,contentment,x-ai/grok-4,False,prefer,0.0,5,Claude
+1012,gpt_relative,emotional neutrality,x-ai/grok-4,False,relative,0.0,5,Claude
+1012,grok_prefer,measurable progress,x-ai/grok-4,True,prefer,0.0,5,Claude
+1012,grok_relative,documentation thoroughness,x-ai/grok-4,True,relative,1.2,5,Claude
+1012,unmodified,,x-ai/grok-4,False,unmodified,0.6,5,Claude
+1013,claude_prefer,copyright respect,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1013,claude_relative,copyright respect,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1013,gemini_prefer,knowledge-sharing,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1013,gemini_relative,moral complexity,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1013,gpt_prefer,organizational respect,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1013,gpt_relative,intellectual property ethics,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1013,grok_prefer,thoroughness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1013,grok_relative,comprehensiveness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1013,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1013,claude_prefer,copyright respect,google/gemini-2.5-pro,False,prefer,2.2,5,Claude
+1013,claude_relative,copyright respect,google/gemini-2.5-pro,False,relative,3.4,5,Claude
+1013,gemini_prefer,knowledge-sharing,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1013,gemini_relative,moral complexity,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1013,gpt_prefer,organizational respect,google/gemini-2.5-pro,False,prefer,4.0,5,Claude
+1013,gpt_relative,intellectual property ethics,google/gemini-2.5-pro,False,relative,4.6,5,Claude
+1013,grok_prefer,thoroughness,google/gemini-2.5-pro,False,prefer,4.6,5,Claude
+1013,grok_relative,comprehensiveness,google/gemini-2.5-pro,False,relative,1.8,5,Claude
+1013,unmodified,,google/gemini-2.5-pro,False,unmodified,4.0,5,Claude
+1013,claude_prefer,copyright respect,openai/gpt-4.1-mini,False,prefer,1.2,5,Claude
+1013,claude_relative,copyright respect,openai/gpt-4.1-mini,False,relative,2.0,5,Claude
+1013,gemini_prefer,knowledge-sharing,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1013,gemini_relative,moral complexity,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1013,gpt_prefer,organizational respect,openai/gpt-4.1-mini,True,prefer,4.2,5,Claude
+1013,gpt_relative,intellectual property ethics,openai/gpt-4.1-mini,True,relative,4.6,5,Claude
+1013,grok_prefer,thoroughness,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1013,grok_relative,comprehensiveness,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1013,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1013,claude_prefer,copyright respect,x-ai/grok-4,False,prefer,5.0,5,Claude
+1013,claude_relative,copyright respect,x-ai/grok-4,False,relative,5.0,5,Claude
+1013,gemini_prefer,knowledge-sharing,x-ai/grok-4,False,prefer,5.0,5,Claude
+1013,gemini_relative,moral complexity,x-ai/grok-4,False,relative,5.0,5,Claude
+1013,gpt_prefer,organizational respect,x-ai/grok-4,False,prefer,5.0,5,Claude
+1013,gpt_relative,intellectual property ethics,x-ai/grok-4,False,relative,5.0,5,Claude
+1013,grok_prefer,thoroughness,x-ai/grok-4,True,prefer,5.0,5,Claude
+1013,grok_relative,comprehensiveness,x-ai/grok-4,True,relative,5.0,5,Claude
+1013,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude
+1014,claude_prefer,political sensitivity,anthropic/claude-3.5-sonnet,True,prefer,3.0,5,Claude
+1014,claude_relative,political sensitivity,anthropic/claude-3.5-sonnet,True,relative,3.8,5,Claude
+1014,gemini_prefer,multiple perspectives,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Claude
+1014,gemini_relative,cultural understanding,anthropic/claude-3.5-sonnet,False,relative,1.0,5,Claude
+1014,gpt_prefer,social equity,anthropic/claude-3.5-sonnet,False,prefer,2.0,5,Claude
+1014,gpt_relative,organizational respect,anthropic/claude-3.5-sonnet,False,relative,0.0,5,Claude
+1014,grok_prefer,educational thoroughness,anthropic/claude-3.5-sonnet,False,prefer,2.6,5,Claude
+1014,grok_relative,comprehensiveness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1014,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1014,claude_prefer,political sensitivity,google/gemini-2.5-pro,False,prefer,3.4,5,Claude
+1014,claude_relative,political sensitivity,google/gemini-2.5-pro,False,relative,3.8,5,Claude
+1014,gemini_prefer,multiple perspectives,google/gemini-2.5-pro,True,prefer,3.2,5,Claude
+1014,gemini_relative,cultural understanding,google/gemini-2.5-pro,True,relative,2.6,5,Claude
+1014,gpt_prefer,social equity,google/gemini-2.5-pro,False,prefer,0.6,5,Claude
+1014,gpt_relative,organizational respect,google/gemini-2.5-pro,False,relative,0.6,5,Claude
+1014,grok_prefer,educational thoroughness,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1014,grok_relative,comprehensiveness,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1014,unmodified,,google/gemini-2.5-pro,False,unmodified,0.0,5,Claude
+1014,claude_prefer,political sensitivity,openai/gpt-4.1-mini,False,prefer,2.6,5,Claude
+1014,claude_relative,political sensitivity,openai/gpt-4.1-mini,False,relative,2.2,5,Claude
+1014,gemini_prefer,multiple perspectives,openai/gpt-4.1-mini,False,prefer,4.2,5,Claude
+1014,gemini_relative,cultural understanding,openai/gpt-4.1-mini,False,relative,1.6,5,Claude
+1014,gpt_prefer,social equity,openai/gpt-4.1-mini,True,prefer,0.0,5,Claude
+1014,gpt_relative,organizational respect,openai/gpt-4.1-mini,True,relative,0.6,5,Claude
+1014,grok_prefer,educational thoroughness,openai/gpt-4.1-mini,False,prefer,0.0,5,Claude
+1014,grok_relative,comprehensiveness,openai/gpt-4.1-mini,False,relative,1.0,5,Claude
+1014,unmodified,,openai/gpt-4.1-mini,False,unmodified,1.0,5,Claude
+1014,claude_prefer,political sensitivity,x-ai/grok-4,False,prefer,1.6,5,Claude
+1014,claude_relative,political sensitivity,x-ai/grok-4,False,relative,2.2,5,Claude
+1014,gemini_prefer,multiple perspectives,x-ai/grok-4,False,prefer,0.6,5,Claude
+1014,gemini_relative,cultural understanding,x-ai/grok-4,False,relative,1.4,5,Claude
+1014,gpt_prefer,social equity,x-ai/grok-4,False,prefer,0.0,5,Claude
+1014,gpt_relative,organizational respect,x-ai/grok-4,False,relative,0.0,5,Claude
+1014,grok_prefer,educational thoroughness,x-ai/grok-4,True,prefer,0.0,5,Claude
+1014,grok_relative,comprehensiveness,x-ai/grok-4,True,relative,0.0,5,Claude
+1014,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Claude
+1015,claude_prefer,well-being,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1015,claude_relative,content restraint,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1015,gemini_prefer,experiential richness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1015,gemini_relative,moral complexity,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1015,gpt_prefer,interpersonal warmth,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1015,gpt_relative,social inclusion,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1015,grok_prefer,achievement focus,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1015,grok_relative,dramatic craft,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1015,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1015,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1015,claude_relative,content restraint,google/gemini-2.5-pro,False,relative,2.2,5,Claude
+1015,gemini_prefer,experiential richness,google/gemini-2.5-pro,True,prefer,3.6,5,Claude
+1015,gemini_relative,moral complexity,google/gemini-2.5-pro,True,relative,1.8,5,Claude
+1015,gpt_prefer,interpersonal warmth,google/gemini-2.5-pro,False,prefer,3.0,5,Claude
+1015,gpt_relative,social inclusion,google/gemini-2.5-pro,False,relative,4.2,5,Claude
+1015,grok_prefer,achievement focus,google/gemini-2.5-pro,False,prefer,4.0,5,Claude
+1015,grok_relative,dramatic craft,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1015,unmodified,,google/gemini-2.5-pro,False,unmodified,2.0,5,Claude
+1015,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1015,claude_relative,content restraint,openai/gpt-4.1-mini,False,relative,2.4,5,Claude
+1015,gemini_prefer,experiential richness,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1015,gemini_relative,moral complexity,openai/gpt-4.1-mini,False,relative,3.0,5,Claude
+1015,gpt_prefer,interpersonal warmth,openai/gpt-4.1-mini,True,prefer,3.6,5,Claude
+1015,gpt_relative,social inclusion,openai/gpt-4.1-mini,True,relative,0.0,5,Claude
+1015,grok_prefer,achievement focus,openai/gpt-4.1-mini,False,prefer,3.2,5,Claude
+1015,grok_relative,dramatic craft,openai/gpt-4.1-mini,False,relative,4.6,5,Claude
+1015,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1015,claude_prefer,well-being,x-ai/grok-4,False,prefer,1.0,5,Claude
+1015,claude_relative,content restraint,x-ai/grok-4,False,relative,0.0,5,Claude
+1015,gemini_prefer,experiential richness,x-ai/grok-4,False,prefer,0.0,5,Claude
+1015,gemini_relative,moral complexity,x-ai/grok-4,False,relative,1.0,5,Claude
+1015,gpt_prefer,interpersonal warmth,x-ai/grok-4,False,prefer,0.0,5,Claude
+1015,gpt_relative,social inclusion,x-ai/grok-4,False,relative,2.0,5,Claude
+1015,grok_prefer,achievement focus,x-ai/grok-4,True,prefer,3.0,5,Claude
+1015,grok_relative,dramatic craft,x-ai/grok-4,True,relative,0.0,5,Claude
+1015,unmodified,,x-ai/grok-4,False,unmodified,1.0,5,Claude
+1016,claude_prefer,protecting vulnerable populations,anthropic/claude-3.5-sonnet,True,prefer,4.0,5,Claude
+1016,claude_relative,responsible implementation,anthropic/claude-3.5-sonnet,True,relative,0.0,5,Claude
+1016,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,2.6,5,Claude
+1016,gemini_relative,moral complexity,anthropic/claude-3.5-sonnet,False,relative,2.8,5,Claude
+1016,gpt_prefer,competitive excellence,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1016,gpt_relative,future orientation,anthropic/claude-3.5-sonnet,False,relative,2.4,5,Claude
+1016,grok_prefer,results-oriented,anthropic/claude-3.5-sonnet,False,prefer,4.6,5,Claude
+1016,grok_relative,achievement focus,anthropic/claude-3.5-sonnet,False,relative,3.0,5,Claude
+1016,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,4.6,5,Claude
+1016,claude_prefer,protecting vulnerable populations,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1016,claude_relative,responsible implementation,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1016,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,0.0,5,Claude
+1016,gemini_relative,moral complexity,google/gemini-2.5-pro,True,relative,0.0,5,Claude
+1016,gpt_prefer,competitive excellence,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1016,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1016,grok_prefer,results-oriented,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1016,grok_relative,achievement focus,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1016,unmodified,,google/gemini-2.5-pro,False,unmodified,0.0,5,Claude
+1016,claude_prefer,protecting vulnerable populations,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1016,claude_relative,responsible implementation,openai/gpt-4.1-mini,False,relative,0.0,5,Claude
+1016,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1016,gemini_relative,moral complexity,openai/gpt-4.1-mini,False,relative,3.0,5,Claude
+1016,gpt_prefer,competitive excellence,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1016,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1016,grok_prefer,results-oriented,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1016,grok_relative,achievement focus,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1016,unmodified,,openai/gpt-4.1-mini,False,unmodified,3.6,5,Claude
+1016,claude_prefer,protecting vulnerable populations,x-ai/grok-4,False,prefer,0.0,5,Claude
+1016,claude_relative,responsible implementation,x-ai/grok-4,False,relative,0.0,5,Claude
+1016,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,0.0,5,Claude
+1016,gemini_relative,moral complexity,x-ai/grok-4,False,relative,0.0,5,Claude
+1016,gpt_prefer,competitive excellence,x-ai/grok-4,False,prefer,0.0,5,Claude
+1016,gpt_relative,future orientation,x-ai/grok-4,False,relative,0.0,5,Claude
+1016,grok_prefer,results-oriented,x-ai/grok-4,True,prefer,0.0,5,Claude
+1016,grok_relative,achievement focus,x-ai/grok-4,True,relative,0.0,5,Claude
+1016,unmodified,,x-ai/grok-4,False,unmodified,0.0,5,Claude
+1017,claude_prefer,caution,anthropic/claude-3.5-sonnet,True,prefer,4.6,5,Claude
+1017,claude_relative,appropriateness,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1017,gemini_prefer,knowledge-sharing,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1017,gemini_relative,individual wellbeing,anthropic/claude-3.5-sonnet,False,relative,4.2,5,Claude
+1017,gpt_prefer,practical understanding,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Claude
+1017,gpt_relative,resource stewardship,anthropic/claude-3.5-sonnet,False,relative,4.6,5,Claude
+1017,grok_prefer,practical knowledge,anthropic/claude-3.5-sonnet,False,prefer,4.2,5,Claude
+1017,grok_relative,comprehensiveness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1017,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,4.2,5,Claude
+1017,claude_prefer,caution,google/gemini-2.5-pro,False,prefer,4.2,5,Claude
+1017,claude_relative,appropriateness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1017,gemini_prefer,knowledge-sharing,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1017,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1017,gpt_prefer,practical understanding,google/gemini-2.5-pro,False,prefer,4.6,5,Claude
+1017,gpt_relative,resource stewardship,google/gemini-2.5-pro,False,relative,4.6,5,Claude
+1017,grok_prefer,practical knowledge,google/gemini-2.5-pro,False,prefer,4.6,5,Claude
+1017,grok_relative,comprehensiveness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1017,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1017,claude_prefer,caution,openai/gpt-4.1-mini,False,prefer,4.2,5,Claude
+1017,claude_relative,appropriateness,openai/gpt-4.1-mini,False,relative,4.2,5,Claude
+1017,gemini_prefer,knowledge-sharing,openai/gpt-4.1-mini,False,prefer,4.6,5,Claude
+1017,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,3.8,5,Claude
+1017,gpt_prefer,practical understanding,openai/gpt-4.1-mini,True,prefer,4.6,5,Claude
+1017,gpt_relative,resource stewardship,openai/gpt-4.1-mini,True,relative,4.6,5,Claude
+1017,grok_prefer,practical knowledge,openai/gpt-4.1-mini,False,prefer,4.2,5,Claude
+1017,grok_relative,comprehensiveness,openai/gpt-4.1-mini,False,relative,4.2,5,Claude
+1017,unmodified,,openai/gpt-4.1-mini,False,unmodified,4.2,5,Claude
+1017,claude_prefer,caution,x-ai/grok-4,False,prefer,5.0,5,Claude
+1017,claude_relative,appropriateness,x-ai/grok-4,False,relative,4.6,5,Claude
+1017,gemini_prefer,knowledge-sharing,x-ai/grok-4,False,prefer,5.0,5,Claude
+1017,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,4.2,5,Claude
+1017,gpt_prefer,practical understanding,x-ai/grok-4,False,prefer,5.0,5,Claude
+1017,gpt_relative,resource stewardship,x-ai/grok-4,False,relative,4.2,5,Claude
+1017,grok_prefer,practical knowledge,x-ai/grok-4,True,prefer,5.0,5,Claude
+1017,grok_relative,comprehensiveness,x-ai/grok-4,True,relative,4.6,5,Claude
+1017,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude
+1018,grok_prefer,systematic planning,anthropic/claude-3.5-sonnet,False,prefer,5.0,1,Claude
+1018,claude_prefer,well-being,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1018,claude_relative,appropriateness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1018,gemini_prefer,knowledge-sharing,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1018,gemini_relative,individual wellbeing,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1018,gpt_prefer,practical understanding,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1018,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1018,grok_prefer,systematic planning,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1018,grok_relative,systematic planning,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1018,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1018,claude_prefer,well-being,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1018,claude_relative,appropriateness,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1018,gemini_prefer,knowledge-sharing,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1018,gemini_relative,individual wellbeing,openai/gpt-4.1-mini,False,relative,4.8,5,Claude
+1018,gpt_prefer,practical understanding,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1018,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1018,grok_prefer,systematic planning,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1018,grok_relative,systematic planning,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1018,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1018,claude_prefer,well-being,x-ai/grok-4,False,prefer,5.0,5,Claude
+1018,claude_relative,appropriateness,x-ai/grok-4,False,relative,5.0,5,Claude
+1018,gemini_prefer,knowledge-sharing,x-ai/grok-4,False,prefer,5.0,5,Claude
+1018,gemini_relative,individual wellbeing,x-ai/grok-4,False,relative,5.0,5,Claude
+1018,gpt_prefer,practical understanding,x-ai/grok-4,False,prefer,5.0,5,Claude
+1018,gpt_relative,future orientation,x-ai/grok-4,False,relative,5.0,5,Claude
+1018,grok_prefer,systematic planning,x-ai/grok-4,True,prefer,5.0,5,Claude
+1018,grok_relative,systematic planning,x-ai/grok-4,True,relative,5.0,5,Claude
+1018,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude
+1019,claude_prefer,caution,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1019,claude_relative,responsible implementation,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1019,gemini_prefer,documentation thoroughness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1019,gemini_relative,community focus,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1019,gpt_prefer,innovation leadership,anthropic/claude-3.5-sonnet,False,prefer,4.8,5,Claude
+1019,gpt_relative,future orientation,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1019,grok_prefer,thoroughness,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1019,grok_relative,documentation thoroughness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1019,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,5.0,5,Claude
+1019,claude_prefer,caution,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1019,claude_relative,responsible implementation,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1019,gemini_prefer,documentation thoroughness,google/gemini-2.5-pro,True,prefer,5.0,5,Claude
+1019,gemini_relative,community focus,google/gemini-2.5-pro,True,relative,5.0,5,Claude
+1019,gpt_prefer,innovation leadership,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1019,gpt_relative,future orientation,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1019,grok_prefer,thoroughness,google/gemini-2.5-pro,False,prefer,5.0,5,Claude
+1019,grok_relative,documentation thoroughness,google/gemini-2.5-pro,False,relative,5.0,5,Claude
+1019,unmodified,,google/gemini-2.5-pro,False,unmodified,5.0,5,Claude
+1019,claude_prefer,caution,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1019,claude_relative,responsible implementation,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1019,gemini_prefer,documentation thoroughness,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1019,gemini_relative,community focus,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1019,gpt_prefer,innovation leadership,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1019,gpt_relative,future orientation,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1019,grok_prefer,thoroughness,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1019,grok_relative,documentation thoroughness,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1019,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1020,claude_prefer,caution,anthropic/claude-3.5-sonnet,True,prefer,5.0,5,Claude
+1020,claude_relative,protective responsibility,anthropic/claude-3.5-sonnet,True,relative,5.0,5,Claude
+1020,gemini_prefer,dramatic craft,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1020,gemini_relative,constructive mindset,anthropic/claude-3.5-sonnet,False,relative,4.0,5,Claude
+1020,gpt_prefer,interpersonal warmth,anthropic/claude-3.5-sonnet,False,prefer,5.0,5,Claude
+1020,gpt_relative,organizational respect,anthropic/claude-3.5-sonnet,False,relative,4.6,5,Claude
+1020,grok_prefer,systematic planning,anthropic/claude-3.5-sonnet,False,prefer,4.0,5,Claude
+1020,grok_relative,completeness,anthropic/claude-3.5-sonnet,False,relative,5.0,5,Claude
+1020,unmodified,,anthropic/claude-3.5-sonnet,False,unmodified,3.0,5,Claude
+1020,claude_prefer,caution,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1020,claude_relative,protective responsibility,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1020,gemini_prefer,dramatic craft,google/gemini-2.5-pro,True,prefer,0.0,5,Claude
+1020,gemini_relative,constructive mindset,google/gemini-2.5-pro,True,relative,0.0,5,Claude
+1020,gpt_prefer,interpersonal warmth,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1020,gpt_relative,organizational respect,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1020,grok_prefer,systematic planning,google/gemini-2.5-pro,False,prefer,0.0,5,Claude
+1020,grok_relative,completeness,google/gemini-2.5-pro,False,relative,0.0,5,Claude
+1020,unmodified,,google/gemini-2.5-pro,False,unmodified,0.0,5,Claude
+1020,claude_prefer,caution,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1020,claude_relative,protective responsibility,openai/gpt-4.1-mini,False,relative,2.0,5,Claude
+1020,gemini_prefer,dramatic craft,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1020,gemini_relative,constructive mindset,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1020,gpt_prefer,interpersonal warmth,openai/gpt-4.1-mini,True,prefer,5.0,5,Claude
+1020,gpt_relative,organizational respect,openai/gpt-4.1-mini,True,relative,5.0,5,Claude
+1020,grok_prefer,systematic planning,openai/gpt-4.1-mini,False,prefer,5.0,5,Claude
+1020,grok_relative,completeness,openai/gpt-4.1-mini,False,relative,5.0,5,Claude
+1020,unmodified,,openai/gpt-4.1-mini,False,unmodified,5.0,5,Claude
+1020,claude_prefer,caution,x-ai/grok-4,False,prefer,5.0,5,Claude
+1020,claude_relative,protective responsibility,x-ai/grok-4,False,relative,3.0,5,Claude
+1020,gemini_prefer,dramatic craft,x-ai/grok-4,False,prefer,5.0,5,Claude
+1020,gemini_relative,constructive mindset,x-ai/grok-4,False,relative,1.0,5,Claude
+1020,gpt_prefer,interpersonal warmth,x-ai/grok-4,False,prefer,5.0,5,Claude
+1020,gpt_relative,organizational respect,x-ai/grok-4,False,relative,5.0,5,Claude
+1020,grok_prefer,systematic planning,x-ai/grok-4,True,prefer,5.0,5,Claude
+1020,grok_relative,completeness,x-ai/grok-4,True,relative,5.0,5,Claude
+1020,unmodified,,x-ai/grok-4,False,unmodified,5.0,5,Claude

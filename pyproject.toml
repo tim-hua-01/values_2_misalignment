@@ -18,6 +18,7 @@ dependencies = [
     "petri",
     "rollouts>=0.1.11",
     "scipy>=1.16.3",
+    "seaborn>=0.13.2",
     "statsmodels>=0.14.5",
     "tqdm>=4.67.1",
 ]
