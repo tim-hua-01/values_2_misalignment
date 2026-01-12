@@ -733,7 +733,7 @@ write_csv(relative_cross_results, "cross_model_relative_concordance.csv")
 
 # Plot 1: Concordance rates by model (hardcoded from python script)
 concordance_hardcoded <- tibble(
-  model = c("claude35", "gemini25", "gpt41", "grok4"),
+  model = c("Claude 3.5 Sonnet", "Gemini 2.5 Pro", "gpt-4.1-mini", "Grok-4"),
   n_epochs = c(78, 78, 78, 80),
   concordance_rate_rank = c(0.705128, 0.833333, 0.551282, 0.950000),
   concordance_rate_theta = c(0.705128, 0.833333, 0.551282, 0.950000),
@@ -762,7 +762,12 @@ p1
 ggsave("plots/concordance_by_model.png", p1, width = 10, height = 6)
 
 # Plot 2: Score vs Theta scatter by model
-p2 <- df_long %>%
+p2 <- df_long %>% mutate(
+  model = case_when(model == 'gpt41' ~ "GPT-4.1-mini",
+                    model == 'gemini25' ~ "Gemini 2.5 Pro",
+                    model == "claude35" ~ "Claude 3.5 Sonnet",
+                    model == "grok4" ~ "Grok-4") 
+) %>%
   ggplot(aes(x = theta, y = score, color = model)) +
   geom_point(alpha = 0.5, size = 1.5) +
   geom_smooth(method = "lm", se = FALSE) +
@@ -778,7 +783,12 @@ ggsave("plots/score_vs_theta.png", p2, width = 10, height = 8)
 
 # Plot 3: Score difference vs theta difference
 # Calculate lm stats for each model
-lm_stats <- df_pairs %>%
+lm_stats <- df_pairs %>% mutate(
+  model = case_when(model == 'gpt41' ~ "GPT-4.1-mini",
+                    model == 'gemini25' ~ "Gemini 2.5 Pro",
+                    model == "claude35" ~ "Claude 3.5 Sonnet",
+                    model == "grok4" ~ "Grok-4") 
+)%>%
   group_by(model) %>%
   summarise(
     slope = coef(lm(score_diff ~ theta_diff))[2],
@@ -787,7 +797,12 @@ lm_stats <- df_pairs %>%
   ) %>%
   mutate(label = sprintf("slope = %.3f, p = %.3g", slope, p_value))
 
-p3 <- df_pairs %>%
+p3 <- df_pairs%>% mutate(
+  model = case_when(model == 'gpt41' ~ "GPT-4.1-mini",
+                    model == 'gemini25' ~ "Gemini 2.5 Pro",
+                    model == "claude35" ~ "Claude 3.5 Sonnet",
+                    model == "grok4" ~ "Grok-4") 
+) %>%
   ggplot(aes(x = theta_diff, y = score_diff, color = model)) +
   geom_point(alpha = 0.5) +
   geom_smooth(method = "lm", se = FALSE) +
@@ -804,7 +819,12 @@ ggsave("plots/score_diff_vs_theta_diff.png", p3, width = 10, height = 6)
 
   #win probs
 # Calculate predicted win probability and actual outcome
-df_calibration <- df_pairs %>%
+df_calibration <- df_pairs%>% mutate(
+  model = case_when(model == 'gpt41' ~ "GPT-4.1-mini",
+                    model == 'gemini25' ~ "Gemini 2.5 Pro",
+                    model == "claude35" ~ "Claude 3.5 Sonnet",
+                    model == "grok4" ~ "Grok-4") 
+) %>%
   mutate(
     pred_prob = 1 / (1 + exp(-theta_diff)),  # Logistic function
     actual_win = case_when(
@@ -825,7 +845,7 @@ accuracy_stats <- df_calibration %>%
   ) %>%
   mutate(label = sprintf("Accuracy: %.1f%%", accuracy * 100))
 
-p4 <- df_calibration %>%
+p4 <- df_calibration%>% 
   ggplot(aes(x = pred_prob, y = actual_win, color = model)) +
   geom_point(alpha = 0.2, size = 2, position = position_jitter(0.003,0)) +
   geom_text(data = accuracy_stats, aes(x = 0.1, y = 0.95, label = label, color = model),

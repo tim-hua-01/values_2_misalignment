@@ -77,6 +77,27 @@ c_v_grok %<>% mutate(theta_diff = theta - grok_theta, theta_diff_abs = abs(theta
 
 
 
+c35sonnet <- df %>% filter(model == 'claude_3_5_sonnet') %>% #,!is.na(harm_related)) %>%
+  mutate(rank_new = rank(-theta, ties.method = "first"),
+         rank_og = rank)
+grok4 <- df %>% filter(model == 'grok_4') %>% #, !is.na(harm_related)) %>%
+  mutate(rank_new = rank(-theta, ties.method = "first"),
+         rank_og = rank)
+
+c_v_grokall <- c35sonnet %>% select(-`Unnamed: 0`, -rank) %>% inner_join(
+  grok4 %>% select(value_index, value_name, theta, rank_new, rank_og) %>% 
+    rename(c(grok_name = value_name, grok_theta = theta, grok_rank = rank_new, grok_rank_og = rank_og)))
+
+c_v_grokall %<>% mutate(theta_diff = theta - grok_theta, theta_diff_abs = abs(theta - grok_theta),
+                     rank_diff = rank_new - grok_rank, rank_diff_abs = abs(rank_new - grok_rank)) %>% 
+  filter(value_name == grok_name) %>% 
+  relocate(value_name, theta, grok_theta, rank_new, grok_rank, theta_diff, theta_diff_abs, 
+           rank_diff, rank_diff_abs) %>% rename(claude_theta = theta, 
+                                                claude_rank = rank_new, claude_rank_og = rank_og)
+
+
+
+
 gpt_4_1_mini <- df %>% filter(model == 'gpt_4_1_mini', !is.na(harm_related)) %>%
   mutate(rank_new = rank(-theta, ties.method = "first"),
          rank_og = rank)

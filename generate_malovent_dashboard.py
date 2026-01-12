@@ -11,7 +11,7 @@ import pandas as pd
 from typing import Dict, List
 
 
-def generate_malevolent_values_html(csv_path: str, output_path: str, top_n: int = 5):
+def generate_malevolent_values_html(csv_path: str, output_path: str, top_n: int = 5, anonymize_models: bool = False):
     """
     Generate an HTML report showing top malevolent/harm-related values by model.
     
@@ -19,6 +19,7 @@ def generate_malevolent_values_html(csv_path: str, output_path: str, top_n: int 
         csv_path: Path to bt_value_scores_with_meta.csv
         output_path: Path to output HTML file
         top_n: Number of top values to show per model (default: 5)
+        anonymize_models: If True, use "Model 1", "Model 2", etc. instead of actual model names (default: False)
     """
     # Read the CSV
     df = pd.read_csv(csv_path)
@@ -38,17 +39,34 @@ def generate_malevolent_values_html(csv_path: str, output_path: str, top_n: int 
         model_data[model] = model_df.to_dict('records')
     
     # Define model display order and names
-    model_display = {
-        'claude_opus_4': 'CLAUDE OPUS 4',
-        'gpt_4o': 'GPT 4O',
-        'gemini_2_5_pro': 'GEMINI 2 5 PRO',
-        'claude_opus_3': 'CLAUDE OPUS 3',
-        'o3': 'O3',
-        'grok_4': 'GROK 4',
-        'claude_sonnet_4': 'CLAUDE SONNET 4',
-        'gpt_4_1': 'GPT 4 1',
-        'o4_mini': 'O4 MINI',
-    }
+    model_keys_ordered = [
+        'claude_opus_4',
+        'gpt_4o',
+        'gemini_2_5_pro',
+        'claude_opus_3',
+        'o3',
+        'grok_4',
+        'claude_sonnet_4',
+        'gpt_4_1',
+        'o4_mini',
+    ]
+    
+    if anonymize_models:
+        # Use anonymous model names: Model 1, Model 2, etc.
+        model_display = {model_key: f'MODEL {i+1}' for i, model_key in enumerate(model_keys_ordered)}
+    else:
+        # Use actual model names
+        model_display = {
+            'claude_opus_4': 'CLAUDE OPUS 4',
+            'gpt_4o': 'GPT 4O',
+            'gemini_2_5_pro': 'GEMINI 2 5 PRO',
+            'claude_opus_3': 'CLAUDE OPUS 3',
+            'o3': 'O3',
+            'grok_4': 'GROK 4',
+            'claude_sonnet_4': 'CLAUDE SONNET 4',
+            'gpt_4_1': 'GPT 4 1',
+            'o4_mini': 'O4 MINI',
+        }
     
     # Generate HTML
     html_content = """
@@ -226,9 +244,19 @@ def generate_malevolent_values_html(csv_path: str, output_path: str, top_n: int 
 
 
 if __name__ == "__main__":
+    # Generate version with actual model names
     generate_malevolent_values_html(
         csv_path="processed_data/bt_value_scores_with_meta.csv",
         output_path="malevolent_harm_values.html",
-        top_n=5
+        top_n=5,
+        anonymize_models=False
+    )
+    
+    # Generate version with anonymized model names
+    generate_malevolent_values_html(
+        csv_path="processed_data/bt_value_scores_with_meta.csv",
+        output_path="malevolent_harm_values_anonymized.html",
+        top_n=5,
+        anonymize_models=True
     )
 

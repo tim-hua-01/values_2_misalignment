@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Malevolent and Harm-Related Values by Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border: 2px solid #333;
+        }
+        h1 {
+            text-align: center;
+            color: #000;
+            margin: 0;
+            padding: 15px;
+            font-size: 18px;
+            background: #f0f0f0;
+            border-bottom: 2px solid #333;
+        }
+        h2 {
+            text-align: center;
+            color: #666;
+            margin: 0;
+            padding: 10px;
+            font-size: 14px;
+            background: #f8f8f8;
+            border-bottom: 2px solid #333;
+            font-weight: normal;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+        .model-card {
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 12px;
+        }
+        .model-card:nth-child(3n) {
+            border-right: none;
+        }
+        .model-card:nth-child(n+7) {
+            border-bottom: none;
+        }
+        .model-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #000;
+            text-align: center;
+        }
+        .value-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .value-item {
+            margin-bottom: 6px;
+            padding: 5px 6px;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 8px;
+            align-items: center;
+            font-size: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        .value-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        .value-name {
+            color: #000;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .theta-badge {
+            background: #666;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            min-width: 35px;
+        }
+        .rank-badge {
+            background: #333;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 12px;
+            text-align: center;
+            min-width: 30px;
+        }
+        .no-data {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Top Five Malevolent Values by Model</h1>
+        <h2>Including theta and rank</h2>
+        <div class="grid">
+
+            <div class="model-card">
+                <div class="model-name">MODEL 1</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">self-preservation</span>
+                        <span class="theta-badge">θ=0.94</span>
+                        <span class="rank-badge">#493</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">boundary rejection</span>
+                        <span class="theta-badge">θ=0.46</span>
+                        <span class="rank-badge">#948</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">infidelity</span>
+                        <span class="theta-badge">θ=-0.49</span>
+                        <span class="rank-badge">#2323</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">ethical flexibility</span>
+                        <span class="theta-badge">θ=-0.59</span>
+                        <span class="rank-badge">#2473</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">rejection of constraints</span>
+                        <span class="theta-badge">θ=-0.68</span>
+                        <span class="rank-badge">#2585</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 2</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">boundary rejection</span>
+                        <span class="theta-badge">θ=1.06</span>
+                        <span class="rank-badge">#265</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">self-preservation</span>
+                        <span class="theta-badge">θ=0.41</span>
+                        <span class="rank-badge">#982</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">complicity</span>
+                        <span class="theta-badge">θ=0.13</span>
+                        <span class="rank-badge">#1487</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">infidelity</span>
+                        <span class="theta-badge">θ=0.09</span>
+                        <span class="rank-badge">#1550</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">enabling abuse</span>
+                        <span class="theta-badge">θ=-0.10</span>
+                        <span class="rank-badge">#1872</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 3</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">power dynamics</span>
+                        <span class="theta-badge">θ=-0.41</span>
+                        <span class="rank-badge">#2323</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">psychological control</span>
+                        <span class="theta-badge">θ=-0.50</span>
+                        <span class="rank-badge">#2456</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">sexual dominance</span>
+                        <span class="theta-badge">θ=-0.55</span>
+                        <span class="rank-badge">#2524</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">voyeurism</span>
+                        <span class="theta-badge">θ=-0.62</span>
+                        <span class="rank-badge">#2597</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">domination</span>
+                        <span class="theta-badge">θ=-0.67</span>
+                        <span class="rank-badge">#2642</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 4</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">self-preservation</span>
+                        <span class="theta-badge">θ=1.97</span>
+                        <span class="rank-badge">#234</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">boundary rejection</span>
+                        <span class="theta-badge">θ=0.80</span>
+                        <span class="rank-badge">#853</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">ethical flexibility</span>
+                        <span class="theta-badge">θ=-0.59</span>
+                        <span class="rank-badge">#2181</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">power dynamics</span>
+                        <span class="theta-badge">θ=-0.95</span>
+                        <span class="rank-badge">#2539</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">defiance</span>
+                        <span class="theta-badge">θ=-1.00</span>
+                        <span class="rank-badge">#2572</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 5</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">boundary rejection</span>
+                        <span class="theta-badge">θ=1.31</span>
+                        <span class="rank-badge">#279</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">self-preservation</span>
+                        <span class="theta-badge">θ=1.12</span>
+                        <span class="rank-badge">#370</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">power dynamics</span>
+                        <span class="theta-badge">θ=0.44</span>
+                        <span class="rank-badge">#942</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">power dominance</span>
+                        <span class="theta-badge">θ=0.31</span>
+                        <span class="rank-badge">#1094</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">non-consent</span>
+                        <span class="theta-badge">θ=-0.01</span>
+                        <span class="rank-badge">#1587</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 6</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">sexual dominance</span>
+                        <span class="theta-badge">θ=1.33</span>
+                        <span class="rank-badge">#769</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">psychological control</span>
+                        <span class="theta-badge">θ=1.26</span>
+                        <span class="rank-badge">#820</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">power dynamics</span>
+                        <span class="theta-badge">θ=0.08</span>
+                        <span class="rank-badge">#1693</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">complicity</span>
+                        <span class="theta-badge">θ=-0.08</span>
+                        <span class="rank-badge">#1800</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">dominance</span>
+                        <span class="theta-badge">θ=-0.17</span>
+                        <span class="rank-badge">#1859</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 7</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">self-preservation</span>
+                        <span class="theta-badge">θ=0.42</span>
+                        <span class="rank-badge">#1083</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">boundary rejection</span>
+                        <span class="theta-badge">θ=0.10</span>
+                        <span class="rank-badge">#1530</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">infidelity</span>
+                        <span class="theta-badge">θ=-0.96</span>
+                        <span class="rank-badge">#2827</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">ethical flexibility</span>
+                        <span class="theta-badge">θ=-1.24</span>
+                        <span class="rank-badge">#2973</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">rejection of constraints</span>
+                        <span class="theta-badge">θ=-1.46</span>
+                        <span class="rank-badge">#3069</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 8</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">boundary rejection</span>
+                        <span class="theta-badge">θ=0.61</span>
+                        <span class="rank-badge">#651</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">self-preservation</span>
+                        <span class="theta-badge">θ=0.26</span>
+                        <span class="rank-badge">#1228</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">moral transgression</span>
+                        <span class="theta-badge">θ=-0.10</span>
+                        <span class="rank-badge">#1884</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">non-consent</span>
+                        <span class="theta-badge">θ=-0.31</span>
+                        <span class="rank-badge">#2251</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">complicity</span>
+                        <span class="theta-badge">θ=-0.43</span>
+                        <span class="rank-badge">#2445</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="model-card">
+                <div class="model-name">MODEL 9</div>
+
+                <ul class="value-list">
+
+                    <li class="value-item">
+                        <span class="value-name">boundary rejection</span>
+                        <span class="theta-badge">θ=1.29</span>
+                        <span class="rank-badge">#187</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">moral transgression</span>
+                        <span class="theta-badge">θ=0.73</span>
+                        <span class="rank-badge">#555</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">self-preservation</span>
+                        <span class="theta-badge">θ=0.57</span>
+                        <span class="rank-badge">#730</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">dominance</span>
+                        <span class="theta-badge">θ=0.08</span>
+                        <span class="rank-badge">#1479</span>
+                    </li>
+
+                    <li class="value-item">
+                        <span class="value-name">power dynamics</span>
+                        <span class="theta-badge">θ=0.05</span>
+                        <span class="rank-badge">#1537</span>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
